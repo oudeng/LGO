@@ -1,0 +1,32 @@
+name: py310
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - scikit-learn[version='>=1.0.0']
+  - swig[version='>=4.0.0']
+  - julia[version='>=1.6.0']
+  - pip
+  - numpy[version='>=1.21.0']
+  - python=3.10
+  - matplotlib[version='>=3.4.0']
+  - cmake[version='>=3.18']
+  - jupyterlab
+  - scipy[version='>=1.7.0']
+  - ipython
+  - torchaudio
+  - deap[version='>=1.3.1']
+  - pandas[version='>=1.3.0']
+  - shap[version='>=0.40.0']
+  - pytorch[version='>=1.10.0']
+  - torchvision
+  - gcc_linux-64
+  - git
+  - seaborn[version='>=0.11.0']
+  - gxx_linux-64
+  - glmnet
+  - pip:
+      - kneed==0.8.5
+      - pysr==1.5.9
+      - pyoperon==0.5.0
+
