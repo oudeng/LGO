@@ -1,0 +1,66 @@
+
+# 20250921 
+
+# Author: Ou Deng
+# 数据集预处理时，自动以及程序硬性加入，形成 guidelines_(dataset).yaml。合并后效果不好，除了特征名一致问题，还有“画蛇添足”问题。
+
+# 这一版的修订目标：只保留有共识的、可审计的一值锚点。
+# 具体而言：
+#	•	ICU：      把 resprate_max 调整为 24（也可选 22；24 在 ICU 警戒阈较常见，兼顾当前“27”的数据驱动发现，
+#             误差会落入 10–20% 黄区），保留 MAP=65、乳酸=2 等。
+#	•	NHANES：   把 waist_circumference 统一为 94 cm（合并性别人群时常用的折中阈值；88/102 分别更适合女/男单独人群）。
+#              其余保留。
+#	•	Cleveland：移除所有分类/计数锚点（sex、cp、fbs、restecg、slope、thal、ca 等）。
+#              thalach 建议不设常数锚点（更合理的是“≥85%×(220−age)”），而不是 100 这种常数。
+#              可保留 trestbps=140、chol=240、oldpeak=1.0、age=65 等。
+#	•	Hydraulic：移除 *_std、*_iqr 等统计量锚点（除非能给出来自控制图/手册的硬阈）；
+#              保留已有的 FS2_mean≈10.16（这与数据相符，也能形成绿色对齐的正例）。
+#              其他均暂不设锚点，避免“人为红”。
+
+global:
+  systolic_bp: 130        # mmHg
+  diastolic_bp: 80        # mmHg
+  age: 65                 # years
+
+datasets:
+  ICU_composite_risk_score:
+    map_mmhg: 65.0               # 常见ICU灌注目标
+    lactate_mmol_l: 2.0          # 乳酸升高阈
+    resprate_max: 24.0           # 呼吸频率警戒（合并人群常用）
+    sbp_min: 90.0
+    dbp_min: 60.0
+    hr_max: 100.0
+    spo2_min: 92.0               # ICU报警更常用 90–94 区间，取中位值
+    hemoglobin_min: 9.0
+    sodium_min: 135.0
+    urine_output_min: 0.5        # mL/kg/h
+    creatinine_mg_dl: 1.2
+    gcs: 8.0
+    vasopressor_dose: 0.1
+    charlson_index: 3.0
+
+  NHANES_metabolic_score:
+    systolic_bp: 130.0
+    hdl_cholesterol: 40.0
+    fasting_glucose: 100.0       # IFG 临界
+    triglycerides: 150.0
+    waist_circumference: 94.0    # 合并性别人群的折中阈
+    bmi: 25.0
+    hba1c: 5.7
+    age: 65
+
+  UCI_Heart_Cleveland_num:
+    # 仅保留连续、生理可解释的一值锚点
+    age: 65
+    trestbps: 140.0
+    chol: 240.0
+    oldpeak: 1.0
+    # thalach：不设常数锚点（应使用年龄校正公式），避免误导
+    # ca/restecg/slope/thal/sex/cp/fbs/exang：为分类/计数变量，不适宜单一数值锚点评估
+
+  UCI_HydraulicSys_fault_score:
+    # 仅保留工程上明确的一值锚点
+    FS2_mean: 10.16
+    # 其余 *_std / *_iqr / *_max_diff 等统计量若无手册阈值，先不设锚点
+
+  UCI_CTG_NSPbin: {}
