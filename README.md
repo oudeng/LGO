@@ -258,7 +258,7 @@ python code/utility_plots/04_thresholds_plot.py \
   --csv results/figures/thresholds/thresholds_summary.csv \
   --outdir results/figures/
 ```
-<--
+
 ### Automated Pipeline
 
 Save as `run_all_experiments.sh`:
@@ -307,7 +307,7 @@ done
 
 echo "✓ All experiments completed!"
 ```
--->
+
 
 ## ⚙️ Parameters Reference
 
