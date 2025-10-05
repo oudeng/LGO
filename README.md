@@ -31,32 +31,6 @@ Where:
 - `a`: Transition steepness (controls sharpness of transition)
 - `σ`: Logistic sigmoid function
 
-## 📊 Results & Clinical Validation
-
-We evaluate on healthcare (MIMIC-IV ICU, NHANES) and UCI benchmark datasets. LGO discovers clinically meaningful thresholds while maintaining competitive accuracy:
-
-### Healthcare Datasets
-
-| Dataset | Task | Key Finding | Clinical Guideline | Deviation |
-|---------|------|-------------|-------------------|-----------|
-| **ICU Risk Score** | 30-day Mortality | MAP: 63.7 mmHg | 65 mmHg | **Δ2.0%** ✓ |
-| | | Lactate: 2.13 mmol/L | 2.0 mmol/L | **Δ6.5%** ✓ |
-| **NHANES Metabolic** | Metabolic Syndrome | SBP: 128.3 mmHg | 130 mmHg | **Δ1.3%** ✓ |
-| | | Glucose: 5.42 mmol/L | 5.6 mmol/L | **Δ3.2%** ✓ |
-
-✓ Within 10% of clinical guidelines
-
-### Performance Comparison
-
-| Method | ICU (R²) | NHANES (Acc) | Avg Equation Length | Interpretable |
-|--------|----------|--------------|-------------------|---------------|
-| **LGO-Soft** | 0.743 | 0.812 | 47.3 | ✓ |
-| **LGO-Hard** | 0.726 | 0.798 | 42.1 | ✓ |
-| PySR | 0.751 | 0.821 | 68.4 | ✗ |
-| Operon | 0.739 | 0.816 | 55.2 | ✗ |
-| PS-Tree | 0.718 | 0.793 | N/A | Partial |
-
-Full results, discovered equations, and threshold audits are in the [paper](https://arxiv.org/).
 
 ## 📁 Repository Structure
 ```
