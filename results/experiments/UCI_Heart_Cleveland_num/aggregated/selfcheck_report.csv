@@ -1,0 +1,161 @@
+dataset,task,method,experiment,seed,split,check,status,value,threshold,notes
+UCI_Heart_Cleveland_num,regression,lgo,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.4422491105366504,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,1,0,metrics_guard_RMSE_ge_MAE,OK,0.4488878293422933,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,1,0,metrics_guard_RMSE_ge_MAE,OK,0.47931444644881627,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.3655521733610336,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.38702207744815753,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.3377672831292595,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,2,0,metrics_guard_RMSE_ge_MAE,OK,0.3793470021920028,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,2,0,metrics_guard_RMSE_ge_MAE,OK,0.34335438400280593,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.28569884399140666,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.2944292959702488,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.278953495867662,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,3,0,metrics_guard_RMSE_ge_MAE,OK,0.28466301793911697,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,3,0,metrics_guard_RMSE_ge_MAE,OK,0.2571960422503858,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.19268278017634233,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.21663481063103296,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.2788550968296516,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,5,0,metrics_guard_RMSE_ge_MAE,OK,0.29362131879273246,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,5,0,metrics_guard_RMSE_ge_MAE,OK,0.24797597137306548,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.2957472718628017,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.24563807719637998,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.304402675416357,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,8,0,metrics_guard_RMSE_ge_MAE,OK,0.333651135213369,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,8,0,metrics_guard_RMSE_ge_MAE,OK,0.33131291725262224,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.21190278600966894,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.19513369905116695,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.29644810094172436,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,13,0,metrics_guard_RMSE_ge_MAE,OK,0.32233046520380476,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,13,0,metrics_guard_RMSE_ge_MAE,OK,0.2783988043149715,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.2696266752325255,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.2406566234336741,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.38310912774170625,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,21,0,metrics_guard_RMSE_ge_MAE,OK,0.3266782797362926,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,21,0,metrics_guard_RMSE_ge_MAE,OK,0.3504602149085374,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.2856141913077854,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.27726144706625333,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.30389918066058275,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,34,0,metrics_guard_RMSE_ge_MAE,OK,0.3100622680741443,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,34,0,metrics_guard_RMSE_ge_MAE,OK,0.34575782575640446,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.25424374177738185,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.2400259792869932,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.24634749896712782,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,55,0,metrics_guard_RMSE_ge_MAE,OK,0.2795716285832759,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,55,0,metrics_guard_RMSE_ge_MAE,OK,0.286567113193992,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.23701753673130954,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.19775933989358785,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.3084774654425877,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,89,0,metrics_guard_RMSE_ge_MAE,OK,0.3325967726209137,>= 0,
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,89,0,metrics_guard_RMSE_ge_MAE,OK,0.2943128693331557,>= 0,
+UCI_Heart_Cleveland_num,regression,pysr,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pysr,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.3100449609756152,>= 0,
+UCI_Heart_Cleveland_num,regression,operon,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,operon,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.25810380303582425,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.4379881638197698,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,1,0,native_vs_computed_RMSE,OK,0.0029046054104531205,<= 0.01,"native=0.987014, computed=0.984110"
+UCI_Heart_Cleveland_num,regression,pstree,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.3814983290524776,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,2,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.092895, computed=1.092895"
+UCI_Heart_Cleveland_num,regression,pstree,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.4178594071862688,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,3,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.033096, computed=1.033096"
+UCI_Heart_Cleveland_num,regression,pstree,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.4614393055284812,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,5,0,native_vs_computed_RMSE,OK,0.0003162197882666806,<= 0.01,"native=1.179948, computed=1.179631"
+UCI_Heart_Cleveland_num,regression,pstree,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.4790339520476242,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,8,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.092498, computed=1.092498"
+UCI_Heart_Cleveland_num,regression,pstree,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.26400981228774334,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,13,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.947824, computed=0.947824"
+UCI_Heart_Cleveland_num,regression,pstree,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.352033922600832,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,21,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.109786, computed=1.109786"
+UCI_Heart_Cleveland_num,regression,pstree,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.5155691275344845,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,34,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.296826, computed=1.296826"
+UCI_Heart_Cleveland_num,regression,pstree,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.4748524204394474,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,55,0,native_vs_computed_RMSE,INFO,0.04515782941667079,<= 0.01,"native=1.310971, computed=1.265813"
+UCI_Heart_Cleveland_num,regression,pstree,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,pstree,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.42499818014195645,>= 0,
+UCI_Heart_Cleveland_num,regression,pstree,base,89,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.312781, computed=1.312781"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.4424911848816083,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,1,0,native_vs_computed_RMSE,OK,0.006501673859213408,<= 0.01,"native=1.187263, computed=1.180761"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.3201247483730728,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,2,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.966306, computed=0.966306"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.2660624102437652,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,3,0,native_vs_computed_RMSE,INFO,0.34421214390736654,<= 0.01,"native=1.175287, computed=0.831075"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.301472707919445,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,5,0,native_vs_computed_RMSE,OK,0.0004943621027748701,<= 0.01,"native=0.916810, computed=0.916316"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.26731688854528435,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,8,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.909732, computed=0.909732"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.24110986397564793,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,13,0,native_vs_computed_RMSE,OK,0.00032960463711151355,<= 0.01,"native=0.761833, computed=0.761504"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.27071317321340493,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,21,0,native_vs_computed_RMSE,INFO,0.06987792559273853,<= 0.01,"native=1.027277, computed=0.957399"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.24010459974069476,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,34,0,native_vs_computed_RMSE,OK,0.0015427596851638192,<= 0.01,"native=1.011323, computed=1.009781"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.23829410368536363,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,55,0,native_vs_computed_RMSE,OK,0.00039869664772163027,<= 0.01,"native=0.845791, computed=0.845393"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_Heart_Cleveland_num,regression,rils_rols,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.24639063634517422,>= 0,
+UCI_Heart_Cleveland_num,regression,rils_rols,base,89,0,native_vs_computed_RMSE,INFO,0.0129219517336846,<= 0.01,"native=0.915174, computed=0.902252"

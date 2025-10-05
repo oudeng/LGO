@@ -1,0 +1,15 @@
+dataset,method,experiment,n_models,complexity_median,complexity_q1,complexity_q3,complexity_mean,complexity_std,gates_median,gates_q1,gates_q3,depth_median
+NHANES_metabolic_score,lgo,base,100,60.5,57.0,71.0,63.83,9.669336099549989,0.0,0.0,0.0,10.0
+NHANES_metabolic_score,lgo,lgo_hard,100,94.5,81.0,106.25,93.12,19.424175294168496,5.0,4.0,8.0,10.0
+NHANES_metabolic_score,lgo,lgo_soft,100,103.0,82.75,130.0,113.05,40.10576295524399,12.5,8.0,17.0,10.0
+NHANES_metabolic_score,lgo_base,base,100,60.5,57.0,71.0,63.83,9.669336099549989,0.0,0.0,0.0,10.0
+NHANES_metabolic_score,lgo_lgo_hard,lgo_hard,100,94.5,81.0,106.25,93.12,19.424175294168496,5.0,4.0,8.0,10.0
+NHANES_metabolic_score,lgo_lgo_soft,lgo_soft,100,103.0,82.75,130.0,113.05,40.10576295524399,12.5,8.0,17.0,10.0
+NHANES_metabolic_score,operon,base,10,30.5,29.0,31.75,29.9,2.2335820757001272,0.0,0.0,0.0,11.0
+NHANES_metabolic_score,operon_base,base,10,30.5,29.0,31.75,29.9,2.2335820757001272,0.0,0.0,0.0,11.0
+NHANES_metabolic_score,pstree,pstree,10,4.5,3.25,5.75,5.0,2.9814239699997196,0.0,0.0,0.0,2.0
+NHANES_metabolic_score,pstree_base,pstree,10,4.5,3.25,5.75,5.0,2.9814239699997196,0.0,0.0,0.0,2.0
+NHANES_metabolic_score,pysr,base,99,7.0,5.0,9.0,7.0,2.740475156178697,0.0,0.0,0.0,1.0
+NHANES_metabolic_score,pysr_base,base,99,7.0,5.0,9.0,7.0,2.740475156178697,0.0,0.0,0.0,1.0
+NHANES_metabolic_score,rils_rols,rils_rols,10,30.0,29.25,30.0,29.8,0.6324555320336758,0.0,0.0,0.0,3.0
+NHANES_metabolic_score,rils_rols_base,rils_rols,10,30.0,29.25,30.0,29.8,0.6324555320336758,0.0,0.0,0.0,3.0

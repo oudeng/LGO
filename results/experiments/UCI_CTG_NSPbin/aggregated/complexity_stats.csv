@@ -1,0 +1,15 @@
+dataset,method,experiment,n_models,complexity_median,complexity_q1,complexity_q3,complexity_mean,complexity_std,gates_median,gates_q1,gates_q3,depth_median
+UCI_CTG_NSPbin,lgo,base,100,16.5,11.0,49.0,28.61,21.732485110794602,0.0,0.0,0.0,8.5
+UCI_CTG_NSPbin,lgo,lgo_hard,100,12.0,10.0,13.25,12.3,3.1058758259892887,1.0,1.0,1.0,4.0
+UCI_CTG_NSPbin,lgo,lgo_soft,100,102.0,78.0,198.0,120.35,61.765502286691344,12.0,10.0,25.0,10.0
+UCI_CTG_NSPbin,lgo_base,base,100,16.5,11.0,49.0,28.61,21.732485110794602,0.0,0.0,0.0,8.5
+UCI_CTG_NSPbin,lgo_lgo_hard,lgo_hard,100,12.0,10.0,13.25,12.3,3.1058758259892887,1.0,1.0,1.0,4.0
+UCI_CTG_NSPbin,lgo_lgo_soft,lgo_soft,100,102.0,78.0,198.0,120.35,61.765502286691344,12.0,10.0,25.0,10.0
+UCI_CTG_NSPbin,operon,base,10,24.0,20.5,28.0,24.0,4.83045891539648,0.0,0.0,0.0,10.0
+UCI_CTG_NSPbin,operon_base,base,10,24.0,20.5,28.0,24.0,4.83045891539648,0.0,0.0,0.0,10.0
+UCI_CTG_NSPbin,pstree,pstree,6,1.5,1.0,4.25,2.8333333333333335,2.5625508125043424,0.0,0.0,0.0,0.5
+UCI_CTG_NSPbin,pstree_base,pstree,6,1.5,1.0,4.25,2.8333333333333335,2.5625508125043424,0.0,0.0,0.0,0.5
+UCI_CTG_NSPbin,pysr,base,73,4.0,3.0,5.0,4.328767123287672,1.8860216397408527,0.0,0.0,0.0,1.0
+UCI_CTG_NSPbin,pysr_base,base,73,4.0,3.0,5.0,4.328767123287672,1.8860216397408527,0.0,0.0,0.0,1.0
+UCI_CTG_NSPbin,rils_rols,rils_rols,10,27.0,26.25,28.75,26.8,3.190262963734772,0.0,0.0,0.0,5.0
+UCI_CTG_NSPbin,rils_rols_base,rils_rols,10,27.0,26.25,28.75,26.8,3.190262963734772,0.0,0.0,0.0,5.0
