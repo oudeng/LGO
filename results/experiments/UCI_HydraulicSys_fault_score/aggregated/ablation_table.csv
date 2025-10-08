@@ -1,2 +1,0 @@
-dataset,primary_metric,base_median,lgo_soft_median,lgo_hard_median,base_IQR,lgo_soft_IQR,lgo_hard_IQR,n_base,n_soft,n_hard
-UCI_HydraulicSys_fault_score,R2,0.5863313278968294,0.4501653945347789,0.36707322953737553,0.16840694048999993,0.26402836986261724,0.5163312903390467,10,10,10

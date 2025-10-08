@@ -1,2 +1,0 @@
-dataset,method,experiment,gate_type,feature,unit,mu,sigma,count,b_z_median,b_z_q1,b_z_q3,b_raw_median,b_raw_q1,b_raw_q3,n_dynamic
-UCI_CTG_NSPbin,lgo,lgo_hard,lgo_thre,NSP,,1.304327375352775,0.6142323403207726,100,0.58185229343992,0.2808799784376909,0.973069209790147,1.661719871273386,1.476852941857806,1.9020179533762618,74

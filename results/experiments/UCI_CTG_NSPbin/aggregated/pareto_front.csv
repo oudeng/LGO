@@ -1,6 +1,0 @@
-dataset,method,experiment,seed,expr_id,complexity,loss,expression
-UCI_CTG_NSPbin,lgo,base,13,10,6,0.0,"sqrt(pow(id(idF(NSP)), zero))"
-UCI_CTG_NSPbin,lgo,lgo_hard,55,170,8,5.9311513040849595e-53,"lgo_thre(div(id(NSP), zero), as_pos(zero), 0.2808799784376909)"
-UCI_CTG_NSPbin,lgo,lgo_soft,21,230,11,0.0,"add(add(pow(sqrt(id(NSP)), zero), zero), sub(zero, zero))"
-UCI_CTG_NSPbin,operon,base,13,601,16,2.8244671998633653e-11,(0.978628 + ((-0.207607) * ((((((0.323311 / (0.887919 * NSP)) / (0.317298 * NSP)) / (0.887919 * NSP)) / (0.693147 * NSP)) - (0.323311 / (0.887919 * NSP))) / (0.318310 * NSP))))
-UCI_CTG_NSPbin,pysr,base,13,643,1,0.0,0.221768350000000
