@@ -161,7 +161,7 @@ Please see md files in [run_command_lines/](run_command_lines/)
 
 ### Analyze & Visualize Results
 
-Please see scripts in [run_command_lines/]([run_command_lines/]) and [run_command_plots/]([run_command_lines/]).
+Please see scripts in [run_command_lines/](run_command_lines/) and [run_command_plots/](run_command_lines/).
 
 
 ## Parameters Reference
