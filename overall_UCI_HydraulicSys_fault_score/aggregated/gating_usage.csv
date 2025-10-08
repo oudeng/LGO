@@ -1,0 +1,4 @@
+dataset,method,experiment,n_models,n_with_gates,prop_with_gates,gates_median,gates_q1,gates_q3,complexity_median,complexity_q1,complexity_q3,score_median
+UCI_HydraulicSys_fault_score,lgo,base,100,0,0.0,0.0,0.0,0.0,38.25,29.5,43.0,0.0111279783377673
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,100,100,1.0,3.0,2.0,4.0,47.25,34.5,53.0,0.00927003043358735
+UCI_HydraulicSys_fault_score,lgo,lgo_soft,100,100,1.0,15.5,12.0,25.0,76.39999999999999,61.3,116.29999999999998,0.01390756759779875

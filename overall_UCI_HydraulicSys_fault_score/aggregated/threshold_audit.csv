@@ -1,0 +1,6 @@
+dataset,experiment,feature,feature_norm,unit,median,q1,q3,guideline,rel_error,hit_10pct,hit_20pct,N
+UCI_HydraulicSys_fault_score,lgo_hard,PS1_iqr,ps1iqr,nan,,,,,,0,0,1
+UCI_HydraulicSys_fault_score,lgo_hard,PS1_std,ps1std,nan,15.669519468352354,14.075389016344978,17.53893829088028,,,0,0,1
+UCI_HydraulicSys_fault_score,lgo_hard,PS3_max,ps3max,nan,,,,,,0,0,1
+UCI_HydraulicSys_fault_score,lgo_hard,PS3_std,ps3std,nan,0.912161929102309,0.912161929102309,0.912161929102309,,,0,0,1
+UCI_HydraulicSys_fault_score,lgo_hard,SE_std,sestd,nan,,,,,,0,0,1

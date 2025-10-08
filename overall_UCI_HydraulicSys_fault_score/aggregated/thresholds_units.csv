@@ -1,0 +1,6 @@
+dataset,method,experiment,gate_type,feature,unit,mu,sigma,count,b_z_median,b_z_q1,b_z_q3,b_raw_median,b_raw_q1,b_raw_q3,n_dynamic
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,lgo_thre,PS1_iqr,,17.556397333333337,8.724307654062647,10,,,,,,,10
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,lgo_thre,PS1_std,,15.29448420189413,2.066005578815658,60,0.18152674431460786,-0.5900735206378293,1.0863736826271253,15.669519468352354,14.075389016344978,17.53893829088028,40
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,lgo_thre,PS3_max,,10.40604053877551,0.6061988018510908,10,,,,,,,10
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,lgo_thre,PS3_std,,0.8992474721534617,0.039633903667505896,10,0.32584367810923703,0.32584367810923703,0.32584367810923703,0.912161929102309,0.912161929102309,0.912161929102309,0
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,lgo_thre,SE_std,,23.951313996422872,1.902411503887117,10,,,,,,,10
