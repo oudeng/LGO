@@ -1,0 +1,17 @@
+{
+  "gate_expr_enable": true,
+  "pop_size": 800,
+  "ngen": 100,
+  "local_opt_steps": 150,
+  "micro_mutation_prob": 0.2,
+  "cv_proxy_weight": 0.15,
+  "cv_proxy_weight_final": 0.3,
+  "cv_proxy_warmup_frac": 0.7,
+  "cv_proxy_subsample": 0.3,
+  "cv_proxy_folds": 2,
+  "typed_mode": "light",
+  "typed_grouping": "none",
+  "include_lgo_multi": true,
+  "include_lgo_and3": true,
+  "include_lgo_pair": false
+}

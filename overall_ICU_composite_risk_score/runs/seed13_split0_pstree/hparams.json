@@ -1,0 +1,7 @@
+{
+  "pst_max_depth": 10,
+  "pst_max_leaf_nodes": 32,
+  "pst_min_samples_leaf": 20,
+  "pst_pop_size": 600,
+  "pst_ngen": 80
+}
