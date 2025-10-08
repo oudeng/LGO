@@ -1,0 +1,5 @@
+dataset,experiment,feature,feature_norm,unit,median,q1,q3,guideline,rel_error,hit_10pct,hit_20pct,N
+UCI_CTG_NSPbin,lgo_hard,NSP,nsp,nan,1.9020179533762616,1.512733752197379,1.9490158008128209,,,0,0,1
+UCI_CTG_NSPbin,lgo_hard,one,one,nan,,,,,,0,0,1
+UCI_CTG_NSPbin,lgo_hard,unknown,unknown,nan,,,,,,0,0,1
+UCI_CTG_NSPbin,lgo_hard,zero,zero,nan,,,,,,0,0,1

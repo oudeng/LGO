@@ -1,0 +1,2 @@
+dataset,experiment,n_features,hit10_rate,hit20_rate,median_rel_error
+NHANES_metabolic_score,lgo_hard,13,0.0,0.0,0.4514609313514643

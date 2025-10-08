@@ -1,0 +1,36 @@
+[LGO|BASE]
+add(sqrt(add(0.7508742006524992, id(waist_circumference))), add(one, sub(sqrt(pow(sub(div(mul(pow(div(-1.1657177019735117, zero), id(systolic_bp)), pow(div(-1.1657177019735117, zero), id(systolic_bp))), sqrt(div(sqrt(one), log(one)))), div(sub(1.8950160571427719, 1.1280328005377345), sub(one, log(sqrt(zero))))), mul(log(1.1280328005377345), pow(-1.1657177019735117, sub(log(zero), -1.2775085798093735))))), sub(mul(log(1.1280328005377345), mul(id(systolic_bp), add(-1.2775085798093735, sub(div(pow(one, one), add(-0.8286225449884401, -0.8286225449884401)), sub(1.8950160571427719, 1.1280328005377345))))), sqrt(id(triglycerides))))))
+
+[LGO_BASE|BASE]
+add(sqrt(add(0.7508742006524992, id(waist_circumference))), add(one, sub(sqrt(pow(sub(div(mul(pow(div(-1.1657177019735117, zero), id(systolic_bp)), pow(div(-1.1657177019735117, zero), id(systolic_bp))), sqrt(div(sqrt(one), log(one)))), div(sub(1.8950160571427719, 1.1280328005377345), sub(one, log(sqrt(zero))))), mul(log(1.1280328005377345), pow(-1.1657177019735117, sub(log(zero), -1.2775085798093735))))), sub(mul(log(1.1280328005377345), mul(id(systolic_bp), add(-1.2775085798093735, sub(div(pow(one, one), add(-0.8286225449884401, -0.8286225449884401)), sub(1.8950160571427719, 1.1280328005377345))))), sqrt(id(triglycerides))))))
+
+[LGO_LGO_HARD|LGO_HARD]
+add(sqrt(id(triglycerides)), add(add(lgo_thre(id(idF(fasting_glucose)), as_pos(sub(id(idF(triglycerides)), div(div(1.9844251457209283, -1.6705564417066212), sqrt(-1.3572707179367058)))), -0.3852224033154265), pow(lgo_thre(id(idF(idF(gender_std))), as_pos(zero), 1.2763389053393148), add(lgo_thre(id(idF(idF(idF(hdl_cholesterol)))), 3.1362557152655124, -0.4406497087004496), lgo_thre(id(idF(idF(idF(hdl_cholesterol)))), 3.1362557152655124, -0.3852224033154265)))), add(lgo_thre(div(id(waist_circumference), lgo_thre(id(idF(idF(gender_std))), as_pos(add(0.1474490374522271, one)), 1.2763389053393148)), 3.1362557152655124, as_thr(-1.7065365680445388)), sqrt(pow(mul(sqrt(lgo_thre(zero, as_pos(add(0.1474490374522271, one)), 1.4186790370117501)), id(idF(systolic_bp))), lgo_thre(lgo_thre(pow(sub(lgo_thre(zero, 0.3122955066120131, 1.2763389053393148), id(systolic_bp)), sqrt(div(-1.0204627716774348, one))), 3.1362557152655124, -0.3852224033154265), as_pos(add(0.1474490374522271, one)), 1.4186790370117501))))))
+
+[LGO_LGO_SOFT|LGO_SOFT]
+add(lgo_or2(1.210220317783098, lgo_and2(id(idF(systolic_bp)), one, as_pos(sub(-0.9966903470212021, one)), as_thr(pow(-0.03753617264220324, add(lgo_and3(lgo(pow(gate_expr(zero, 0.14672038991693095, 0.4818818912015086), mul(one, zero)), as_pos(lgo(0.9986280322426563, 0.16761856702408837, -1.4020198996645619)), as_thr(div(zero, one))), sqrt(id(idF(hdl_cholesterol))), pow(sub(div(one, 0.38055525545923885), add(0.9813540419190356, zero)), lgo_and2(sqrt(zero), gate_expr(-0.6664590716698764, 2.878864593667285, -1.0566507364987605), as_pos(one), as_thr(0.8225069675666006))), as_pos(sub(log(one), sqrt(zero))), as_thr(lgo(id(waist_circumference), as_pos(0.6243662105653626), as_thr(-0.8527787590659714)))), lgo(id(idF(idF(waist_circumference))), as_pos(lgo_and3(add(-0.035921306852120645, one), sqrt(one), lgo(one, 0.1760396054883252, -2.083610276704871), as_pos(one), as_thr(zero))), as_thr(lgo_or2(lgo_or2(-0.32227214130492443, zero, 1.6986754119611598, 1.2177373242774077), id(bmi), as_pos(one), as_thr(zero)))))))), 5.32248173999572, as_thr(lgo_and3(lgo_or2(one, zero, 0.8079149244618256, as_thr(pow(-0.03753617264220324, pow(gate_expr(0.18753834264525418, 3.570561265532846, 0.17699488780937533), one)))), one, log(lgo(one, as_pos(-0.040337723136579795), 0.5714260815475642)), 0.6932666455770404, as_thr(lgo(id(triglycerides), as_pos(0.6243662105653626), as_thr(-0.8527787590659714)))))), pow(add(id(waist_circumference), sub(id(triglycerides), add(-1.0863144680264123, lgo_and3(sub(one, zero), one, -0.26737455610625455, 0.3520825644681782, as_thr(pow(-0.03753617264220324, pow(0.006600463766767761, one))))))), gate_expr(one, as_pos(lgo_and3(lgo_and2(gate_expr(sqrt(0.5703376844219457), as_pos(-1.7231931672724274), as_thr(-0.4888639260426323)), add(log(one), pow(log(0.013197242325412991), zero)), as_pos(lgo_or2(one, 0.40162022609667314, as_pos(zero), -0.2811671038929251)), as_thr(add(0.006600463766767761, zero))), one, zero, 0.173226627233096, 0.22158738530057684)), as_thr(lgo_and3(one, sub(one, zero), one, 0.5568036443314618, as_thr(pow(-0.03753617264220324, pow(gate_expr(0.18753834264525418, 0.173226627233096, -0.6013684015379521), one))))))))
+
+[OPERON|BASE]
+(7.168697 + ((-4664.765137) * (1.338378 / sqrt(((((sqrt(sqrt((0.378594 * hdl_cholesterol))) + (0.434294 * waist_circumference)) + (sqrt(((0.755178 * hdl_cholesterol) + (0.812135 * triglycerides))) * sqrt((0.839275 * gender_std)))) / sqrt((0.378594 * hdl_cholesterol))) * ((((2.053244 * fasting_glucose) + (0.812135 * triglycerides)) + ((0.881968 * hdl_cholesterol) - sqrt((0.839275 * gender_std)))) * (3.141593 * systolic_bp)))))))
+
+[OPERON_BASE|BASE]
+(7.168697 + ((-4664.765137) * (1.338378 / sqrt(((((sqrt(sqrt((0.378594 * hdl_cholesterol))) + (0.434294 * waist_circumference)) + (sqrt(((0.755178 * hdl_cholesterol) + (0.812135 * triglycerides))) * sqrt((0.839275 * gender_std)))) / sqrt((0.378594 * hdl_cholesterol))) * ((((2.053244 * fasting_glucose) + (0.812135 * triglycerides)) + ((0.881968 * hdl_cholesterol) - sqrt((0.839275 * gender_std)))) * (3.141593 * systolic_bp)))))))
+
+[PSTREE|PSTREE]
+mul(add(waist_circumference, triglycerides), 0.594)
+
+[PSTREE_BASE|PSTREE]
+mul(add(waist_circumference, triglycerides), 0.594)
+
+[PYSR|BASE]
+(5.8460183*age_band + 20.406658*gender_std + systolic_bp + sqrt(triglycerides) + waist_circumference - 158.98141)/hdl_cholesterol
+
+[PYSR_BASE|BASE]
+(5.8460183*age_band + 20.406658*gender_std + systolic_bp + sqrt(triglycerides) + waist_circumference - 158.98141)/hdl_cholesterol
+
+[RILS_ROLS|RILS_ROLS]
+0.319731*gender_std - 0.029433*exp(-fasting_glucose - 3.141593*sin(0.9/fasting_glucose)) + 0.599359*sin(waist_circumference) - 0.729323*sin(sin(2.2*sin(triglycerides - 500))) - 0.631287*cos(exp(sin(2.4*sin(systolic_bp)))) + 2.570976 + 0.410012*exp(-0.875362*hdl_cholesterol)
+
+[RILS_ROLS_BASE|RILS_ROLS]
+0.319731*gender_std - 0.029433*exp(-fasting_glucose - 3.141593*sin(0.9/fasting_glucose)) + 0.599359*sin(waist_circumference) - 0.729323*sin(sin(2.2*sin(triglycerides - 500))) - 0.631287*cos(exp(sin(2.4*sin(systolic_bp)))) + 2.570976 + 0.410012*exp(-0.875362*hdl_cholesterol)
+

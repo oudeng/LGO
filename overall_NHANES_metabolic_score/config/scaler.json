@@ -1,0 +1,29 @@
+{
+  "feature_means": {
+    "waist_circumference": 100.04046821569487,
+    "systolic_bp": 125.73992108724244,
+    "diastolic_bp": 72.10979395002192,
+    "triglycerides": 111.61050416484005,
+    "hdl_cholesterol": 53.57080227970189,
+    "fasting_glucose": 113.71970188513811,
+    "age": 49.85883384480491,
+    "bmi": 29.532573432704954,
+    "hba1c": 5.851205611573871,
+    "gender_std": 0.5142481367821131,
+    "age_band": 2.5431828145550197
+  },
+  "feature_stds": {
+    "waist_circumference": 17.060793631257045,
+    "systolic_bp": 19.863198039636963,
+    "diastolic_bp": 12.710040702901564,
+    "triglycerides": 90.76910380845743,
+    "hdl_cholesterol": 15.572359637184285,
+    "fasting_glucose": 36.822910685277755,
+    "age": 18.293152599988957,
+    "bmi": 7.1236326373999965,
+    "hba1c": 1.1120438238993835,
+    "gender_std": 0.4997969493686793,
+    "age_band": 1.738240566964003
+  },
+  "zscore": true
+}

@@ -1,0 +1,10 @@
+dataset,experiment,feature,feature_norm,unit,median,q1,q3,guideline,rel_error,hit_10pct,hit_20pct,N
+UCI_Heart_Cleveland_num,lgo_hard,chol,chol,nan,189.04712315088432,189.04712315088432,189.04712315088432,240.0,0.21230365353798114,0,0,1
+UCI_Heart_Cleveland_num,lgo_hard,cp,cp,nan,2.4805968451582894,2.4805968451582894,2.4805968451582894,3.0,0.17313438494717917,0,1,1
+UCI_Heart_Cleveland_num,lgo_hard,exang,exang,nan,0.9727265513885748,0.969832553147314,0.9727265513885748,1.0,0.027273448611397945,1,1,1
+UCI_Heart_Cleveland_num,lgo_hard,oldpeak,oldpeak,nan,0.7470590756550559,0.2241514312537623,0.7565003089227271,1.0,0.2529409243446911,0,0,1
+UCI_Heart_Cleveland_num,lgo_hard,one,one,nan,,,,,,0,0,1
+UCI_Heart_Cleveland_num,lgo_hard,sqrt,sqrt,nan,,,,,,0,0,1
+UCI_Heart_Cleveland_num,lgo_hard,thalach,thalach,nan,129.494613253266,129.494613253266,129.494613253266,100.0,0.29494613253265717,0,0,1
+UCI_Heart_Cleveland_num,lgo_hard,trestbps,trestbps,nan,161.87070032831218,161.87070032831218,162.825691962485,140.0,0.15621928805937163,0,1,1
+UCI_Heart_Cleveland_num,lgo_hard,zero,zero,nan,,,,,,0,0,1

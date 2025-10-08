@@ -1,0 +1,14 @@
+dataset,experiment,feature,feature_norm,unit,median,q1,q3,guideline,rel_error,hit_10pct,hit_20pct,N
+NHANES_metabolic_score,lgo_hard,add,add,nan,,,,,,0,0,1
+NHANES_metabolic_score,lgo_hard,div,div,nan,,,,,,0,0,1
+NHANES_metabolic_score,lgo_hard,fasting_glucose,fastingglucose,nan,99.5346917338861,98.80276712769108,120.75508912766504,,,0,0,1
+NHANES_metabolic_score,lgo_hard,gender_std,genderstd,nan,1.2232995916138814,1.2232995916138814,1.2232995916138814,,,0,0,1
+NHANES_metabolic_score,lgo_hard,hdl_cholesterol,hdlcholesterol,nan,46.708846541798,42.49263452640387,46.708846541798,,,0,0,1
+NHANES_metabolic_score,lgo_hard,one,one,nan,,,,,,0,0,1
+NHANES_metabolic_score,lgo_hard,pow,pow,nan,,,,,,0,0,1
+NHANES_metabolic_score,lgo_hard,sqrt,sqrt,nan,,,,,,0,0,1
+NHANES_metabolic_score,lgo_hard,systolic_bp,systolicbp,nan,128.17492899922732,127.914768761587,151.94614451694792,,,0,0,1
+NHANES_metabolic_score,lgo_hard,triglycerides,triglycerides,nan,82.2808602972799,73.81532489031584,82.2808602972799,150.0,0.4514609313514643,0,0,1
+NHANES_metabolic_score,lgo_hard,unknown,unknown,nan,,,,,,0,0,1
+NHANES_metabolic_score,lgo_hard,waist_circumference,waistcircumference,nan,70.92560000409335,70.92560000409335,107.0014739569538,,,0,0,1
+NHANES_metabolic_score,lgo_hard,zero,zero,nan,,,,,,0,0,1

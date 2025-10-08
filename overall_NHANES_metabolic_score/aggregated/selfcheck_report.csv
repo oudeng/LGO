@@ -1,0 +1,161 @@
+dataset,task,method,experiment,seed,split,check,status,value,threshold,notes
+NHANES_metabolic_score,regression,lgo,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.14875732790990082,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,1,0,metrics_guard_RMSE_ge_MAE,OK,0.18065612110537776,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,1,0,metrics_guard_RMSE_ge_MAE,OK,0.11744535510610771,>= 0,
+NHANES_metabolic_score,regression,pysr,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.15334475261440494,>= 0,
+NHANES_metabolic_score,regression,operon,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.14383172799364663,>= 0,
+NHANES_metabolic_score,regression,lgo,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.16807158362224728,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,2,0,metrics_guard_RMSE_ge_MAE,OK,0.1405869969197927,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,2,0,metrics_guard_RMSE_ge_MAE,OK,0.18065202447835105,>= 0,
+NHANES_metabolic_score,regression,pysr,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.16546647871482933,>= 0,
+NHANES_metabolic_score,regression,operon,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.14800074813223418,>= 0,
+NHANES_metabolic_score,regression,lgo,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.15450137377624162,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,3,0,metrics_guard_RMSE_ge_MAE,OK,0.14412320751190932,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,3,0,metrics_guard_RMSE_ge_MAE,OK,0.13757282928983017,>= 0,
+NHANES_metabolic_score,regression,pysr,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.17479195636773448,>= 0,
+NHANES_metabolic_score,regression,operon,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.17995280937005875,>= 0,
+NHANES_metabolic_score,regression,lgo,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.11840864632704906,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,5,0,metrics_guard_RMSE_ge_MAE,OK,0.2446668608332464,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,5,0,metrics_guard_RMSE_ge_MAE,OK,0.1096641816013631,>= 0,
+NHANES_metabolic_score,regression,pysr,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.1587126711587994,>= 0,
+NHANES_metabolic_score,regression,operon,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.15051540710366995,>= 0,
+NHANES_metabolic_score,regression,lgo,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.1379254473215875,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,8,0,metrics_guard_RMSE_ge_MAE,OK,0.17130692448777773,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,8,0,metrics_guard_RMSE_ge_MAE,OK,0.16444941592083795,>= 0,
+NHANES_metabolic_score,regression,pysr,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.13028793420298546,>= 0,
+NHANES_metabolic_score,regression,operon,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.14273045189246558,>= 0,
+NHANES_metabolic_score,regression,lgo,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.14611608386130392,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,13,0,metrics_guard_RMSE_ge_MAE,OK,0.22407405803191394,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,13,0,metrics_guard_RMSE_ge_MAE,OK,0.23209490135940358,>= 0,
+NHANES_metabolic_score,regression,pysr,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.15304371197062983,>= 0,
+NHANES_metabolic_score,regression,operon,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.15395955692698493,>= 0,
+NHANES_metabolic_score,regression,lgo,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.1522834733583247,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,21,0,metrics_guard_RMSE_ge_MAE,OK,0.17262706338942402,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,21,0,metrics_guard_RMSE_ge_MAE,OK,0.14459220942817286,>= 0,
+NHANES_metabolic_score,regression,pysr,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.15962868343113812,>= 0,
+NHANES_metabolic_score,regression,operon,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.14800884664931657,>= 0,
+NHANES_metabolic_score,regression,lgo,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.12721817932085278,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,34,0,metrics_guard_RMSE_ge_MAE,OK,0.2080676905158264,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,34,0,metrics_guard_RMSE_ge_MAE,OK,0.15698728235727055,>= 0,
+NHANES_metabolic_score,regression,pysr,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.16291667138853416,>= 0,
+NHANES_metabolic_score,regression,operon,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.15798624814308682,>= 0,
+NHANES_metabolic_score,regression,lgo,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.13931720008414927,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,55,0,metrics_guard_RMSE_ge_MAE,OK,0.1284141773223254,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,55,0,metrics_guard_RMSE_ge_MAE,OK,0.1642392461147204,>= 0,
+NHANES_metabolic_score,regression,pysr,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.1529927076141685,>= 0,
+NHANES_metabolic_score,regression,operon,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.15471047444868757,>= 0,
+NHANES_metabolic_score,regression,lgo,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.16307076196079118,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_soft,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_soft,89,0,metrics_guard_RMSE_ge_MAE,OK,0.18458095951996645,>= 0,
+NHANES_metabolic_score,regression,lgo,lgo_hard,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,lgo,lgo_hard,89,0,metrics_guard_RMSE_ge_MAE,OK,0.16145969980232022,>= 0,
+NHANES_metabolic_score,regression,pysr,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pysr,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.1603420920019809,>= 0,
+NHANES_metabolic_score,regression,operon,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,operon,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.1492691096894414,>= 0,
+NHANES_metabolic_score,regression,pstree,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.18177810533404226,>= 0,
+NHANES_metabolic_score,regression,pstree,base,1,0,native_vs_computed_RMSE,OK,0.0038645337083788034,<= 0.01,"native=0.935393, computed=0.931528"
+NHANES_metabolic_score,regression,pstree,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.1932867156598388,>= 0,
+NHANES_metabolic_score,regression,pstree,base,2,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.127581, computed=1.127581"
+NHANES_metabolic_score,regression,pstree,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.1642462683761876,>= 0,
+NHANES_metabolic_score,regression,pstree,base,3,0,native_vs_computed_RMSE,INFO,0.10417993215122223,<= 0.01,"native=0.976760, computed=0.872580"
+NHANES_metabolic_score,regression,pstree,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.16848823411647007,>= 0,
+NHANES_metabolic_score,regression,pstree,base,5,0,native_vs_computed_RMSE,INFO,0.0534519670494179,<= 0.01,"native=0.952277, computed=0.898825"
+NHANES_metabolic_score,regression,pstree,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.20322003143115863,>= 0,
+NHANES_metabolic_score,regression,pstree,base,8,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.085249, computed=1.085249"
+NHANES_metabolic_score,regression,pstree,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.1773606357034594,>= 0,
+NHANES_metabolic_score,regression,pstree,base,13,0,native_vs_computed_RMSE,OK,0.0024930181418876263,<= 0.01,"native=0.905731, computed=0.903238"
+NHANES_metabolic_score,regression,pstree,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.16557635077808264,>= 0,
+NHANES_metabolic_score,regression,pstree,base,21,0,native_vs_computed_RMSE,INFO,0.019837311332968288,<= 0.01,"native=0.936770, computed=0.916933"
+NHANES_metabolic_score,regression,pstree,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.2639688227350738,>= 0,
+NHANES_metabolic_score,regression,pstree,base,34,0,native_vs_computed_RMSE,INFO,0.043091549282504804,<= 0.01,"native=1.245919, computed=1.202828"
+NHANES_metabolic_score,regression,pstree,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.1992128637107594,>= 0,
+NHANES_metabolic_score,regression,pstree,base,55,0,native_vs_computed_RMSE,INFO,0.16388232890561594,<= 0.01,"native=1.264994, computed=1.101111"
+NHANES_metabolic_score,regression,pstree,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,pstree,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.2074336170618154,>= 0,
+NHANES_metabolic_score,regression,pstree,base,89,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=1.076815, computed=1.076815"
+NHANES_metabolic_score,regression,rils_rols,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.10921487026477078,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,1,0,native_vs_computed_RMSE,OK,0.003336828078907117,<= 0.01,"native=0.498674, computed=0.495338"
+NHANES_metabolic_score,regression,rils_rols,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.10667097133156622,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,2,0,native_vs_computed_RMSE,OK,0.007484945329360282,<= 0.01,"native=0.538672, computed=0.531187"
+NHANES_metabolic_score,regression,rils_rols,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.13003158665361525,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,3,0,native_vs_computed_RMSE,OK,0.0015680602009723321,<= 0.01,"native=0.558404, computed=0.556836"
+NHANES_metabolic_score,regression,rils_rols,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.10019770949748613,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,5,0,native_vs_computed_RMSE,INFO,0.010053074358583325,<= 0.01,"native=0.479672, computed=0.469619"
+NHANES_metabolic_score,regression,rils_rols,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.11486553679310768,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,8,0,native_vs_computed_RMSE,OK,0.0013115264553099637,<= 0.01,"native=0.523502, computed=0.522191"
+NHANES_metabolic_score,regression,rils_rols,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.1120348081766363,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,13,0,native_vs_computed_RMSE,OK,0.0068526541285997,<= 0.01,"native=0.532727, computed=0.525874"
+NHANES_metabolic_score,regression,rils_rols,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.11532613229236938,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,21,0,native_vs_computed_RMSE,OK,0.0023655896454708447,<= 0.01,"native=0.527494, computed=0.525128"
+NHANES_metabolic_score,regression,rils_rols,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.11585669972087626,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,34,0,native_vs_computed_RMSE,OK,0.003767691602856782,<= 0.01,"native=0.496491, computed=0.492724"
+NHANES_metabolic_score,regression,rils_rols,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.11102342660989367,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,55,0,native_vs_computed_RMSE,OK,0.0051489025238838915,<= 0.01,"native=0.521943, computed=0.516794"
+NHANES_metabolic_score,regression,rils_rols,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+NHANES_metabolic_score,regression,rils_rols,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.11224316393264999,>= 0,
+NHANES_metabolic_score,regression,rils_rols,base,89,0,native_vs_computed_RMSE,OK,0.00572564883025295,<= 0.01,"native=0.534791, computed=0.529066"

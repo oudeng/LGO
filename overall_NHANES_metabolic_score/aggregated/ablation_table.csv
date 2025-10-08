@@ -1,0 +1,2 @@
+dataset,primary_metric,base_median,lgo_soft_median,lgo_hard_median,base_IQR,lgo_soft_IQR,lgo_hard_IQR,n_base,n_soft,n_hard
+NHANES_metabolic_score,R2,0.7106722905723031,0.5960043959422892,0.6829147303612217,0.062485347671945135,0.15098575954552673,0.13290631504639516,10,10,10
