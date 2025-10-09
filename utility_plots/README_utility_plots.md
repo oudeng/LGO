@@ -35,7 +35,7 @@ python  utility_plots/04_thresholds_plot.py \
   --csv utility_plots/figs/publication37/v3_thresholds_summary.csv \
   --outdir utility_plots/figs/publication37
 
-# 只显示有锚点的特征（去掉灰色 N/A 行）
+## (Option) -- only_anchored for anchored features only, without N/A ones.
 python utility_plots/04_thresholds.py \
   --dataset_dirs overall_NHANES_metabolic_score overall_ICU_composite_risk_score overall_UCI_CTG_NSPbin overall_UCI_Heart_Cleveland_num overall_UCI_HydraulicSys_fault_score \
   --config_dir config \
@@ -44,7 +44,7 @@ python utility_plots/04_thresholds.py \
   --only_anchored \
   --annotate
 
-# 指定特征白名单（名称自动归一化；例如 ICU/NHANES 的关键指标）
+## (option) --feature_whitelist for specific features (e.g.: ICU/NHANES key features)
 python utility_plots/04_thresholds.py \
   --dataset_dirs overall_NHANES_metabolic_score overall_ICU_composite_risk_score overall_UCI_CTG_NSPbin overall_UCI_Heart_Cleveland_num overall_UCI_HydraulicSys_fault_score \
   --config_dir config \
