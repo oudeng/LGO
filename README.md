@@ -191,7 +191,7 @@ Please see scripts in [run_command_lines/](run_command_lines/) and [run_command_
 ## Citation
 
 ```bibtex
-@article{lgo2025,
+@article{deng2025lgo,
   title={Logistic-Gated Operators Enable Auditable Unit-Aware Thresholds in Symbolic Regression},
   author={Deng, Ou and Cong, Ruichen and Xu, Jianting and Nishimura, Shoji and Ogihara, Atsushi and Jin, Qun},
   journal={arXiv preprint https://arxiv.org/abs/2510.05178},
