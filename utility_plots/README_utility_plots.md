@@ -21,18 +21,18 @@ python utility_plots/03_gating_usage.py \
 
 
 ## For publication figures (top features only):
-python utility_plots/04_thresholds_v3_7.py \
+python utility_plots/04_thresholds.py \
   --dataset_dirs overall_ICU_composite_risk_score overall_NHANES_metabolic_score \
   --config_dir config \
   --method lgo --experiment lgo_hard \
   --only_anchored \
   --topk 5 \
   --annotate \
-  --outdir utility_plots/figs/publication37
+  --outdir utility_plots/figs
 
 python  utility_plots/04_thresholds_plot.py \
-  --csv utility_plots/figs/publication37/v3_thresholds_summary.csv \
-  --outdir utility_plots/figs/publication37
+  --csv utility_plots/figs/fig4_thresholds_summary.csv \
+  --outdir utility_plots/figs
 
 ## (Option) -- only_anchored for anchored features only, without N/A ones.
 python utility_plots/04_thresholds.py \
