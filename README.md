@@ -53,9 +53,9 @@ LGO/
 │
 │(Environment setup) 
 ├── env_setup/                            # Environment configurations
-│   ├── environment_py310.yml             # LGO/PySR/Operon
-│   ├── environment_pstree.yml            # PSTree (Python 3.9)
-│   ├── environment_rils-rols.yml         # RILS-ROLS (Python 3.11)
+│   ├── env_py310.yml                     # LGO/PySR/Operon
+│   ├── env_pstree.yml                    # PSTree (Python 3.9)
+│   ├── env_rils-rols.yml                 # RILS-ROLS (Python 3.11)
 │   └── README_env.md
 ├── configs/                              # Configuration files
 │   └── guidelines.yaml                   # Clinical guidelines
@@ -105,12 +105,12 @@ cd LGO
 
 ```bash
 # Main environment (LGO, PySR, Operon)
-conda env create -f env_setup/environment_py310.yml
+conda env create -f env_setup/env_py310.yml
 conda activate py310
 
 # Additional baseline environments (if needed)
-conda env create -f env_setup/environment_pstree.yml
-conda env create -f env_setup/environment_rils-rols.yml
+conda env create -f env_setup/env_pstree.yml
+conda env create -f env_setup/env_rils-rols.yml
 ```
 
 ### 3. Smoke Test
