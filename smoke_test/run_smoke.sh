@@ -180,8 +180,9 @@ info "Producing threshold visualizations (04_thresholds_v3_7.py --> 04_threshold
 
 # 04_thresholds_v3_7.py expects an 'overall_*' dataset_dirs argument (script-specific).
 # We assume that the threshold audit produced an overall_* folder or CSVs; adapt if needed.
+# Original: #  --dataset_dirs "overall_${ICU_DATASET_NAME}" \
 python utility_plots/04_thresholds_v3_7.py \
-  --dataset_dirs "overall_${ICU_DATASET_NAME}" \
+  --dataset_dirs "${ICU_OUTDIR}" \
   --config_dir config \
   --method lgo --experiment lgo_hard \
   --only_anchored \
