@@ -2,11 +2,14 @@
 """
 04_thresholds_plot.py - Generate publication-ready combined threshold figure
 
-Creates a 2x2 subplot layout combining ICU and NHANES results:
-- Row 1: ICU agreement heatmap (left) and error distribution (right)
-- Row 2: NHANES agreement heatmap (left) and error distribution (right)
+Creates subplot layout based on available datasets in CSV:
+- If only ICU data: 1x2 layout with ICU heatmap and error distribution
+- If only NHANES data: 1x2 layout with NHANES heatmap and error distribution  
+- If both datasets: 2x2 layout with both ICU and NHANES results
 
 Improvements:
+- Dynamic detection of available datasets from CSV
+- Adaptive subplot layout based on data availability
 - Command-line arguments for input/output paths
 - Much narrower heatmaps (half width) to save space
 - LaTeX-style delta notation for percentage differences
@@ -197,46 +200,93 @@ def main():
     # Read the summary CSV
     df = pd.read_csv(args.csv)
     
-    # Split by dataset
-    df_icu = df[df['dataset'] == 'ICU_composite_risk_score'].copy()
-    df_nhanes = df[df['dataset'] == 'NHANES_metabolic_score'].copy()
+    # Check which datasets are present in the CSV
+    available_datasets = df['dataset'].unique().tolist()
+    print(f"Available datasets in CSV: {available_datasets}")
     
-    # Create figure with 2x2 subplots - adjusted for proper spacing
-    fig = plt.figure(figsize=(15, 7))  # Optimal width for legend and spacing
+    # Prepare dataset dataframes only for available datasets
+    datasets = []
+    if 'ICU_composite_risk_score' in available_datasets:
+        df_icu = df[df['dataset'] == 'ICU_composite_risk_score'].copy()
+        if not df_icu.empty:
+            datasets.append(('ICU_composite_risk_score', df_icu))
+    
+    if 'NHANES_metabolic_score' in available_datasets:
+        df_nhanes = df[df['dataset'] == 'NHANES_metabolic_score'].copy()
+        if not df_nhanes.empty:
+            datasets.append(('NHANES_metabolic_score', df_nhanes))
+    
+    # Exit if no valid datasets found
+    if not datasets:
+        print("Error: No valid datasets found in the CSV file")
+        return
+    
+    # Determine figure layout based on number of datasets
+    num_datasets = len(datasets)
+    
+    if num_datasets == 1:
+        # Single dataset: 1x2 layout
+        fig_height = 4
+        num_rows = 1
+        print(f"Creating 1x2 layout for single dataset: {datasets[0][0]}")
+    else:
+        # Multiple datasets: 2x2 layout
+        fig_height = 7
+        num_rows = 2
+        print(f"Creating 2x2 layout for {num_datasets} datasets")
+    
+    # Create figure with adaptive layout
+    fig = plt.figure(figsize=(15, fig_height))
     
     # Create a gridspec for better control
     import matplotlib.gridspec as gridspec
-    gs = gridspec.GridSpec(2, 2, figure=fig, 
-                          width_ratios=[0.125, 0.50],  # Left heatmap halved to 12.5%, right plot stays at 50%
-                          height_ratios=[1, 1],
-                          wspace=0.80,  # Increased spacing to use the freed space from narrower heatmap
-                          hspace=0.35)  # Vertical spacing between rows
+    gs = gridspec.GridSpec(num_rows, 2, figure=fig, 
+                          width_ratios=[0.125, 0.50],  # Left heatmap narrow, right plot wider
+                          height_ratios=[1]*num_rows,  # Equal height for all rows
+                          wspace=0.80,  # Horizontal spacing
+                          hspace=0.35 if num_rows > 1 else 0.25)  # Vertical spacing
     
-    # ICU plots (top row)
-    ax1 = fig.add_subplot(gs[0, 0])  # ICU agreement heatmap
-    ax2 = fig.add_subplot(gs[0, 1])  # ICU error distribution
+    # Create subplots and populate with data
+    panel_labels = ['A', 'B', 'C', 'D']
+    axes = []
     
-    # NHANES plots (bottom row)
-    ax3 = fig.add_subplot(gs[1, 0])  # NHANES agreement heatmap
-    ax4 = fig.add_subplot(gs[1, 1])  # NHANES error distribution
+    for i, (dataset_name, df_dataset) in enumerate(datasets):
+        row = i  # Row index in the grid
+        
+        # Create heatmap subplot (left column)
+        ax_heatmap = fig.add_subplot(gs[row, 0])
+        create_agreement_heatmap(ax_heatmap, df_dataset, dataset_name, annotate=True)
+        axes.append(ax_heatmap)
+        
+        # Create error distribution subplot (right column)
+        ax_dist = fig.add_subplot(gs[row, 1])
+        create_error_distribution(ax_dist, df_dataset, dataset_name)
+        axes.append(ax_dist)
     
-    # Create plots
-    create_agreement_heatmap(ax1, df_icu, 'ICU_composite_risk_score', annotate=True)
-    create_error_distribution(ax2, df_icu, 'ICU_composite_risk_score')
-    create_agreement_heatmap(ax3, df_nhanes, 'NHANES_metabolic_score', annotate=True)
-    create_error_distribution(ax4, df_nhanes, 'NHANES_metabolic_score')
-    
-    # Add panel labels with larger font
-    for ax, label in zip([ax1, ax2, ax3, ax4], ['A', 'B', 'C', 'D']):
+    # Add panel labels to existing axes
+    for i, ax in enumerate(axes):
+        label = panel_labels[i]
         ax.text(-0.2, 1.08, label, transform=ax.transAxes,
                 fontsize=14, fontweight='bold', va='bottom')
     
     # Overall title
-    fig.suptitle('LGO Threshold Alignment with Clinical Guidelines', 
-                 fontsize=16, fontweight='bold', y=0.98)
+    if num_datasets == 1:
+        # For single dataset, specify which dataset in the title
+        dataset_display_name = 'ICU' if 'ICU' in datasets[0][0] else 'NHANES'
+        title = f'LGO {dataset_display_name} Threshold Alignment with Clinical Guidelines'
+        # Higher position for single dataset to avoid overlap with panel labels
+        title_y = 1.08
+        rect_top = 0.90
+    else:
+        title = 'LGO Threshold Alignment with Clinical Guidelines'
+        # Standard position for two datasets
+        title_y = 0.98
+        rect_top = 0.95
+    
+    fig.suptitle(title, fontsize=16, fontweight='bold', y=title_y)
     
     # Adjust layout to prevent overlap
-    plt.tight_layout(rect=[0, 0, 1, 0.95])  # Leave space for suptitle
+    plt.tight_layout(rect=[0, 0, 1, rect_top])  # Leave space for suptitle
     
     # Ensure output directory exists
     os.makedirs(args.outdir, exist_ok=True)
