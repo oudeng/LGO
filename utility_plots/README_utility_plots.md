@@ -2,6 +2,7 @@
 # How to plot the results
 
 ## Use datasets root results
+```bash
 python utility_plots/01_median_performance_violin.py \
 --roots overall_NHANES_metabolic_score overall_ICU_composite_risk_score overall_UCI_CTG_NSPbin overall_UCI_Heart_Cleveland_num overall_UCI_HydraulicSys_fault_score 
 
@@ -14,7 +15,6 @@ python utility_plots/02_pareto_front.py \
 --roots overall_NHANES_metabolic_score overall_ICU_composite_risk_score overall_UCI_CTG_NSPbin overall_UCI_Heart_Cleveland_num overall_UCI_HydraulicSys_fault_score 
 
 (### if want single csv: python 02_pareto_front.py --csv pareto_front.csv)
-
 
 python utility_plots/03_gating_usage.py \
 --roots overall_NHANES_metabolic_score overall_ICU_composite_risk_score overall_UCI_CTG_NSPbin overall_UCI_Heart_Cleveland_num overall_UCI_HydraulicSys_fault_score 
@@ -29,7 +29,6 @@ python utility_plots/04_thresholds_v3_7.py \
   --topk 5 \
   --annotate \
   --outdir utility_plots/figs/publication37
-
 
 python  utility_plots/04_thresholds_plot.py \
   --csv utility_plots/figs/publication37/v3_thresholds_summary.csv \
@@ -66,3 +65,4 @@ python utility_plots/04_thresholds_v3_7.py \
 python  utility_plots/04_thresholds_plot.py \
   --csv utility_plots/figs/publication37/v3_thresholds_summary.csv \
   --outdir utility_plots/figs/publication37
+```
