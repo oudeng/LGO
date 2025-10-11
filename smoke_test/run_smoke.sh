@@ -28,7 +28,7 @@ ENV_YML_PATH="env_setup/env_py310.yml"
 SMOKE_OUTDIR="smoke_test"
 ICU_CSV="data/ICU/ICU_composite_risk_score.csv"
 ICU_DATASET_NAME="ICU_composite_risk_score"
-SEEDS="1,2,3"
+SEEDS="1,2,3,5,8,13,21,34,55,89"
 TEST_SIZE="0.2"
 EXPERIMENTS="lgo_soft,lgo_hard"
 
