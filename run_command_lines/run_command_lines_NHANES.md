@@ -2,7 +2,7 @@
 run_v3_8.py
 
 ## NHANES_metabolic_score
-
+```bash
 conda activate py310
 
 python run_v3_8.py \
@@ -120,5 +120,5 @@ python utility_analysis/09_build_ablation_matrix.py \
 python utility_analysis/10_stability_summary.py \
   --dataset_dir overall_NHANES_metabolic_score \
   --dataset NHANES_metabolic_score 
-
+```
 
