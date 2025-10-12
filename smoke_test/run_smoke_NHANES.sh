@@ -20,7 +20,7 @@ set -euo pipefail
 REPO_URL="https://github.com/oudeng/LGO.git"
 REPO_DIR="LGO"
 CONDA_ENV_NAME="py310_test"
-ENV_YML_PATH="env_setup/env_py310.yml"
+ENV_YML_PATH="env_setup/env_py310_test.yml"
 SMOKE_OUTDIR="smoke_test"
 NHANES_CSV="data/NHANES/NHANES_metabolic_score.csv"
 NHANES_DATASET_NAME="NHANES_metabolic_score"
