@@ -1,6 +1,8 @@
 
 # Quick run
 ```bash
+git clone https://github.com/oudeng/LGO.git
+cd LGO
 chmod +x smoke_test/run_smoke_NHANES.sh
 bash smoke_test/run_smoke_NHANES.sh
 ```
