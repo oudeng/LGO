@@ -1,8 +1,6 @@
-
-run_v3_8.py 
-
 ## ICU_composite_risk_score
 
+## run_v3_8.py
 ```bash
 conda activate py310
 
@@ -53,7 +51,6 @@ python run_v3_8.py \
   --outdir overall_ICU_composite_risk_score \
   --dataset ICU_composite_risk_score \
   --save_predictions
-
 
 conda activate rils-rols
 
