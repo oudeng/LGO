@@ -1,7 +1,5 @@
 
-run_v3_8.py
-
-## NHANES_metabolic_score
+## run_v3_8.py on  NHANES_metabolic_score
 ```bash
 conda activate py310
 
