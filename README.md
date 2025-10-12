@@ -80,6 +80,11 @@ LGO/
 ├── utility_analysis/                     # Detailed results analysis
 ├── utility_plots/                        # Visualization
 │
+│(Smoke test)                             
+├── smoke_test
+│   ├── run_smoke_NHANES.sh               # NHANES as example
+│   └── README_smoke_test.md
+│
 ├── .gitignore
 └── README.md
 ```
@@ -114,48 +119,7 @@ conda env create -f env_setup/env_rils-rols.yml
 ```
 
 ### 3. Smoke Test
-
-```bash
-conda activate py310
-
-python run_v3_8.py \
-  --csv data/ICU/ICU_composite_risk_score.csv \
-  --target composite_risk_score \
-  --task regression \
-  --experiments base,lgo_soft,lgo_hard,pysr,operon \
-  --seeds 1,2 \
-  --test_size 0.2 \
-  --outdir test/ICU \
-  --dataset ICU_composite_risk_score \
-  --save_predictions
-
-conda activate pstree
-
-python run_v3_8.py \
-  --csv data/ICU/ICU_composite_risk_score.csv \
-  --target composite_risk_score \
-  --task regression \
-  --experiments pstree \
-  --seeds 1,2 \
-  --test_size 0.2 \
-  --outdir test/ICU \
-  --dataset ICU_composite_risk_score \
-  --save_predictions
-
-conda activate rils-rols
-
-python run_v3_8.py \
-  --csv data/ICU/ICU_composite_risk_score.csv \
-  --target composite_risk_score \
-  --task regression \
-  --experiments rils_rols \
-  --seeds 1,2 \
-  --test_size 0.2 \
-  --outdir test/ICU \
-  --dataset ICU_composite_risk_score \
-  --save_predictions
-
-```
+Please see in [smoke_test](smoke_test/)
 
 ## Reproduce Full Results
 
