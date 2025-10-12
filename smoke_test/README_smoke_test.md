@@ -66,7 +66,7 @@ python utility_analysis/08_threshold_audit.py \
 Execute `08_threshold_audit.py` in `/utility_analysis` to visualize the results from the output directory specified above.
 
 ```bash
-python utility_plots/04_thresholds_v3_7.py \
+python utility_plots/04_thresholds.py \
   --dataset_dirs smoke_test/NHANES \
   --config_dir config \
   --method lgo --experiment lgo_hard \
@@ -124,7 +124,7 @@ python utility_analysis/08_threshold_audit.py \
   --dataset ICU_composite_risk_score \
   --guidelines config/guidelines.yaml
 
-python utility_plots/04_thresholds_v3_7.py \
+python utility_plots/04_thresholds.py \
   --dataset_dirs smoke_test/ICU \
   --config_dir config \
   --method lgo --experiment lgo_hard \
