@@ -1,9 +1,6 @@
-
-
-run_v3_8.py
-
 ## UCI HeartDisease Cleveland
-
+## run_v3_8.py
+```bash
 conda activate py310
 
 python run_v3_8.py \
@@ -36,7 +33,6 @@ python run_v3_8.py \
   }' \
   --dataset UCI_Heart_Cleveland_num \
   --save_predictions
-
 
 conda activate pstree
 
@@ -128,5 +124,5 @@ python utility_analysis/09_build_ablation_matrix.py \
 python utility_analysis/10_stability_summary.py \
   --dataset_dir overall_UCI_Heart_Cleveland_num \
   --dataset UCI_Heart_Cleveland_num 
-
+```
 
