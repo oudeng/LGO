@@ -1,5 +1,5 @@
-
-## run_v3_8.py on UCI CTG 
+## UCI CTG
+## run_v3_8.py  
 
 ``bash
 conda activate py310
