@@ -179,9 +179,9 @@ info "Threshold generation & audit completed. Audit outputs should be in ${NHANE
 ##########################
 # 3) Visualization - produce Figure 2 like outputs
 ##########################
-info "Producing threshold visualizations (04_thresholds_v3_7.py --> 04_thresholds_plot_r1.py)..."
+info "Producing threshold visualizations (04_thresholds.py --> 04_thresholds_plot_r1.py)..."
 
-python utility_plots/04_thresholds_v3_7.py \
+python utility_plots/04_thresholds.py \
   --dataset_dirs "overall_${NHANES_DATASET_NAME}" \
   --config_dir config \
   --method lgo --experiment lgo_hard \
