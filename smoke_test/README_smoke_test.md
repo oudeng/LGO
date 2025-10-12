@@ -1,14 +1,18 @@
 
 # Quick run
+> This smoke test runs in a CONDA (or miniConda) base environment on any OS. We prefer it because other base environments (e.g., ```venv-based (pip)```) might cause complex library conflicts.
+
+On your base conda environment, just copy and paste the following commands in the bash terminal:
 ```bash
 git clone https://github.com/oudeng/LGO.git
 cd LGO
 chmod +x smoke_test/run_smoke_NHANES.sh
 bash smoke_test/run_smoke_NHANES.sh
 ```
+After about 10 minutes of running, you will get the smoke test results in the ```/smoke_test/``` subfolder.
 
 # What will be done via this sh file
-On LGO root path, run ```bash smoke_test/run_smoke.sh```. t will proceed with smoke tests within about 5 minutes, including downloading the GitHub repo, installing the environment, running smoke test scripts, and finally visualizing the results for quick confirmation.
+On LGO root path, run ```bash smoke_test/run_smoke.sh```. It will proceed with smoke tests within about 5 minutes, including downloading the GitHub repo, installing the environment, running smoke test scripts, and finally visualizing the results for quick confirmation.
 If the following steps 1 and 2 are already completed, bash will skip these two steps and go to step 3 directly. For details, see "robust repo detection / clone logic" in the sh file.
 
 1. Clone Repository，including the necessary scripts and dataset for smoke test.
