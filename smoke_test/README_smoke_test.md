@@ -17,7 +17,7 @@ If the following steps 1 and 2 are already completed, bash will skip these two s
 
 2. Install the necessary environment for smoke test.
 ```bash
-   conda env create -f env_setup/env_py310.yml
+   conda env create -f env_setup/env_py310_test.yml
    conda activate py310_test
 ```
 
