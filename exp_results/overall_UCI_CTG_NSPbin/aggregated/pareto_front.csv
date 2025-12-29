@@ -1,0 +1,15 @@
+dataset,method,experiment,seed,complexity,loss,expr
+UCI_CTG_NSPbin,lgo,base,3,3.5,0.0,"sqrt(pow(id(idF(NSP)), zero))"
+UCI_CTG_NSPbin,lgo,lgo_hard,1,3.5,0.0,"sqrt(pow(id(idF(NSP)), zero))"
+UCI_CTG_NSPbin,lgo,lgo_soft,34,6.0,0.0,"sqrt(sqrt(pow(id(NSP), add(zero, zero))))"
+UCI_CTG_NSPbin,operon,base,8,14.0,6.770595333041027e-10,(1.000072 + ((-9564.339844) * exp((((-1.940597) * sqrt((1.620401 * NSP))) * (2.201683 + (1.508713 * NSP))))))
+UCI_CTG_NSPbin,operon,base,2,19.5,5.387840442284618e-10,(1.000062 + ((-28.997961) * exp((sin(sin(cos(exp((-1.222067))))) + (((2.044872 * NSP) + 1.249206) * ((-1.243608) * NSP))))))
+UCI_CTG_NSPbin,operon,base,3,22.75,3.5451548931985586e-10,(1.000053 + ((-25.729517) * exp((sin(sin(sqrt(exp(sqrt((1.407665 * NSP)))))) + (exp(sqrt((1.407665 * NSP))) * ((-1.243608) * NSP))))))
+UCI_CTG_NSPbin,pstree,base,3,1.0,0.1760108367432286,ALTV
+UCI_CTG_NSPbin,pstree,base,8,4.0,0.1613049293058626,"sub(abs(sub(abs(ALTV), 0.787)), 0.787)"
+UCI_CTG_NSPbin,pysr,base,1,6.0,8.109169194754152e-12,1.0666794*sin(1.7533404*log(NSP))
+UCI_CTG_NSPbin,pysr,base,89,8.75,1.8163213756426792e-16,(0.45176786 + (NSP - 2.6757367)*(-0.34114653))*(NSP*1.4656458 - 1.4656458)
+UCI_CTG_NSPbin,rils_rols,base,34,30.5,0.0764088193698376,-0.075128*MedianHist*VarHist + 0.147109*ALTV*sin(ModeHist + 26.4) + 0.029022*FM + 0.049597*exp(-2*AC + sin(ASTV + DS)) + 0.103793*sin(MaxHist) + 0.005849
+UCI_CTG_NSPbin,rils_rols,base,1,37.0,0.0715750121532541,0.01848 - 1.162868*sin(0.102514*LB*MedianHist + 0.059988*MaxHist*AC - 0.053075*ModeHist*ALTV - 0.141545*MeanHist*MedianHist + 0.063687*AC*exp(-MSTV - AC + sin(ASTV + FM/MinHist)) - 0.052697*sin(MaxHist))
+UCI_CTG_NSPbin,rils_rols,base,13,39.5,0.066985096816046,-0.095271*MeanHist + 0.195537*sin(MeanHist) - 0.659188*cos(exp(0.091815*ALTV + 0.028478*exp(-2*AC + 2*sin(sin(ASTV))) - sin(0.16467*MedianHist*VarHist) + 0.188088*sin(ASTV*MaxHist + FM))) + 0.378795
+UCI_CTG_NSPbin,rils_rols,base,89,41.5,0.0639789279174515,0.070436*sin(MaxHist) - 0.724959*cos(exp(0.093493*ALTV + 0.032733*FM + 0.026192*exp(-2*AC + 2*sin(sin(ASTV + DS))) + 0.096917*exp(sin(ASTV*MaxHist)) - sin(sin(0.157015*MedianHist*VarHist)))) + 0.334798

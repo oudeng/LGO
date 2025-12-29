@@ -1,0 +1,7 @@
+dataset,method,experiment,n_models,n_with_gates,prop_with_gates,gates_median,gates_q1,gates_q3,complexity_median,complexity_q1,complexity_q3,score_median
+UCI_Heart_Cleveland_num,lgo,base,9,0,0.0,0.0,0.0,0.0,41.5,36.5,46.0,0.5437605110254176
+UCI_Heart_Cleveland_num,lgo,lgo_hard,7,3,0.42857142857142855,0.0,0.0,2.0,17.5,15.25,36.25,0.6161562113613499
+UCI_Heart_Cleveland_num,lgo,lgo_soft,8,8,1.0,15.0,10.0,18.25,73.44999999999999,50.775,90.475,0.6069730009590544
+UCI_Heart_Cleveland_num,lgo_base,base,9,0,0.0,0.0,0.0,0.0,41.5,36.5,46.0,0.5437605110254176
+UCI_Heart_Cleveland_num,lgo_lgo_hard,lgo_hard,7,3,0.42857142857142855,0.0,0.0,2.0,17.5,15.25,36.25,0.6161562113613499
+UCI_Heart_Cleveland_num,lgo_lgo_soft,lgo_soft,8,8,1.0,15.0,10.0,18.25,73.44999999999999,50.775,90.475,0.6069730009590544

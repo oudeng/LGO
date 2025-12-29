@@ -1,0 +1,9 @@
+dataset,method,experiment,n_models,n_with_gates,prop_with_gates,gates_median,gates_q1,gates_q3,complexity_median,complexity_q1,complexity_q3,score_median
+UCI_CTG_NSPbin,lgo,base,20,0,0.0,0.0,0.0,0.0,4.5,4.5,4.5,0.0
+UCI_CTG_NSPbin,lgo,lgo_hard,12,7,0.5833333333333334,1.0,0.0,1.25,6.0,3.5,11.5,2.9655756520424793e-53
+UCI_CTG_NSPbin,lgo,lgo_soft,10,7,0.7,2.0,0.25,7.75,20.65,9.95,36.575,0.0
+UCI_CTG_NSPbin,lgo_base,base,19,0,0.0,0.0,0.0,0.0,4.5,4.5,4.5,0.0
+UCI_CTG_NSPbin,lgo_base,lgo_hard,2,0,0.0,0.0,0.0,0.0,3.5,3.5,3.5,0.0
+UCI_CTG_NSPbin,lgo_lgo_hard,base,1,0,0.0,0.0,0.0,0.0,3.5,3.5,3.5,0.0
+UCI_CTG_NSPbin,lgo_lgo_hard,lgo_hard,10,7,0.7,1.0,0.25,1.75,6.25,5.625,11.5,5.931151304084959e-53
+UCI_CTG_NSPbin,lgo_lgo_soft,lgo_soft,10,7,0.7,2.0,0.25,7.75,20.65,9.95,36.575,0.0

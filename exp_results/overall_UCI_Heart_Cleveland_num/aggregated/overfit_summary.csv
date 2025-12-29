@@ -1,0 +1,16 @@
+dataset,task,method,experiment,metric,mean,std
+UCI_Heart_Cleveland_num,regression,lgo,base,MAE,-0.0740404061567159,0.11444636528162998
+UCI_Heart_Cleveland_num,regression,lgo,base,R2,0.14910699772882643,0.12761630897979573
+UCI_Heart_Cleveland_num,regression,lgo,base,RMSE,-0.10966057995454692,0.15691960367395721
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,MAE,-0.03703783650881838,0.07226567321093509
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,R2,0.10724155700276139,0.13179356754611973
+UCI_Heart_Cleveland_num,regression,lgo,lgo_hard,RMSE,-0.06689901732287713,0.10372782221820037
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,MAE,-0.026401954945735606,0.07190836465247687
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,R2,0.08622101696071054,0.11359622920530466
+UCI_Heart_Cleveland_num,regression,lgo,lgo_soft,RMSE,-0.049219974183350876,0.09904404426138881
+UCI_Heart_Cleveland_num,regression,operon,base,MAE,-0.09014726662959587,0.08448321625832628
+UCI_Heart_Cleveland_num,regression,operon,base,R2,0.1961899892504071,0.14525620232041447
+UCI_Heart_Cleveland_num,regression,operon,base,RMSE,-0.15503641550765038,0.11055316347102892
+UCI_Heart_Cleveland_num,regression,pysr,base,MAE,-0.09199534986141342,0.07002655517879892
+UCI_Heart_Cleveland_num,regression,pysr,base,R2,0.1910246445078756,0.1566417949881623
+UCI_Heart_Cleveland_num,regression,pysr,base,RMSE,-0.13475230098239574,0.11109506173804833

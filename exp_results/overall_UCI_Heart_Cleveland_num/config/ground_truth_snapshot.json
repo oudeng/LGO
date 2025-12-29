@@ -1,0 +1,77 @@
+{
+  "_metadata": {
+    "description": "Snapshot of ground_truth.json used for threshold audit",
+    "source_file": "/home/dengou/LGO_1130/data/UCI/Heart_Cleveland_ground_truth.json",
+    "snapshot_created": "2025-12-14T17:13:48.648101",
+    "note": "This file preserves the exact ground_truth used for guidelines generation"
+  },
+  "ground_truth": {
+    "age": {
+      "values": [
+        55.0,
+        65.0
+      ]
+    },
+    "trestbps": {
+      "values": [
+        140.0
+      ]
+    },
+    "chol": {
+      "values": [
+        240.0
+      ]
+    },
+    "thalach": {
+      "values": [
+        100.0
+      ]
+    },
+    "oldpeak": {
+      "values": [
+        1.0,
+        2.0
+      ]
+    },
+    "sex": {
+      "values": [
+        1.0
+      ]
+    },
+    "cp": {
+      "values": [
+        3.0
+      ]
+    },
+    "fbs": {
+      "values": [
+        1.0
+      ]
+    },
+    "restecg": {
+      "values": [
+        1.0
+      ]
+    },
+    "exang": {
+      "values": [
+        1.0
+      ]
+    },
+    "slope": {
+      "values": [
+        2.0
+      ]
+    },
+    "ca": {
+      "values": [
+        1.0
+      ]
+    },
+    "thal": {
+      "values": [
+        6.0
+      ]
+    }
+  }
+}

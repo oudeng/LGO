@@ -1,0 +1,36 @@
+[LGO|BASE]
+add(log(sub(add(one, log(1.4385112734776075)), mul(div(div(div(-0.17039974728727975, log(1.4385112734776075)), log(log(one))), pow(id(EPS1_q75), id(idF(CE_mean)))), sqrt(pow(id(PS3_std), mul(pow(div(-0.17039974728727975, log(1.4385112734776075)), id(idF(PS3_std))), log(zero))))))), sqrt(log(sqrt(sqrt(log(add(pow(id(EPS1_q75), id(EPS1_q75)), pow(sub(one, 1.4846812261534015), id(PS3_std)))))))))
+
+[LGO_BASE|BASE]
+add(log(sub(add(one, log(1.4385112734776075)), mul(div(div(div(-0.17039974728727975, log(1.4385112734776075)), log(log(one))), pow(id(EPS1_q75), id(idF(CE_mean)))), sqrt(pow(id(PS3_std), mul(pow(div(-0.17039974728727975, log(1.4385112734776075)), id(idF(PS3_std))), log(zero))))))), sqrt(log(sqrt(sqrt(log(add(pow(id(EPS1_q75), id(EPS1_q75)), pow(sub(one, 1.4846812261534015), id(PS3_std)))))))))
+
+[LGO_LGO_HARD|LGO_HARD]
+lgo_thre(log(mul(id(idF(idF(FS1_std))), div(div(1.263047434721761, one), add(zero, id(CE_mean))))), as_pos(add(log(pow(log(0.4679831050167317), one)), mul(id(CE_std), div(log(-1.1571811586487535), log(pow(sub(1.3336762377046978, zero), one)))))), as_thr(log(pow(sub(1.3336762377046978, zero), one))))
+
+[LGO_LGO_SOFT|LGO_SOFT]
+gate_expr(pow(lgo(one, as_pos(lgo_or2(zero, one, 0.5231504458517852, as_thr(-2.3979815257849713))), as_thr(1.9279099041366674)), lgo_or2(lgo_and3(gate_expr(lgo_or2(pow(-0.37973930993582466, mul(add(-0.6414202150471527, one), id(idF(FS2_std)))), add(pow(-0.37973930993582466, div(one, id(PS3_kurt))), div(mul(0.1388922600575818, 0.8668798773741888), one)), as_pos(lgo_or2(zero, -1.8478612815732252, 0.2926603273262031, as_thr(-2.3979815257849713))), as_thr(div(sqrt(zero), gate_expr(one, 6.3631672432614375, 1.0638606168496971)))), 7.525793668586571, as_thr(-2.3979815257849713)), id(idF(idF(EPS1_q75))), log(add(log(zero), lgo_or2(lgo_or2(zero, -1.8478612815732252, 0.3971358922733605, as_thr(zero)), gate_expr(-0.7232842495954361, 4.253356089483656, as_thr(-2.3979815257849713)), 4.243963863603363, as_thr(add(0.5920180025987889, lgo(one, 4.253356089483656, 1.1764661860106833)))))), as_pos(-2.3979815257849713), as_thr(pow(-0.37973930993582466, div(-1.8478612815732252, id(EPS1_q75))))), id(PS3_mean), 5.768989390798679, as_thr(gate_expr(sqrt(pow(-0.37973930993582466, div(add(0.5920180025987889, lgo(one, 4.253356089483656, 1.2637200686410095)), one))), as_pos(mul(-0.8301778412806589, -1.346499961665252)), as_thr(-2.3979815257849713))))), as_pos(lgo_or2(zero, -1.8478612815732252, 0.9874146775011368, 0.9577885447670359)), as_thr(zero))
+
+[OPERON|BASE]
+(0.816445 + ((-0.000000) * (((exp((0.097070 * SE_mean)) * (((-0.125940) * SE_mean) + exp((1.920037 * PS3_mean)))) * ((0.097070 * PS3_skew) + 0.244713)) * (((((0.097070 * PS3_skew) + (0.097070 * PS3_skew)) + 0.313995) * (((exp((2.718282 * PS3_mean)) + (4.079988 * VS1_skew)) + (3.263097 * VS1_skew)) + ((exp((1.920037 * PS3_mean)) + exp((0.524697 * PS3_skew))) + (((0.524697 * PS3_skew) + (0.097070 * PS3_skew)) + (2.302585 * PS4_mean))))) * ((((exp((0.097070 * PS1_q50)) / (sqrt(1 + cos((0.278990 * CP_mean)) ^ 2))) / (sqrt(1 + (6.283185 * PS3_peak) ^ 2))) / (sqrt(1 + (6.283185 * PS3_peak) ^ 2))) * ((0.097070 * PS3_skew) + 0.313995))))))
+
+[OPERON_BASE|BASE]
+(0.816445 + ((-0.000000) * (((exp((0.097070 * SE_mean)) * (((-0.125940) * SE_mean) + exp((1.920037 * PS3_mean)))) * ((0.097070 * PS3_skew) + 0.244713)) * (((((0.097070 * PS3_skew) + (0.097070 * PS3_skew)) + 0.313995) * (((exp((2.718282 * PS3_mean)) + (4.079988 * VS1_skew)) + (3.263097 * VS1_skew)) + ((exp((1.920037 * PS3_mean)) + exp((0.524697 * PS3_skew))) + (((0.524697 * PS3_skew) + (0.097070 * PS3_skew)) + (2.302585 * PS4_mean))))) * ((((exp((0.097070 * PS1_q50)) / (sqrt(1 + cos((0.278990 * CP_mean)) ^ 2))) / (sqrt(1 + (6.283185 * PS3_peak) ^ 2))) / (sqrt(1 + (6.283185 * PS3_peak) ^ 2))) * ((0.097070 * PS3_skew) + 0.313995))))))
+
+[PSTREE|PSTREE]
+sub(sqrt(add(PS3_std, PS1_iqr1)), sqrt(PS1_std1))
+
+[PSTREE_BASE|PSTREE]
+sub(sqrt(add(PS3_std, PS1_iqr1)), sqrt(PS1_std1))
+
+[PYSR|BASE]
+sin(sin(sin(cos(PS3_mean*PS3_std*(-0.768362))*1.7619464)))*cos(sin(cos(SE_std) + 1.267924)*cos((PS3_skew - 1*1.002289)*1.2223761))
+
+[PYSR_BASE|BASE]
+sin(sin(sin(cos(PS3_mean*PS3_std*(-0.768362))*1.7619464)))*cos(sin(cos(SE_std) + 1.267924)*cos((PS3_skew - 1*1.002289)*1.2223761))
+
+[RILS_ROLS|RILS_ROLS]
+0.138661*PS1_std*exp(CE_mean) + 0.460911*PS1_std - 0.176573*SE_std - 0.016775*PS2_max_diff - 0.089618*PS3_mean*PS3_skew + 0.188508*PS3_kurt - 0.706209*PS3_skew + 0.1004*sin(EPS1_mean) + 0.536935 + 0.146258*PS3_mean/PS2_iqr
+
+[RILS_ROLS_BASE|RILS_ROLS]
+0.138661*PS1_std*exp(CE_mean) + 0.460911*PS1_std - 0.176573*SE_std - 0.016775*PS2_max_diff - 0.089618*PS3_mean*PS3_skew + 0.188508*PS3_kurt - 0.706209*PS3_skew + 0.1004*sin(EPS1_mean) + 0.536935 + 0.146258*PS3_mean/PS2_iqr
+

@@ -1,0 +1,161 @@
+dataset,task,method,experiment,seed,split,check,status,value,threshold,notes
+UCI_HydraulicSys_fault_score,regression,lgo,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.021102085068455345,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,1,0,metrics_guard_RMSE_ge_MAE,OK,0.019602100122076666,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,1,0,metrics_guard_RMSE_ge_MAE,OK,0.029791587899782868,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.016338204810289345,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,1,0,anomaly_scan_raw_pred,WARN,,,"nan=False, inf=False, const=True, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.03490491769570564,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.02559804956264787,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,2,0,metrics_guard_RMSE_ge_MAE,OK,0.02445179238941217,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,2,0,metrics_guard_RMSE_ge_MAE,OK,0.01530075886084327,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.010915620451767798,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.010918975483702777,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.025512983907264183,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,3,0,metrics_guard_RMSE_ge_MAE,OK,0.022150779398904266,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,3,0,metrics_guard_RMSE_ge_MAE,OK,0.025631107388037894,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.019419233755360053,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.01900748139120166,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.023807692679189113,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,5,0,metrics_guard_RMSE_ge_MAE,OK,0.023966795210155767,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,5,0,metrics_guard_RMSE_ge_MAE,OK,0.024835206582882616,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.021186044493381725,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.021291323244521737,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.024605621722727136,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,8,0,metrics_guard_RMSE_ge_MAE,OK,0.026116657305254976,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,8,0,metrics_guard_RMSE_ge_MAE,OK,0.028974907834818306,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.013680614010687632,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.013908706070859249,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.023681893637767126,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,13,0,metrics_guard_RMSE_ge_MAE,OK,0.019732163335353922,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,13,0,metrics_guard_RMSE_ge_MAE,OK,0.02258742855638958,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.016645927250480794,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.015385542186036757,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.013726822620842224,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,21,0,anomaly_scan_raw_pred,WARN,,,"nan=False, inf=False, const=True, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,21,0,metrics_guard_RMSE_ge_MAE,OK,0.030728349836772417,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,21,0,metrics_guard_RMSE_ge_MAE,OK,0.014340338539103145,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.010703027401189225,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,21,0,anomaly_scan_raw_pred,WARN,,,"nan=False, inf=False, const=True, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.035542805043499326,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.01894678246824842,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,34,0,anomaly_scan_raw_pred,WARN,,,"nan=False, inf=False, const=True, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,34,0,metrics_guard_RMSE_ge_MAE,OK,0.030068997248818924,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,34,0,metrics_guard_RMSE_ge_MAE,OK,0.024699536473320488,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.02224178634900756,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.018815181669463665,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.026108778579883765,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,55,0,metrics_guard_RMSE_ge_MAE,OK,0.061142573091074376,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,55,0,metrics_guard_RMSE_ge_MAE,OK,0.021008186302346424,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.015102714738424242,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.013437736422237008,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.02467948281356977,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,89,0,metrics_guard_RMSE_ge_MAE,OK,0.023080522796215086,>= 0,
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,89,0,metrics_guard_RMSE_ge_MAE,OK,0.024202007076026252,>= 0,
+UCI_HydraulicSys_fault_score,regression,pysr,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pysr,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.019545321602978907,>= 0,
+UCI_HydraulicSys_fault_score,regression,operon,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,operon,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.01807765604818655,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.027527898237530476,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,1,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.115551, computed=0.115551"
+UCI_HydraulicSys_fault_score,regression,pstree,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.021159840697636753,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,2,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.111870, computed=0.111870"
+UCI_HydraulicSys_fault_score,regression,pstree,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.028930500899109507,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,3,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.143577, computed=0.143577"
+UCI_HydraulicSys_fault_score,regression,pstree,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.02330098638374742,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,5,0,native_vs_computed_RMSE,OK,0.00562384288048863,<= 0.01,"native=0.127150, computed=0.121526"
+UCI_HydraulicSys_fault_score,regression,pstree,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.03242504766531751,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,8,0,native_vs_computed_RMSE,INFO,0.014298736220049513,<= 0.01,"native=0.123616, computed=0.109317"
+UCI_HydraulicSys_fault_score,regression,pstree,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.020493655870817043,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,13,0,native_vs_computed_RMSE,OK,0.008163738743277388,<= 0.01,"native=0.100812, computed=0.092649"
+UCI_HydraulicSys_fault_score,regression,pstree,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.033163158395685816,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,21,0,native_vs_computed_RMSE,OK,0.0019712440704272027,<= 0.01,"native=0.169377, computed=0.167406"
+UCI_HydraulicSys_fault_score,regression,pstree,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.02727541085224884,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,34,0,native_vs_computed_RMSE,INFO,0.02684850627178574,<= 0.01,"native=0.126807, computed=0.099959"
+UCI_HydraulicSys_fault_score,regression,pstree,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.029223733882518227,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,55,0,native_vs_computed_RMSE,OK,0.00027379055914655837,<= 0.01,"native=0.125074, computed=0.124800"
+UCI_HydraulicSys_fault_score,regression,pstree,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,pstree,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.02783544187218258,>= 0,
+UCI_HydraulicSys_fault_score,regression,pstree,base,89,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.126034, computed=0.126034"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.008465260686185458,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,1,0,native_vs_computed_RMSE,OK,2.05825422635586e-05,<= 0.01,"native=0.032334, computed=0.032313"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.010912359228710852,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,2,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.035023, computed=0.035023"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.015512896349710259,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,3,0,native_vs_computed_RMSE,OK,1.4264147501844016e-06,<= 0.01,"native=0.041978, computed=0.041976"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.010154733623920234,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,5,0,native_vs_computed_RMSE,OK,0.0,<= 0.01,"native=0.036129, computed=0.036129"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.007569100927482343,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,8,0,native_vs_computed_RMSE,OK,0.00035797609827990795,<= 0.01,"native=0.032541, computed=0.032183"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.00953776576324903,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,13,0,native_vs_computed_RMSE,OK,1.1568272148959613e-06,<= 0.01,"native=0.036276, computed=0.036275"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.012650162459064224,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,21,0,native_vs_computed_RMSE,OK,0.0009613862771299525,<= 0.01,"native=0.040459, computed=0.039497"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.008725813474133898,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,34,0,native_vs_computed_RMSE,OK,0.005512318868779467,<= 0.01,"native=0.037988, computed=0.032476"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.009045051458159516,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,55,0,native_vs_computed_RMSE,OK,1.436112881149365e-06,<= 0.01,"native=0.033335, computed=0.033334"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.02090901011305395,>= 0,
+UCI_HydraulicSys_fault_score,regression,rils_rols,base,89,0,native_vs_computed_RMSE,OK,0.0010440545126072162,<= 0.01,"native=0.048803, computed=0.047759"

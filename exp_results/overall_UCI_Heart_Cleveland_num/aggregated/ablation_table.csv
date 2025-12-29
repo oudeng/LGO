@@ -1,0 +1,2 @@
+dataset,primary_metric,base_median,lgo_soft_median,lgo_hard_median,base_IQR,lgo_soft_IQR,lgo_hard_IQR,n_base,n_soft,n_hard
+UCI_Heart_Cleveland_num,R2,0.4642943228988211,0.48589967140148754,0.5183383307568332,0.11014941534884737,0.1501917801324082,0.06921590886327533,10,10,10

@@ -1,0 +1,15 @@
+dataset,method,experiment,n_models,complexity_median,complexity_q1,complexity_q3,complexity_mean,complexity_std,gates_median,gates_q1,gates_q3,depth_median
+UCI_Heart_Cleveland_num,lgo,base,100,79.0,66.0,84.25,79.35,19.137131393701562,0.0,0.0,0.0,10.0
+UCI_Heart_Cleveland_num,lgo,lgo_hard,100,44.0,38.0,69.0,52.13,19.25934379028328,0.0,0.0,1.0,10.0
+UCI_Heart_Cleveland_num,lgo,lgo_soft,100,139.5,91.75,165.25,137.85,55.41603440058545,17.0,10.0,24.25,10.0
+UCI_Heart_Cleveland_num,lgo_base,base,100,79.0,66.0,84.25,79.35,19.137131393701562,0.0,0.0,0.0,10.0
+UCI_Heart_Cleveland_num,lgo_lgo_hard,lgo_hard,100,44.0,38.0,69.0,52.13,19.25934379028328,0.0,0.0,1.0,10.0
+UCI_Heart_Cleveland_num,lgo_lgo_soft,lgo_soft,100,139.5,91.75,165.25,137.85,55.41603440058545,17.0,10.0,24.25,10.0
+UCI_Heart_Cleveland_num,operon,base,10,64.0,60.5,66.75,64.9,8.646772037394456,0.0,0.0,0.0,13.5
+UCI_Heart_Cleveland_num,operon_base,base,10,64.0,60.5,66.75,64.9,8.646772037394456,0.0,0.0,0.0,13.5
+UCI_Heart_Cleveland_num,pstree,pstree,10,1.0,1.0,2.5,1.8,1.3984117975602022,0.0,0.0,0.0,0.0
+UCI_Heart_Cleveland_num,pstree_base,pstree,10,1.0,1.0,2.5,1.8,1.3984117975602022,0.0,0.0,0.0,0.0
+UCI_Heart_Cleveland_num,pysr,base,100,13.0,10.0,15.0,12.56,2.9621177245581265,0.0,0.0,0.0,3.0
+UCI_Heart_Cleveland_num,pysr_base,base,100,13.0,10.0,15.0,12.56,2.9621177245581265,0.0,0.0,0.0,3.0
+UCI_Heart_Cleveland_num,rils_rols,rils_rols,10,26.0,24.25,26.75,25.8,1.8737959096740262,0.0,0.0,0.0,3.0
+UCI_Heart_Cleveland_num,rils_rols_base,rils_rols,10,26.0,24.25,26.75,25.8,1.8737959096740262,0.0,0.0,0.0,3.0

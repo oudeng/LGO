@@ -1,0 +1,61 @@
+# Medical Guidelines Reference Values
+# Auto-generated and maintained by 08_convert_ground_truth_to_guidelines.py
+# Enhanced with comprehensive medical thresholds from clinical guidelines
+
+global:
+  age: 50.0
+  bicarbonate: 24.0
+  bmi: 25.0
+  bun: 15.0
+  chloride: 100.0
+  cholesterol: 200.0
+  creatinine: 1.0
+  diastolic_bp: 80.0
+  glucose: 100.0
+  hdl: 40.0
+  heart_rate: 70.0
+  hemoglobin: 12.0
+  lactate: 2.0
+  ldl: 100.0
+  platelet: 250.0
+  potassium: 4.0
+  respiratory_rate: 16.0
+  sodium: 140.0
+  spo2: 95.0
+  systolic_bp: 120.0
+  temperature: 37.0
+  triglycerides: 150.0
+  wbc: 7.5
+
+datasets:
+  UCI_CTG_NSPbin:
+    # From ground_truth.json
+    AC: 0.0  # from ground_truth.json
+    ALTV: 60.0  # from ground_truth.json
+    ASTV: 20.0  # from ground_truth.json
+    DL: 0.0  # from ground_truth.json
+    DP: 0.0  # from ground_truth.json
+    DS: 0.0  # from ground_truth.json
+    FM: 0.0  # from ground_truth.json
+    LB: 110.0  # from ground_truth.json
+    MLTV: 30.0  # from ground_truth.json
+    MSTV: 3.0  # from ground_truth.json
+    MaxHist: 180.0  # from ground_truth.json
+    MeanHist: 135.0  # from ground_truth.json
+    MedianHist: 135.0  # from ground_truth.json
+    MinHist: 100.0  # from ground_truth.json
+    ModeHist: 140.0  # from ground_truth.json
+    Nmax: 1.0  # from ground_truth.json
+    Nzeros: 0.0  # from ground_truth.json
+    Tendency: 0.0  # from ground_truth.json
+    UC: 0.0  # from ground_truth.json
+    VarHist: 50.0  # from ground_truth.json
+    Width: 40.0  # from ground_truth.json
+    # Additional medical guidelines
+    accelerations_min: 2.0  # additional medical guidelines
+    contractions_max: 5.0  # additional medical guidelines
+    decelerations_max: 0.0  # additional medical guidelines
+    fhr_baseline_max: 160.0  # additional medical guidelines
+    fhr_baseline_min: 110.0  # additional medical guidelines
+    fhr_variability_max: 25.0  # additional medical guidelines
+    fhr_variability_min: 5.0  # additional medical guidelines

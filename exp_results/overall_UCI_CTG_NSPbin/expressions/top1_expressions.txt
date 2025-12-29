@@ -1,0 +1,36 @@
+[LGO|BASE]
+sqrt(add(pow(id(NSP), zero), zero))
+
+[LGO_BASE|BASE]
+sqrt(add(pow(id(NSP), zero), zero))
+
+[LGO_LGO_HARD|LGO_HARD]
+sqrt(pow(id(idF(NSP)), zero))
+
+[LGO_LGO_SOFT|LGO_SOFT]
+sqrt(div(gate_expr(id(NSP), as_pos(sqrt(add(mul(-0.0015050240312517353, lgo(lgo_or2(-0.0015050240312517353, one, 0.3322897167478186, 1.1281060002571979), as_pos(sub(zero, one)), 0.5995249434991673)), lgo_and2(add(gate_expr(zero, 0.3322897167478186, 0.5995249434991673), one), 0.4003800340639564, as_pos(-1.0541095487085865), as_thr(one))))), as_thr(lgo(-0.23156775915065558, as_pos(mul(-0.0015050240312517353, add(one, add(lgo_or2(one, 0.22730389558128855, 6.079996879477149, -1.3491590255712953), lgo_or2(one, 0.22730389558128855, 4.938013050858842, -1.3491590255712953))))), 0.6944375874626323))), sub(lgo(id(NSP), as_pos(sqrt(add(mul(log(lgo_and3(one, -0.957008093840594, one, 0.3322897167478186, 1.058500108562273)), -0.0015050240312517353), lgo_and3(one, sqrt(one), one, 6.079996879477149, 0.9593476747049826)))), as_thr(one)), -0.23156775915065558)))
+
+[OPERON|BASE]
+(1.392532 + ((-1.131797) * (exp(sin(cos((1.346746 * NSP)))) / (sqrt(1 + log((1.176515 * NSP)) ^ 2)))))
+
+[OPERON_BASE|BASE]
+(1.392532 + ((-1.131797) * (exp(sin(cos((1.346746 * NSP)))) / (sqrt(1 + log((1.176515 * NSP)) ^ 2)))))
+
+[PSTREE|PSTREE]
+ALTV
+
+[PSTREE_BASE|PSTREE]
+ALTV
+
+[PYSR|BASE]
+1.0666794*sin(1.7533404*log(NSP))
+
+[PYSR_BASE|BASE]
+1.0666794*sin(1.7533404*log(NSP))
+
+[RILS_ROLS|RILS_ROLS]
+0.01848 - 1.162868*sin(0.102514*LB*MedianHist + 0.059988*MaxHist*AC - 0.053075*ModeHist*ALTV - 0.141545*MeanHist*MedianHist + 0.063687*AC*exp(-MSTV - AC + sin(ASTV + FM/MinHist)) - 0.052697*sin(MaxHist))
+
+[RILS_ROLS_BASE|RILS_ROLS]
+0.01848 - 1.162868*sin(0.102514*LB*MedianHist + 0.059988*MaxHist*AC - 0.053075*ModeHist*ALTV - 0.141545*MeanHist*MedianHist + 0.063687*AC*exp(-MSTV - AC + sin(ASTV + FM/MinHist)) - 0.052697*sin(MaxHist))
+

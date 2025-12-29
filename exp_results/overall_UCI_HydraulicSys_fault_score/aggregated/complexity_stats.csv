@@ -1,0 +1,15 @@
+dataset,method,experiment,n_models,complexity_median,complexity_q1,complexity_q3,complexity_mean,complexity_std,gates_median,gates_q1,gates_q3,depth_median
+UCI_HydraulicSys_fault_score,lgo,base,100,54.5,42.0,59.0,54.79,22.694410382873187,0.0,0.0,0.0,10.0
+UCI_HydraulicSys_fault_score,lgo,lgo_hard,100,77.0,51.75,102.0,84.52,37.33156922238951,5.5,2.0,7.0,10.0
+UCI_HydraulicSys_fault_score,lgo,lgo_soft,100,147.0,91.0,198.25,144.43,62.14259506338724,20.0,13.75,28.0,10.0
+UCI_HydraulicSys_fault_score,lgo_base,base,100,54.5,42.0,59.0,54.79,22.694410382873187,0.0,0.0,0.0,10.0
+UCI_HydraulicSys_fault_score,lgo_lgo_hard,lgo_hard,100,77.0,51.75,102.0,84.52,37.33156922238951,5.5,2.0,7.0,10.0
+UCI_HydraulicSys_fault_score,lgo_lgo_soft,lgo_soft,100,147.0,91.0,198.25,144.43,62.14259506338724,20.0,13.75,28.0,10.0
+UCI_HydraulicSys_fault_score,operon,base,10,61.0,58.25,71.75,65.7,14.575855225528127,0.0,0.0,0.0,14.0
+UCI_HydraulicSys_fault_score,operon_base,base,10,61.0,58.25,71.75,65.7,14.575855225528127,0.0,0.0,0.0,14.0
+UCI_HydraulicSys_fault_score,pstree,pstree,10,5.0,3.0,6.0,4.8,2.3475755815545343,0.0,0.0,0.0,2.0
+UCI_HydraulicSys_fault_score,pstree_base,pstree,10,5.0,3.0,6.0,4.8,2.3475755815545343,0.0,0.0,0.0,2.0
+UCI_HydraulicSys_fault_score,pysr,base,100,9.0,7.0,12.25,9.75,3.7155828016013253,0.0,0.0,0.0,3.0
+UCI_HydraulicSys_fault_score,pysr_base,base,100,9.0,7.0,12.25,9.75,3.7155828016013253,0.0,0.0,0.0,3.0
+UCI_HydraulicSys_fault_score,rils_rols,rils_rols,10,22.0,21.25,23.5,22.5,1.58113883008419,0.0,0.0,0.0,1.0
+UCI_HydraulicSys_fault_score,rils_rols_base,rils_rols,10,22.0,21.25,23.5,22.5,1.58113883008419,0.0,0.0,0.0,1.0

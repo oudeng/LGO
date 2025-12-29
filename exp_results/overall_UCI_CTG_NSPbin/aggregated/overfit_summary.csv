@@ -1,0 +1,16 @@
+dataset,task,method,experiment,metric,mean,std
+UCI_CTG_NSPbin,binary_classification,lgo,base,AUPRC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,base,AUROC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,base,Brier,-0.00019675745722311233,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,lgo_hard,AUPRC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,lgo_hard,AUROC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,lgo_hard,Brier,-0.00019675745722311233,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,lgo_soft,AUPRC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,lgo_soft,AUROC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,lgo,lgo_soft,Brier,-0.0001967575257952908,2.1684426815680308e-10
+UCI_CTG_NSPbin,binary_classification,operon,base,AUPRC,0.000110742888704779,0.00035019976297363575
+UCI_CTG_NSPbin,binary_classification,operon,base,AUROC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,operon,base,Brier,-0.0002243798445091427,0.00010324939104444194
+UCI_CTG_NSPbin,binary_classification,pysr,base,AUPRC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,pysr,base,AUROC,0.0,0.0
+UCI_CTG_NSPbin,binary_classification,pysr,base,Brier,-0.0001967593372201787,8.661396988954392e-09

@@ -1,0 +1,67 @@
+# Medical Guidelines Reference Values
+# Auto-generated and maintained by 08_convert_ground_truth_to_guidelines.py
+# Enhanced with comprehensive medical thresholds from clinical guidelines
+
+global:
+  age: 50.0
+  bicarbonate: 24.0
+  bmi: 25.0
+  bun: 15.0
+  chloride: 100.0
+  cholesterol: 200.0
+  creatinine: 1.0
+  diastolic_bp: 80.0
+  glucose: 100.0
+  hdl: 40.0
+  heart_rate: 70.0
+  hemoglobin: 12.0
+  lactate: 2.0
+  ldl: 100.0
+  platelet: 250.0
+  potassium: 4.0
+  respiratory_rate: 16.0
+  sodium: 140.0
+  spo2: 95.0
+  systolic_bp: 120.0
+  temperature: 37.0
+  triglycerides: 150.0
+  wbc: 7.5
+
+datasets:
+  UCI_HydraulicSys_fault_score:
+    # From ground_truth.json
+    CE_mean: 46.67738333333333  # from ground_truth.json
+    CP_mean: 2.148483333333333  # from ground_truth.json
+    EPS1_mean: 2548.211466666666  # from ground_truth.json
+    EPS1_q50: 2485.8  # from ground_truth.json
+    EPS1_q75: 2621.6  # from ground_truth.json
+    FS2_mean: 10.155008333333331  # from ground_truth.json
+    PS1_mean: 161.000735  # from ground_truth.json
+    PS1_q50: 156.305  # from ground_truth.json
+    PS3_max: 10.812  # from ground_truth.json
+    PS3_mean: 1.9320466666666665  # from ground_truth.json
+    PS3_peak: 9.1787845  # from ground_truth.json
+    PS4_max: 8.788  # from ground_truth.json
+    PS4_mean: 3.5032660000000004  # from ground_truth.json
+    PS5_mean: 9.844351333333334  # from ground_truth.json
+    SE_mean: 59.6569  # from ground_truth.json
+    VS1_max: 0.785  # from ground_truth.json
+    VS1_mean: 0.64985  # from ground_truth.json
+    # Additional medical guidelines
+    ce: 90.0  # additional medical guidelines
+    cp: 50.0  # additional medical guidelines
+    eps1: 2000.0  # additional medical guidelines
+    fs1: 10.0  # additional medical guidelines
+    fs2: 10.0  # additional medical guidelines
+    ps1: 100.0  # additional medical guidelines
+    ps2: 100.0  # additional medical guidelines
+    ps3: 100.0  # additional medical guidelines
+    ps4: 100.0  # additional medical guidelines
+    ps5: 100.0  # additional medical guidelines
+    ps6: 100.0  # additional medical guidelines
+    se: 90.0  # additional medical guidelines
+    ts1: 40.0  # additional medical guidelines
+    ts2: 40.0  # additional medical guidelines
+    ts3: 40.0  # additional medical guidelines
+    ts4: 40.0  # additional medical guidelines
+    vs1: 0.5  # additional medical guidelines

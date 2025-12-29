@@ -1,0 +1,116 @@
+{
+  "_metadata": {
+    "description": "Snapshot of ground_truth.json used for threshold audit",
+    "source_file": "/home/dengou/LGO_1130/data/UCI/CTG_ground_truth.json",
+    "snapshot_created": "2025-12-14T17:24:15.314441",
+    "note": "This file preserves the exact ground_truth used for guidelines generation"
+  },
+  "ground_truth": {
+    "LB": {
+      "values": [
+        110.0,
+        160.0
+      ]
+    },
+    "ASTV": {
+      "values": [
+        20.0
+      ]
+    },
+    "MSTV": {
+      "values": [
+        3.0
+      ]
+    },
+    "ALTV": {
+      "values": [
+        60.0
+      ]
+    },
+    "MLTV": {
+      "values": [
+        30.0
+      ]
+    },
+    "DL": {
+      "values": [
+        0.0
+      ]
+    },
+    "DS": {
+      "values": [
+        0.0
+      ]
+    },
+    "DP": {
+      "values": [
+        0.0
+      ]
+    },
+    "AC": {
+      "values": [
+        0.0
+      ]
+    },
+    "FM": {
+      "values": [
+        0.0
+      ]
+    },
+    "UC": {
+      "values": [
+        0.0
+      ]
+    },
+    "Width": {
+      "values": [
+        40.0
+      ]
+    },
+    "MinHist": {
+      "values": [
+        100.0
+      ]
+    },
+    "MaxHist": {
+      "values": [
+        180.0
+      ]
+    },
+    "ModeHist": {
+      "values": [
+        140.0
+      ]
+    },
+    "MeanHist": {
+      "values": [
+        135.0
+      ]
+    },
+    "MedianHist": {
+      "values": [
+        135.0
+      ]
+    },
+    "VarHist": {
+      "values": [
+        50.0
+      ]
+    },
+    "Tendency": {
+      "values": [
+        0.0
+      ]
+    },
+    "Nmax": {
+      "values": [
+        1.0
+      ]
+    },
+    "Nzeros": {
+      "values": [
+        0.0
+      ]
+    }
+  }
+}

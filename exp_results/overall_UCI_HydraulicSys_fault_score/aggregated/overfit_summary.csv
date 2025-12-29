@@ -1,0 +1,16 @@
+dataset,task,method,experiment,metric,mean,std
+UCI_HydraulicSys_fault_score,regression,lgo,base,MAE,-0.0012162023106339196,0.002364731739075122
+UCI_HydraulicSys_fault_score,regression,lgo,base,R2,-0.005765010283956426,0.019777896897365938
+UCI_HydraulicSys_fault_score,regression,lgo,base,RMSE,-0.0013426704698373594,0.002875076749241657
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,MAE,-0.000294051031396779,0.004080147125105384
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,R2,-0.01170333390193467,0.03745944898179218
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_hard,RMSE,-0.0003268794312098214,0.004994293051136683
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,MAE,-3.646082620496344e-05,0.0044241122045721535
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,R2,-0.023733017528733337,0.023741876100357953
+UCI_HydraulicSys_fault_score,regression,lgo,lgo_soft,RMSE,-0.0002672083580601822,0.005432804123793184
+UCI_HydraulicSys_fault_score,regression,operon,base,MAE,0.002095467903884854,0.0066290206783118375
+UCI_HydraulicSys_fault_score,regression,operon,base,R2,-0.1248253095344614,0.2824700242376696
+UCI_HydraulicSys_fault_score,regression,operon,base,RMSE,-0.0007038787276895476,0.007747379780517585
+UCI_HydraulicSys_fault_score,regression,pysr,base,MAE,0.0006426823002801299,0.0033532054218244414
+UCI_HydraulicSys_fault_score,regression,pysr,base,R2,-0.002233777383967739,0.02586192154355408
+UCI_HydraulicSys_fault_score,regression,pysr,base,RMSE,-0.0009513419317874278,0.0059760603226698536

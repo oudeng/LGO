@@ -1,0 +1,36 @@
+[LGO|BASE]
+sqrt(sub(add(add(add(id(idF(thal)), id(oldpeak)), id(idF(cp))), add(pow(id(idF(slope)), id(idF(idF(idF(cp))))), add(id(ca), sqrt(id(idF(cp)))))), pow(div(log(pow(id(idF(idF(oldpeak))), sqrt(id(idF(ca))))), sub(add(id(cp), add(div(add(id(cp), pow(one, 0.4447917312345318)), id(cp)), add(sqrt(one), id(ca)))), sqrt(id(idF(cp))))), add(pow(id(idF(idF(oldpeak))), id(idF(idF(oldpeak)))), add(id(idF(idF(ca))), sqrt(id(idF(ca))))))))
+
+[LGO_BASE|BASE]
+sqrt(sub(add(add(add(id(idF(thal)), id(oldpeak)), id(idF(cp))), add(pow(id(idF(slope)), id(idF(idF(idF(cp))))), add(id(ca), sqrt(id(idF(cp)))))), pow(div(log(pow(id(idF(idF(oldpeak))), sqrt(id(idF(ca))))), sub(add(id(cp), add(div(add(id(cp), pow(one, 0.4447917312345318)), id(cp)), add(sqrt(one), id(ca)))), sqrt(id(idF(cp))))), add(pow(id(idF(idF(oldpeak))), id(idF(idF(oldpeak)))), add(id(idF(idF(ca))), sqrt(id(idF(ca))))))))
+
+[LGO_LGO_HARD|LGO_HARD]
+sqrt(add(add(id(cp), add(sqrt(add(add(add(pow(id(slope), -0.9204569966303348), pow(id(slope), log(-0.6306154900379426))), add(add(zero, id(slope)), add(id(oldpeak), id(ca)))), add(add(id(trestbps), lgo_thre(0.4620143772147406, as_pos(one), as_thr(0.7076857223574261))), add(lgo_thre(id(oldpeak), as_pos(one), as_thr(0.7076857223574261)), log(id(thalach)))))), add(add(id(thal), sqrt(add(add(id(oldpeak), id(exang)), pow(id(ca), id(trestbps))))), add(sqrt(-0.9609797301287926), -0.9204569966303348)))), id(ca)))
+
+[LGO_LGO_SOFT|LGO_SOFT]
+sqrt(add(id(idF(ca)), div(lgo_or2(add(id(oldpeak), div(lgo_or2(div(id(cp), sub(0.6998724643713948, zero)), lgo(div(id(cp), sub(0.6998724643713948, zero)), 433.41033276834133, -0.46862319406100283), as_pos(zero), -3.222899611234335), lgo_or2(zero, 1.2922646565171856, 581.5512834883829, -2.488894185390535))), lgo(div(id(thal), sub(0.6998724643713948, zero)), as_pos(lgo_or2(div(id(cp), sub(0.6998724643713948, zero)), lgo(div(id(cp), sub(0.6998724643713948, zero)), 581.5512834883829, -0.22680862245041303), as_pos(zero), -0.25827657100798806)), as_thr(-0.5896251858960536)), as_pos(lgo_and3(id(oldpeak), lgo_and3(gate_expr(pow(zero, zero), as_pos(0.3161732493362825), as_thr(zero)), lgo_or2(gate_expr(pow(one, one), 418.69500870124307, 0.8978785946355858), lgo_or2(1.364162122513044, zero, 367.3651822160478, 1.0011083686176974), as_pos(zero), as_thr(one)), pow(lgo_and3(zero, 1.3002843621602902, -0.01889815732352645, 62.73568121038842, as_thr(-1.4293780314356552)), lgo_or2(one, zero, as_pos(zero), -1.7436508790542518)), as_pos(zero), as_thr(one)), div(lgo_and2(pow(one, zero), zero, as_pos(0.3161732493362825), as_thr(one)), pow(sqrt(zero), pow(zero, one))), as_pos(lgo_and3(lgo_and2(one, one, 581.5512834883829, 0.33214108843138357), pow(zero, one), zero, as_pos(0.5180504369346681), -1.1507856942042796)), as_thr(mul(lgo_or2(zero, one, 51.56845900225459, 1.0933203476705406), lgo_and2(zero, zero, as_pos(0.3161732493362825), -1.0397664561099178))))), 0.912396649041525), one)))
+
+[OPERON|BASE]
+((-0.419833) + (0.648934 * sqrt((((sqrt((1.731358 * thal)) + ((0.707107 * cp) + sin(((2.240542 * trestbps) + (2.302585 * ca))))) * (sin((((1.731358 * thal) + (((-1.806817) * slope) * (0.745018 * cp))) + (3.141593 * thalach))) + ((0.434294 * restecg) + (1.597433 * slope)))) / (sqrt(1 + (((0.707107 / (sqrt(1 + (0.659677 * oldpeak) ^ 2))) * ((3.141593 * thalach) / (sqrt(1 + ((((0.693147 * cp) + (4.024503 * ca)) + (3.141593 * ca)) * ((2.240542 * sex) + ((0.162946 * cp) * (1.414214 * thal)))) ^ 2)))) / (sqrt(1 + (sin(((0.745018 * cp) * (0.745018 * cp))) + sqrt((1.731358 * thal))) ^ 2))) ^ 2))))))
+
+[OPERON_BASE|BASE]
+((-0.419833) + (0.648934 * sqrt((((sqrt((1.731358 * thal)) + ((0.707107 * cp) + sin(((2.240542 * trestbps) + (2.302585 * ca))))) * (sin((((1.731358 * thal) + (((-1.806817) * slope) * (0.745018 * cp))) + (3.141593 * thalach))) + ((0.434294 * restecg) + (1.597433 * slope)))) / (sqrt(1 + (((0.707107 / (sqrt(1 + (0.659677 * oldpeak) ^ 2))) * ((3.141593 * thalach) / (sqrt(1 + ((((0.693147 * cp) + (4.024503 * ca)) + (3.141593 * ca)) * ((2.240542 * sex) + ((0.162946 * cp) * (1.414214 * thal)))) ^ 2)))) / (sqrt(1 + (sin(((0.745018 * cp) * (0.745018 * cp))) + sqrt((1.731358 * thal))) ^ 2))) ^ 2))))))
+
+[PSTREE|PSTREE]
+ca
+
+[PSTREE_BASE|PSTREE]
+ca
+
+[PYSR|BASE]
+log((ca + sin(thal + 0.35922977) + 0.34047282)*(0.7016473*cp*slope + sin(cp + 1.5551313) - 0.9878323) + 0.99361444)
+
+[PYSR_BASE|BASE]
+log((ca + sin(thal + 0.35922977) + 0.34047282)*(0.7016473*cp*slope + sin(cp + 1.5551313) - 0.9878323) + 0.99361444)
+
+[RILS_ROLS|RILS_ROLS]
+1.415429 - 1.337206*sin(2.188412*sin(sin(2.284892*cos(0.324984*thal**3 + 0.453512*cp + 0.076385257276*thalach**2 + 0.291625*oldpeak + 0.347345*sin(ca) + 0.88601)) - 0.181375*(ca + 1.564579)/slope))
+
+[RILS_ROLS_BASE|RILS_ROLS]
+1.415429 - 1.337206*sin(2.188412*sin(sin(2.284892*cos(0.324984*thal**3 + 0.453512*cp + 0.076385257276*thalach**2 + 0.291625*oldpeak + 0.347345*sin(ca) + 0.88601)) - 0.181375*(ca + 1.564579)/slope))
+
