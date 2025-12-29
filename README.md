@@ -7,15 +7,17 @@
 
 **Logistic-Gated Operators (LGO)** enable unit-aware, auditable thresholds in symbolic regression by treating cut-points as first-class parameters inside equations. LGO maps thresholds back to physical units for direct comparison with domain guidelines, turning interpretability from a post-hoc narrative into a modeling constraint.
 
-## 🎯 Key Features
+---
 
-- **Unit-aware thresholds**: Explicit cut-points in physical units (e.g., mmHg, mmol/L, mg/dL)
+## Key Features
+
+- **Unit-aware thresholds**: Explicit cut-points in physical units (mmHg, mmol/L, mg/dL)
 - **Hard/Soft gate variants**: Crisp decision boundaries or smooth transitions
 - **Parsimonious by design**: Automatic gate pruning when not warranted by data
 - **Clinical alignment**: ~71% of thresholds within 10% of guideline anchors
 - **Built on DEAP**: Extends proven genetic programming framework
 
-## 🔬 How It Works
+## How It Works
 
 LGO introduces two gating operators as symbolic regression primitives:
 
@@ -27,139 +29,171 @@ LGO_hard(x; a, b) = σ(a(x - b))
 LGO_soft(x; a, b) = x · σ(a(x - b))
 ```
 
-Where:
-- `b`: Threshold location (learned in z-score space, mapped to physical units)
-- `a`: Transition steepness (controls sharpness of transition)
-- `σ`: Logistic sigmoid function
+Where `b` is the threshold location (learned in z-score space, mapped to physical units), `a` is the transition steepness, and `σ` is the logistic sigmoid function.
 
+[![Grapgical abstract](https://github.com/oudeng/LGO/Grapgical_Abstract.png)](Grapgical abstract)
 
-## 📁 Repository Structure
-```
-LGO/
-│
-│(Datasets)
-├── data/                                 # Datasets & preprocessing
-│   ├── ICU/
-│   │   ├── ICU_composite_risk_score.csv
-│   │   └── mimic_extract_v7.py
-│   ├── NHANES/          
-│   │   ├── NHANES_metabolic_score.csv
-│   │   └── fm_XPT_toCSV_v4_3.py       
-│   └── UCI/
-│       ├── CTG_nsp_bin.csv
-│       ├── Heart_Cleveland_num.csv
-│       └── HydraulicSys_fault_score.csv
-│
-│(Environment setup) 
-├── env_setup/                            # Environment configurations
-│   ├── env_py310.yml                     # LGO/PySR/Operon
-│   ├── env_pstree.yml                    # PSTree (Python 3.9)
-│   ├── env_rils-rols.yml                 # RILS-ROLS (Python 3.11)
-│   └── README_env.md
-├── configs/                              # Configuration files
-│   └── guidelines.yaml                   # Clinical guidelines
-│
-│(Function scripts)
-├── lgo_v3/                               # Supporting modules
-├── LGO_v2_1.py                           # LGO engine
-├── Operon_v1.py                          # Operon engine
-├── PSTree_v2_2.py                        # PSTree engine
-├── RILS_ROLS_v2_1.py                     # RILS-ROLS engine
-├── run_v3_8                              # Main entrance
-├── run_command_lines/                    # Running commands
-│
-│(Results raw)
-├── overall_ICU_composite_risk_score      # Results of ICU
-├── overall_NHANES_metabolic_score        # Results of NHANES
-├── overall_UCI_CTG_NSPbin                # Results of CTG
-├── overall_UCI_Heart_Cleveland_num       # Results of Cleveland
-├── overall_UCI_HydraulicSys_fault_score  # Results of Hydraulic
-│
-│(Results analysis)
-├── utility_analysis/                     # Detailed results analysis
-├── utility_plots/                        # Visualization
-│
-│(Smoke test)                             
-├── smoke_test
-│   ├── run_smoke_NHANES.sh               # NHANES as example
-│   └── README_smoke_test.md
-│
-├── .gitignore
-└── README.md
-```
 ---
 
 ## Quick Start
 
-### 1. Clone Repository
-```bash
-git clone https://github.com/oudeng/LGO.git
-cd LGO
-```
-
-### 2. Environment Setup
-
-⚠️**Important**: Different methods require separate conda environments due to dependency conflicts.
-
-| Method | Environment | Python | Primary Use |
-|--------|------------|--------|-------------|
-| **LGO / PySR / Operon** | `py310` | 3.10 | Main experiments |
-| **PSTree** | `pstree` | 3.9 | Baseline comparison |
-| **RILS-ROLS** | `rils-rols` | 3.11 | Baseline comparison |
+### Clone & Run Smoke Test (3 Commands)
 
 ```bash
-# Main environment (LGO, PySR, Operon)
-conda env create -f env_setup/env_py310.yml
-conda activate py310
-
-# Additional baseline environments (if needed)
-conda env create -f env_setup/env_pstree.yml
-conda env create -f env_setup/env_rils-rols.yml
+git clone https://github.com/oudeng/LGO.git && cd LGO
+chmod +x smoke_test/run_smoke_test.sh
+bash smoke_test/run_smoke_test.sh
 ```
 
-### 3. Smoke Test
-Please see in [smoke_test](smoke_test/)
+**Expected time: ~10 minutes** on a standard laptop (no GPU required).
+
+The smoke test will:
+1. Set up a minimal conda environment
+2. Run LGO on the NHANES metabolic syndrome dataset
+3. Extract clinical thresholds and audit against guidelines
+4. Generate visualization outputs
+
+Results appear in `smoke_test/results/`. See [smoke_test/README_smoke_test.md](smoke_test/README_smoke_test.md) for details.
+
+---
+
+## Repository Structure
+
+```
+LGO/
+├── data/                          # Datasets (ICU, NHANES, UCI)
+│   └── README_data.md
+├── env_setup/                     # Conda environments
+│   └── README_env.md
+├── config/                        # Clinical guidelines
+│   └── guidelines.yaml
+│
+├── exp_engins/                    # Experiment engines
+│   ├── LGO_v2_1.py               # LGO (proposed method)
+│   ├── PySR_v2.py                # PySR baseline
+│   ├── Operon_v2.py              # Operon baseline
+│   ├── PSTree_v3.py              # PS-Tree baseline
+│   ├── RILS_ROLS_v2_1.py         # RILS-ROLS baseline
+│   ├── AutoScore_v2.py           # Clinical baseline
+│   ├── InterpretML_v1.py         # EBM baseline
+│   └── README_engins.md
+│
+├── run_v3_8.py                    # Main experiment runner
+├── run_command_lines/             # Reproduction commands
+│
+├── utility_analysis/              # Result aggregation & analysis
+│   └── README_utility_analysis.md
+├── utility_plots/                 # Visualization scripts
+│   └── README_utility_plots.md
+│
+├── overall_*/                     # Experiment results (6 datasets)
+│
+├── smoke_test/                    # Quick verification
+│   ├── run_smoke_test.sh
+│   └── README_smoke_test.md
+│
+└── README.md                      # This file
+```
+
+---
+
+## Environment Setup
+
+Different methods require separate conda environments due to dependency conflicts:
+
+| Environment | Python | Methods | Setup |
+|-------------|--------|---------|-------|
+| `py310` | 3.10 | LGO, PySR, Operon | `conda env create -f env_setup/env_py310.yml` |
+| `pstree` | 3.9 | PS-Tree | `conda env create -f env_setup/env_pstree.yml` |
+| `rils-rols` | 3.11 | RILS-ROLS | `conda env create -f env_setup/env_rils-rols.yml` |
+
+For smoke test only, use the minimal environment:
+```bash
+conda env create -f env_setup/env_py310_smoke.yml
+```
+
+See [env_setup/README_env.md](env_setup/README_env.md) for detailed instructions.
+
+---
+
+## Datasets
+
+| Dataset | Domain | Task | Target | N | Features |
+|---------|--------|------|--------|---|----------|
+| MIMIC-IV ICU | Healthcare | Regression | Composite risk score | 23,944 | 12 |
+| eICU | Healthcare | Regression | Composite risk score | 21,535 | 12 |
+| NHANES | Healthcare | Regression | Metabolic score | 2,548 | 7 |
+| UCI CTG | Healthcare | Classification | Fetal status | 2,126 | 21 |
+| UCI Cleveland | Healthcare | Classification | Heart disease | 303 | 13 |
+| UCI Hydraulic | Industrial | Regression | Fault score | 2,205 | 17 |
+
+See [data/README_data.md](data/README_data.md) for preprocessing and clinical thresholds.
+
+---
 
 ## Reproduce Full Results
 
-Please see md files in [run_command_lines/](run_command_lines/)
+### Run Experiments
 
-### Analyze & Visualize Results
+```bash
+conda activate py310
 
-Please see scripts in [run_command_lines/](run_command_lines/) and [run_command_plots/](run_command_lines/).
+python run_v3_8.py \
+  --csv data/NHANES/NHANES_metabolic_score.csv \
+  --target metabolic_score \
+  --task regression \
+  --experiments base,lgo_soft,lgo_hard \
+  --seeds 1,2,3,5,8,13,21,34,55,89 \
+  --outdir overall_NHANES_metabolic_score
+```
 
+See [run_command_lines/](run_command_lines/) for all dataset commands.
 
-## Parameters Reference
+### Analyze Results
 
-| Parameter | Description | Default | Example |
-|-----------|-------------|---------|---------|
-| `--csv` | Dataset path | Required | `data/ICU/ICU_composite_risk_score.csv` |
-| `--target` | Target column | Required | `composite_risk_score` |
-| `--task` | Task type | Required | `regression` or `classification` |
-| `--experiments` | Methods to run | `base,lgo_soft` | `lgo_soft,pysr,operon` |
-| `--seeds` | Random seeds | `1,2,3` | `1,2,3,5,8,13,21,34,55,89` |
-| `--test_size` | Test proportion | `0.2` | `0.3` |
-| `--outdir` | Output directory | `overall_*/` | Custom path |
+```bash
+# Aggregate metrics and thresholds
+python utility_analysis/01_collect_hyperparams.py --roots overall_*
+python utility_analysis/07_gen_thresholds_units.py --dataset_dir overall_NHANES_metabolic_score
+
+# Generate visualizations
+python utility_plots/01_median_performance_violin.py --roots overall_* --outdir figs
+```
+
+See [utility_analysis/README_utility_analysis.md](utility_analysis/README_utility_analysis.md) and [utility_plots/README_utility_plots.md](utility_plots/README_utility_plots.md) for complete pipelines.
+
+---
+
+## Key Parameters
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `--experiments` | Methods to run | `base,lgo_soft,lgo_hard` |
+| `--seeds` | Random seeds (Fibonacci) | `1,2,3,5,8,13,21,34,55,89` |
+| `--hparams_json` | Hyperparameters | See defaults in engine |
+| `--unit_map_json` | Feature → unit mapping | Dataset-specific |
 
 ### Available Methods
 
-| Method | Environment | Description |
+| Method | Description | Environment |
 |--------|-------------|-------------|
-| `base` | `py310` | Baseline GP without gates |
-| `lgo_soft` | `py310` | LGO with soft gates |
-| `lgo_hard` | `py310` | LGO with hard gates |
-| `pysr` | `py310` | PySR baseline |
-| `operon` | `py310` | Operon C++ baseline |
-| `pstree` | `pstree` | PS-Tree baseline |
-| `rils_rols` | `rils-rols` | RILS-ROLS baseline |
+| `base` | GP without gates | py310 |
+| `lgo_soft` | LGO with soft gates | py310 |
+| `lgo_hard` | LGO with hard gates | py310 |
+| `pysr` | PySR (Julia) | py310 |
+| `operon` | Operon (C++) | py310 |
+| `pstree` | PS-Tree | pstree |
+| `rils_rols` | RILS-ROLS | rils-rols |
+
+---
 
 ## Citation
-
+Due to major revision, the fillowing preprint will be updated soon!
 ```bibtex
 @article{deng2025lgo,
   title={Logistic-Gated Operators Enable Auditable Unit-Aware Thresholds in Symbolic Regression},
   author={Deng, Ou and Cong, Ruichen and Xu, Jianting and Nishimura, Shoji and Ogihara, Atsushi and Jin, Qun},
-  journal={arXiv preprint https://arxiv.org/abs/2510.05178},
+  journal={arXiv preprint arXiv:2510.05178},
   year={2025}
 }
 ```
@@ -170,4 +204,4 @@ MIT License - see [LICENSE](LICENSE) file.
 
 ## Acknowledgments
 
-Built on [DEAP](https://github.com/DEAP/deap) | Benchmarked against [PySR](https://github.com/MilesCranmer/PySR), [Operon](https://github.com/heal-research/pyoperon), [PS-Tree](https://github.com/hengzhe-zhang/PS-Tree), [RILS-ROLS](https://github.com/kartelj/rils-rols)
+Built on [DEAP](https://github.com/DEAP/deap) | Benchmarked against [PySR](https://github.com/MilesCranmer/PySR), [Operon](https://github.com/heal-research/pyoperon), [PS-Tree](https://github.com/hengzhe-zhang/PS-Tree), [RILS-ROLS](https://github.com/kartelj/rils-rols), [AutoScore](https://github.com/nliulab/AutoScore), [InterpretML](https://github.com/interpretml/interpret)
