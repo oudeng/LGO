@@ -31,7 +31,7 @@ LGO_soft(x; a, b) = x · σ(a(x - b))
 
 Where `b` is the threshold location (learned in z-score space, mapped to physical units), `a` is the transition steepness, and `σ` is the logistic sigmoid function.
 
-[![Grapgical abstract](https://github.com/oudeng/LGO/Grapgical_Abstract.png)](Grapgical abstract)
+[![Grapgical abstract](https://github.com/oudeng/LGO/Graphical_Abstract.png)](Graphical abstract)
 
 ---
 
@@ -188,7 +188,7 @@ See [utility_analysis/README_utility_analysis.md](utility_analysis/README_utilit
 ---
 
 ## Citation
-Due to major revision, the fillowing preprint will be updated soon!
+Due to major revision, the following preprint will be updated soon!
 ```bibtex
 @article{deng2025lgo,
   title={Logistic-Gated Operators Enable Auditable Unit-Aware Thresholds in Symbolic Regression},
