@@ -1,0 +1,37 @@
+\begin{table}[htbp]
+\centering
+\caption{LGO-discovered thresholds (median [Q1, Q3]) versus domain anchors. Values are in natural units.}
+\label{tab:thresholds}
+\begin{tabular}{llllll}
+\toprule
+Dataset & Feature & Unit & Median [Q1, Q3] & Anchor & Rel. Err. \\
+\midrule
+  ICU & MAP &  & 69.9 [69.1, 70.0] & 65.0 & 7.6% \\
+  ICU & Creatinine &  & 1.71 [1.54, 4.86] & 1.20 & 42.1% \\
+  ICU & Lactate &  & 4.72 [2.23, 5.31] & 2.00 & 135.9% \\
+\midrule
+  eICU & Creatinine &  & 1.32 [0.98, 1.67] & 1.50 & 11.7% \\
+  eICU & Respiratory rate &  & 20.5 & 24.0 & 14.7% \\
+  eICU & SpO2 &  & 76.0 [75.7, 76.6] & 92.0 & 17.4% \\
+  eICU & GCS &  & 12.9 & 8.00 & 61.4% \\
+  eICU & Hr Max &  & 79.9 & 100 & 20.1% \\
+  eICU & Lactate &  & 2.52 [1.07, 3.44] & 2.00 & 25.8% \\
+\midrule
+  NHANES & BMI &  & 27.2 & 25.0 & 9.0% \\
+  NHANES & Fasting glucose &  & 99.0 [98.0, 117.5] & 100 & 1.0% \\
+  NHANES & Waist circumference &  & 92.7 [91.5, 93.4] & 88.0 & 5.4% \\
+  NHANES & Triglycerides &  & 29.9 [24.4, 29.9] & 150 & 80.1% \\
+\midrule
+  CTG & Meanhist &  & 117 & 135 & 13.3% \\
+  CTG & Fm &  & -48.0 & 0.00 & - \\
+\midrule
+  Cleveland & Cp &  & 2.81 [2.04, 2.81] & 3.00 & 6.3% \\
+  Cleveland & Resting BP &  & 144 [129, 144] & 140 & 2.8% \\
+  Cleveland & ST depression &  & 1.86 [1.29, 1.86] & 1.00 & 85.7% \\
+  Cleveland & Slope &  & -4.07 & 2.00 & 303.6% \\
+\midrule
+  Hydraulic & Ps1 Q50 &  & 156 [156, 157] & 156 & 0.0% \\
+  Hydraulic & Se Mean &  & 57.9 & 59.7 & 3.0% \\
+\bottomrule
+\end{tabular}
+\end{table}
