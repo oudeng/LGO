@@ -1,0 +1,22 @@
+\begin{table}[htbp]
+\centering
+\caption{Performance comparison of LGO and AutoScore across computational budgets (ICU dataset, 10 seeds)}
+\label{tab:lgo_autoscore}
+\small
+\begin{tabular}{lcccccc}
+\toprule
+Budget & LGO AUROC & AutoScore AUROC & $\Delta$AUROC [95\% CI] & $p$ & Cohen's $d$ & Win \\
+\midrule
+eICU_30k_full & 0.880$\pm$0.078 & 0.798$\pm$0.018 & +0.082 [0.030,0.125] & 0.020* & 1.37 & 8/10 \\
+eICU_100k_full & 0.874$\pm$0.066 & 0.798$\pm$0.018 & +0.076 [0.028,0.119] & 0.020* & 1.49 & 9/10 \\
+eICU_200k_full & 0.943$\pm$0.019 & 0.798$\pm$0.018 & +0.145 [0.130,0.160] & 0.002** & 7.38 & 10/10 \\
+eICU_300k_full & 0.851$\pm$0.130 & 0.798$\pm$0.018 & +0.053 [-0.039,0.117] & 0.105 & 0.54 & 8/10 \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item Note: * $p<0.05$, ** $p<0.01$, *** $p<0.001$ (Wilcoxon signed-rank test).
+\item Win: number of seeds where LGO AUROC $>$ AutoScore AUROC.
+\item CI: Bootstrap percentile confidence interval (10,000 resamples).
+\end{tablenotes}
+\end{table}
