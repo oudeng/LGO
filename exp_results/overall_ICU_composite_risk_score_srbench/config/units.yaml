@@ -1,0 +1,12 @@
+# feature units
+map_mmhg: mmHg
+sbp_min: mmHg
+dbp_min: mmHg
+lactate_mmol_l: mmol/L
+creatinine_mg_dl: mg/dL
+hemoglobin_min: g/dL
+sodium_min: mmol/L
+age_years: years
+hr_max: bpm
+resprate_max: /min
+spo2_min: %

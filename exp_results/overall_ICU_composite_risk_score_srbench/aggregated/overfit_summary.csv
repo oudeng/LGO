@@ -1,0 +1,16 @@
+dataset,task,method,experiment,metric,mean,std
+ICU_composite_risk_score,regression,lgo,base,MAE,-0.0008546926041864911,0.03904463959778657
+ICU_composite_risk_score,regression,lgo,base,R2,-0.0026584531442863544,0.01452272708886698
+ICU_composite_risk_score,regression,lgo,base,RMSE,0.0014409696162092755,0.04050963725436523
+ICU_composite_risk_score,regression,lgo,lgo_hard,MAE,-0.004410103439691759,0.022653745227134373
+ICU_composite_risk_score,regression,lgo,lgo_hard,R2,-0.0009448970659214906,0.016876577297506315
+ICU_composite_risk_score,regression,lgo,lgo_hard,RMSE,-0.007744267377962588,0.02848915974683419
+ICU_composite_risk_score,regression,lgo,lgo_soft,MAE,0.08185070671744202,0.3076127608613555
+ICU_composite_risk_score,regression,lgo,lgo_soft,R2,0.007017690385882902,0.01885683423848315
+ICU_composite_risk_score,regression,lgo,lgo_soft,RMSE,0.07853783040842709,0.30942055613333663
+ICU_composite_risk_score,regression,operon,base,MAE,-0.009990487814499105,0.03141671410720417
+ICU_composite_risk_score,regression,operon,base,R2,0.003932918385958684,0.012010201648718572
+ICU_composite_risk_score,regression,operon,base,RMSE,-0.015539652225131767,0.03735993559204537
+ICU_composite_risk_score,regression,pysr,base,MAE,-0.0076405191519376085,0.02735797918434672
+ICU_composite_risk_score,regression,pysr,base,R2,0.002351885427769074,0.011749391197593538
+ICU_composite_risk_score,regression,pysr,base,RMSE,-0.010716183175809612,0.033814632763319384

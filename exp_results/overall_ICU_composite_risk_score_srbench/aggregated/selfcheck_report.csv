@@ -1,0 +1,99 @@
+dataset,task,method,experiment,seed,split,check,status,value,threshold,notes
+ICU_composite_risk_score,regression,lgo,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.15217044630923693,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,1,0,metrics_guard_RMSE_ge_MAE,OK,0.26464056675933967,>= 0,
+ICU_composite_risk_score,regression,pysr,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.1245155927582583,>= 0,
+ICU_composite_risk_score,regression,operon,base,1,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,1,0,metrics_guard_RMSE_ge_MAE,OK,0.1301813064476986,>= 0,
+ICU_composite_risk_score,regression,lgo,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.22607826860236147,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,2,0,metrics_guard_RMSE_ge_MAE,OK,0.1730216356034069,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,2,0,metrics_guard_RMSE_ge_MAE,OK,0.12934487696476327,>= 0,
+ICU_composite_risk_score,regression,pysr,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.1424707455176154,>= 0,
+ICU_composite_risk_score,regression,operon,base,2,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,2,0,metrics_guard_RMSE_ge_MAE,OK,0.1332385668407638,>= 0,
+ICU_composite_risk_score,regression,lgo,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.12512874063089963,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,3,0,metrics_guard_RMSE_ge_MAE,OK,0.19490217052084213,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,3,0,metrics_guard_RMSE_ge_MAE,OK,0.16223016286227443,>= 0,
+ICU_composite_risk_score,regression,pysr,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.15352272717647208,>= 0,
+ICU_composite_risk_score,regression,operon,base,3,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,3,0,metrics_guard_RMSE_ge_MAE,OK,0.13675854424186473,>= 0,
+ICU_composite_risk_score,regression,lgo,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.17855957021629676,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,5,0,metrics_guard_RMSE_ge_MAE,OK,0.19755446955420086,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,5,0,metrics_guard_RMSE_ge_MAE,OK,0.14808688629601974,>= 0,
+ICU_composite_risk_score,regression,pysr,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.1398033528815792,>= 0,
+ICU_composite_risk_score,regression,operon,base,5,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,5,0,metrics_guard_RMSE_ge_MAE,OK,0.14227164090079258,>= 0,
+ICU_composite_risk_score,regression,lgo,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.15433835512820193,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,8,0,metrics_guard_RMSE_ge_MAE,OK,0.15665360724635757,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,8,0,metrics_guard_RMSE_ge_MAE,OK,0.1663220309374116,>= 0,
+ICU_composite_risk_score,regression,pysr,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.1466735161242982,>= 0,
+ICU_composite_risk_score,regression,operon,base,8,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,8,0,metrics_guard_RMSE_ge_MAE,OK,0.12357718742099338,>= 0,
+ICU_composite_risk_score,regression,lgo,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.14053374966240068,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,13,0,metrics_guard_RMSE_ge_MAE,OK,0.16561978243140896,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,13,0,metrics_guard_RMSE_ge_MAE,OK,0.3154176771076658,>= 0,
+ICU_composite_risk_score,regression,pysr,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.14738913251173846,>= 0,
+ICU_composite_risk_score,regression,operon,base,13,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,13,0,metrics_guard_RMSE_ge_MAE,OK,0.11317393613612586,>= 0,
+ICU_composite_risk_score,regression,lgo,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.1808883249979878,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,21,0,metrics_guard_RMSE_ge_MAE,OK,0.13991099938687324,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,21,0,metrics_guard_RMSE_ge_MAE,OK,0.1318792665958971,>= 0,
+ICU_composite_risk_score,regression,pysr,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.13545829515957508,>= 0,
+ICU_composite_risk_score,regression,operon,base,21,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,21,0,metrics_guard_RMSE_ge_MAE,OK,0.12779254650555627,>= 0,
+ICU_composite_risk_score,regression,lgo,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.16842438645237445,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,34,0,metrics_guard_RMSE_ge_MAE,OK,0.1749500189562343,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,34,0,metrics_guard_RMSE_ge_MAE,OK,0.18402627458656906,>= 0,
+ICU_composite_risk_score,regression,pysr,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.1350800188159681,>= 0,
+ICU_composite_risk_score,regression,operon,base,34,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,34,0,metrics_guard_RMSE_ge_MAE,OK,0.12978055034577868,>= 0,
+ICU_composite_risk_score,regression,lgo,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.16525487835761277,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,55,0,metrics_guard_RMSE_ge_MAE,OK,0.14989982529840085,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,55,0,metrics_guard_RMSE_ge_MAE,OK,0.18682367110977638,>= 0,
+ICU_composite_risk_score,regression,pysr,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.13576286220647982,>= 0,
+ICU_composite_risk_score,regression,operon,base,55,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,55,0,metrics_guard_RMSE_ge_MAE,OK,0.1451306532372968,>= 0,
+ICU_composite_risk_score,regression,lgo,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.13845173283797885,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_soft,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_soft,89,0,metrics_guard_RMSE_ge_MAE,OK,0.18260232515019093,>= 0,
+ICU_composite_risk_score,regression,lgo,lgo_hard,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,lgo,lgo_hard,89,0,metrics_guard_RMSE_ge_MAE,OK,0.24243732513170768,>= 0,
+ICU_composite_risk_score,regression,pysr,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,pysr,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.15718888975829526,>= 0,
+ICU_composite_risk_score,regression,operon,base,89,0,anomaly_scan_raw_pred,OK,,,"nan=False, inf=False, const=False, sentinel>=1000000.0=False, huge>=10000.0=False"
+ICU_composite_risk_score,regression,operon,base,89,0,metrics_guard_RMSE_ge_MAE,OK,0.12958936843450175,>= 0,
