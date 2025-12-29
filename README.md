@@ -31,7 +31,7 @@ LGO_soft(x; a, b) = x · σ(a(x - b))
 
 Where `b` is the threshold location (learned in z-score space, mapped to physical units), `a` is the transition steepness, and `σ` is the logistic sigmoid function.
 
-![Graphical abstract](https://github.com/oudeng/LGO/Graphical_Abstract.png)
+![Graphical abstract](https://github.com/oudeng/LGO/blob/main/Graphical_Abstract.png)
 
 ---
 
