@@ -1,0 +1,25 @@
+# LGO vs InterpretML (EBM) Comparison Framework
+# Python >= 3.8 required
+
+# Core dependencies
+numpy>=1.20.0
+pandas>=1.3.0
+scipy>=1.7.0
+scikit-learn>=1.0.0
+
+# Visualization
+matplotlib>=3.5.0
+
+# LGO dependencies
+deap>=1.3.1
+
+# InterpretML (EBM)
+interpret>=0.4.0
+
+# Optional: for enhanced visualization
+seaborn>=0.12.0
+
+# Development (optional)
+# pytest>=7.0.0
+# black>=22.0.0
+# flake8>=4.0.0
