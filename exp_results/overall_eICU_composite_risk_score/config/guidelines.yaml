@@ -1,0 +1,68 @@
+# Medical Guidelines Reference Values
+# Auto-generated and maintained by 08_convert_ground_truth_to_guidelines.py
+# Enhanced with comprehensive medical thresholds from clinical guidelines
+
+global:
+  age: 50.0
+  bicarbonate: 24.0
+  bmi: 25.0
+  bun: 15.0
+  chloride: 100.0
+  cholesterol: 200.0
+  creatinine: 1.0
+  diastolic_bp: 80.0
+  glucose: 100.0
+  hdl: 40.0
+  heart_rate: 70.0
+  hemoglobin: 12.0
+  lactate: 2.0
+  ldl: 100.0
+  platelet: 250.0
+  potassium: 4.0
+  respiratory_rate: 16.0
+  sodium: 140.0
+  spo2: 95.0
+  systolic_bp: 120.0
+  temperature: 37.0
+  triglycerides: 150.0
+  wbc: 7.5
+
+datasets:
+  eICU_composite_risk_score:
+    # From ground_truth.json
+    creatinine_mg_dl: 1.5  # from ground_truth.json
+    gcs: 8.0  # from ground_truth.json
+    hemoglobin_min: 9.0  # from ground_truth.json
+    hr_max: 100.0  # from ground_truth.json
+    lactate_mmol_l: 2.0  # from ground_truth.json
+    map_mmhg: 65.0  # from ground_truth.json
+    resprate_max: 24.0  # from ground_truth.json
+    sbp_min: 90.0  # from ground_truth.json
+    spo2_min: 92.0  # from ground_truth.json
+    urine_output_min: 0.5  # from ground_truth.json
+    # Additional medical guidelines
+    albumin_min: 3.5  # additional medical guidelines
+    bilirubin_max: 1.2  # additional medical guidelines
+    charlson_index: 3.0  # additional medical guidelines
+    dbp_min: 60.0  # additional medical guidelines
+    fio2_max: 0.6  # additional medical guidelines
+    glucose_max: 180.0  # additional medical guidelines
+    glucose_min: 70.0  # additional medical guidelines
+    hco3_max: 28.0  # additional medical guidelines
+    hco3_min: 22.0  # additional medical guidelines
+    inr_max: 1.5  # additional medical guidelines
+    pco2_max: 45.0  # additional medical guidelines
+    pco2_min: 35.0  # additional medical guidelines
+    peep_min: 5.0  # additional medical guidelines
+    ph_max: 7.45  # additional medical guidelines
+    ph_min: 7.35  # additional medical guidelines
+    platelet_min: 150.0  # additional medical guidelines
+    po2_min: 60.0  # additional medical guidelines
+    sodium_max: 145.0  # additional medical guidelines
+    sodium_min: 135.0  # additional medical guidelines
+    temperature_max: 38.3  # additional medical guidelines
+    temperature_min: 36.0  # additional medical guidelines
+    tidal_volume_max: 8.0  # additional medical guidelines
+    vasopressor_dose: 0.1  # additional medical guidelines
+    wbc_max: 11.0  # additional medical guidelines
+    wbc_min: 4.0  # additional medical guidelines

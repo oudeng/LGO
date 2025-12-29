@@ -1,0 +1,25 @@
+{
+  "feature_means": {
+    "map_mmhg": 51.56569664902998,
+    "lactate_mmol_l": 3.738514109347442,
+    "creatinine_mg_dl": 1.9850548941798944,
+    "resprate_max": 32.63205467372134,
+    "hr_max": 117.13932980599647,
+    "spo2_min": 84.26829805996472,
+    "gcs": 9.551587301587302,
+    "vasopressor_use_std": 0.43694885361552027,
+    "mechanical_ventilation_std": 0.7610229276895943
+  },
+  "feature_stds": {
+    "map_mmhg": 14.519345047189153,
+    "lactate_mmol_l": 3.8276767612024005,
+    "creatinine_mg_dl": 1.797193835631869,
+    "resprate_max": 9.78898729805723,
+    "hr_max": 23.514873635435986,
+    "spo2_min": 12.312638877013562,
+    "gcs": 4.728379006299186,
+    "vasopressor_use_std": 0.4960086218399867,
+    "mechanical_ventilation_std": 0.4264587098657417
+  },
+  "zscore": true
+}
