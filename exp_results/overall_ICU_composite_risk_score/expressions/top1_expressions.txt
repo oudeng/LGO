@@ -1,0 +1,36 @@
+[LGO|BASE]
+sqrt(sub(log(mul(div(div(mul(mul(pow(log(zero), id(lactate_mmol_l)), log(zero)), pow(mul(-0.159460309456478, -1.8879817953264604), log(zero))), id(lactate_mmol_l)), id(lactate_mmol_l)), mul(pow(log(zero), id(lactate_mmol_l)), log(zero)))), pow(mul(sqrt(pow(pow(id(vasopressor_use_std), log(id(vasopressor_use_std))), id(vasopressor_use_std))), log(zero)), pow(id(vasopressor_use_std), sub(sqrt(pow(id(idF(idF(creatinine_mg_dl))), zero)), pow(mul(pow(log(zero), id(lactate_mmol_l)), log(zero)), pow(log(zero), id(lactate_mmol_l))))))))
+
+[LGO_BASE|BASE]
+sqrt(sub(log(mul(div(div(mul(mul(pow(log(zero), id(lactate_mmol_l)), log(zero)), pow(mul(-0.159460309456478, -1.8879817953264604), log(zero))), id(lactate_mmol_l)), id(lactate_mmol_l)), mul(pow(log(zero), id(lactate_mmol_l)), log(zero)))), pow(mul(sqrt(pow(pow(id(vasopressor_use_std), log(id(vasopressor_use_std))), id(vasopressor_use_std))), log(zero)), pow(id(vasopressor_use_std), sub(sqrt(pow(id(idF(idF(creatinine_mg_dl))), zero)), pow(mul(pow(log(zero), id(lactate_mmol_l)), log(zero)), pow(log(zero), id(lactate_mmol_l))))))))
+
+[LGO_LGO_HARD|LGO_HARD]
+add(log(div(sub(sqrt(pow(0.8206947499518028, sqrt(pow(add(add(zero, -0.9940557184724376), id(dbp_min)), add(mul(-0.5454496568009786, -0.47127442482996296), -1.2180939182860377))))), sub(-0.1462488659627085, add(add(id(idF(idF(creatinine_mg_dl))), pow(add(id(lactate_mmol_l), pow(0.8206947499518028, one)), one)), pow(add(id(lactate_mmol_l), pow(0.8206947499518028, id(dbp_min))), one)))), 0.012522254407786662)), pow(id(vasopressor_use_std), pow(add(add(id(lactate_mmol_l), pow(lgo_thre(pow(1.042244087204501, 0.2883152247292757), as_pos(one), as_thr(one)), 0.8206947499518028)), log(-0.7601173600463147)), sub(-0.1462488659627085, add(add(add(id(creatinine_mg_dl), pow(0.8206947499518028, div(zero, zero))), pow(add(one, mul(one, zero)), 0.8206947499518028)), add(id(idF(idF(creatinine_mg_dl))), pow(lgo_thre(pow(1.042244087204501, 0.2883152247292757), as_pos(one), as_thr(one)), 0.8206947499518028)))))))
+
+[LGO_LGO_SOFT|LGO_SOFT]
+lgo_or2(id(idF(vasopressor_use_std)), div(lgo_or2(gate_expr(lgo_and3(one, id(idF(idF(lactate_mmol_l))), gate_expr(one, 3.2786153157991085, as_thr(1.0801558672332745)), as_pos(add(sqrt(0.4285927332779374), mul(one, 3.546390250209531))), as_thr(pow(pow(lgo_or2(id(map_mmhg), zero, as_pos(-0.12430249530350962), as_thr(one)), div(0.5060069720490513, pow(zero, 0.3949362950994202))), pow(log(sqrt(-1.0565582388559005)), gate_expr(lgo(zero, 3.4181325803539324, 0.6862843284606073), 23.211325505854127, as_thr(zero)))))), as_pos(pow(id(idF(lactate_mmol_l)), -1.8185071401835893)), as_thr(lgo_and3(one, one, zero, 4.338334725600772, -0.0017275998392293906))), div(one, 0.5060069720490513), as_pos(zero), -0.48024545493839), 0.3578322089713467), as_pos(-0.12430249530350962), as_thr(pow(lgo_and3(lgo_or2(one, 0.45739448320204384, as_pos(pow(id(lactate_mmol_l), -1.8185071401835893)), 0.2196607730696025), lgo_and3(zero, one, zero, 3.452224702485579, 0.004294440034521896), sqrt(-0.8371637588673615), as_pos(one), as_thr(pow(pow(log(gate_expr(one, 4.44602662895036, -0.06783964440861645)), div(0.5060069720490513, pow(zero, 0.3949362950994202))), pow(log(sqrt(-1.0565582388559005)), gate_expr(lgo(zero, 2.509879731069792, -0.06392591260601271), as_pos(one), as_thr(-0.22519260960557333)))))), lgo_and2(lgo_or2(pow(one, zero), -0.6082756744158317, 4.635586035828235, 0.8680316522681725), lgo_and2(one, 1.138589504953945, 7.901547327594738, 0.45065487402433957), as_pos(one), as_thr(zero)))))
+
+[OPERON|BASE]
+(38.494778 + ((-32.079750) * (exp(((((0.236672 / (sqrt(1 + (0.261302 * lactate_mmol_l) ^ 2))) / (sqrt(1 + (0.318310 * lactate_mmol_l) ^ 2))) / (sqrt(1 + cos(cos((1.847956 * lactate_mmol_l))) ^ 2))) * ((0.350504 / (sqrt(1 + log((1.464008 * creatinine_mg_dl)) ^ 2))) + 0.707107))) / (sqrt(1 + ((((0.236672 / (sqrt(1 + cos((0.471148 * lactate_mmol_l)) ^ 2))) * exp(((cos(0.666389) / (sqrt(1 + (3.002783 * vasopressor_use_std) ^ 2))) / (sqrt(1 + cos((0.082019 * map_mmhg)) ^ 2))))) / (sqrt(1 + (((0.370876 * lactate_mmol_l) / (sqrt(1 + log((1.464008 * creatinine_mg_dl)) ^ 2))) * ((0.318310 * lactate_mmol_l) / (sqrt(1 + (cos((3.117407 * vasopressor_use_std)) / (sqrt(1 + (cos((0.082019 * map_mmhg)) + cos((-0.392580))) ^ 2))) ^ 2)))) ^ 2))) + (0.318310 * vasopressor_use_std)) ^ 2)))))
+
+[OPERON_BASE|BASE]
+(38.494778 + ((-32.079750) * (exp(((((0.236672 / (sqrt(1 + (0.261302 * lactate_mmol_l) ^ 2))) / (sqrt(1 + (0.318310 * lactate_mmol_l) ^ 2))) / (sqrt(1 + cos(cos((1.847956 * lactate_mmol_l))) ^ 2))) * ((0.350504 / (sqrt(1 + log((1.464008 * creatinine_mg_dl)) ^ 2))) + 0.707107))) / (sqrt(1 + ((((0.236672 / (sqrt(1 + cos((0.471148 * lactate_mmol_l)) ^ 2))) * exp(((cos(0.666389) / (sqrt(1 + (3.002783 * vasopressor_use_std) ^ 2))) / (sqrt(1 + cos((0.082019 * map_mmhg)) ^ 2))))) / (sqrt(1 + (((0.370876 * lactate_mmol_l) / (sqrt(1 + log((1.464008 * creatinine_mg_dl)) ^ 2))) * ((0.318310 * lactate_mmol_l) / (sqrt(1 + (cos((3.117407 * vasopressor_use_std)) / (sqrt(1 + (cos((0.082019 * map_mmhg)) + cos((-0.392580))) ^ 2))) ^ 2)))) ^ 2))) + (0.318310 * vasopressor_use_std)) ^ 2)))))
+
+[PSTREE|PSTREE]
+mul(sqrt(add(lactate_mmol_l, mul(sqrt(add(lactate_mmol_l, lactate_mmol_l5)), lactate_mmol_l5))), lactate_mmol_l5)
+
+[PSTREE_BASE|PSTREE]
+mul(sqrt(add(lactate_mmol_l, mul(sqrt(add(lactate_mmol_l, lactate_mmol_l5)), lactate_mmol_l5))), lactate_mmol_l5)
+
+[PYSR|BASE]
+2*vasopressor_use_std + log(lactate_mmol_l) + log(creatinine_mg_dl + 1.2355905450144) + cos(log(0.226298172938716*exp(0.3829094/(lactate_mmol_l - 2.0506735)))) + 2.3226366
+
+[PYSR_BASE|BASE]
+2*vasopressor_use_std + log(lactate_mmol_l) + log(creatinine_mg_dl + 1.2355905450144) + cos(log(0.226298172938716*exp(0.3829094/(lactate_mmol_l - 2.0506735)))) + 2.3226366
+
+[RILS_ROLS|RILS_ROLS]
+1.011776*vasopressor_use_std + 0.102586*creatinine_mg_dl + 0.67836*sin(map_mmhg) + 0.631096*sin(sin(3.183099*sin(creatinine_mg_dl))) + 1.272017*cos(exp(sin(map_mmhg))) - 1.082923*cos(exp(1/cos(0.126457*exp(-2*lactate_mmol_l - 2*sin(0.44 + 0.9/lactate_mmol_l))))) + 4.902423
+
+[RILS_ROLS_BASE|RILS_ROLS]
+1.011776*vasopressor_use_std + 0.102586*creatinine_mg_dl + 0.67836*sin(map_mmhg) + 0.631096*sin(sin(3.183099*sin(creatinine_mg_dl))) + 1.272017*cos(exp(sin(map_mmhg))) - 1.082923*cos(exp(1/cos(0.126457*exp(-2*lactate_mmol_l - 2*sin(0.44 + 0.9/lactate_mmol_l))))) + 4.902423
+

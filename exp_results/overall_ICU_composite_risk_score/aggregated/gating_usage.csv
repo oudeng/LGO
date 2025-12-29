@@ -1,0 +1,4 @@
+dataset,method,experiment,n_models,n_with_gates,prop_with_gates,gates_median,gates_q1,gates_q3,complexity_median,complexity_q1,complexity_q3,score_median
+ICU_composite_risk_score,lgo,base,100,0,0.0,0.0,0.0,0.0,40.0,32.0,57.0,0.748523327
+ICU_composite_risk_score,lgo,lgo_hard,100,100,1.0,2.0,1.0,4.0,45.5,40.0,58.0,0.532581574
+ICU_composite_risk_score,lgo,lgo_soft,100,100,1.0,11.0,7.0,17.0,82.3,38.6,110.7,1.037597564

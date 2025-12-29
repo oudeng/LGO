@@ -1,0 +1,2 @@
+dataset,primary_metric,base_median,lgo_soft_median,lgo_hard_median,base_IQR,lgo_soft_IQR,lgo_hard_IQR,n_base,n_soft,n_hard
+ICU_composite_risk_score,R2,0.7804836485,0.547787631,0.8402661435000001,0.041152099750000115,0.44337266425000005,0.07563184450000004,10,10,10

@@ -1,0 +1,21 @@
+# feature units
+map_mmhg: 
+lactate_mmol_l: 
+creatinine_mg_dl: 
+age_years: 
+gcs: 
+vasopressor_dose: 
+charlson_index: 
+hours_since_admission: 
+sbp_min: 
+dbp_min: 
+hr_max: 
+resprate_max: 
+spo2_min: 
+hemoglobin_min: 
+sodium_min: 
+urine_output_min: 
+mechanical_ventilation_std: 
+vasopressor_use_std: 
+age_band: 
+gender_std: 

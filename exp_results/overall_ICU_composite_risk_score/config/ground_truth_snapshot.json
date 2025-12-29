@@ -1,0 +1,39 @@
+{
+  "_metadata": {
+    "description": "Snapshot of ground_truth.json used for threshold audit",
+    "source_file": "/home/dengou/LGO_1130/data/ICU/ground_truth.json",
+    "snapshot_created": "2025-12-13T20:04:17.040810",
+    "note": "This file preserves the exact ground_truth used for guidelines generation"
+  },
+  "ground_truth": {
+    "gcs": {
+      "values": [
+        8.0,
+        12.0
+      ]
+    },
+    "spo2_min": {
+      "values": [
+        90.0,
+        94.0
+      ]
+    },
+    "sbp_min": {
+      "values": [
+        90.0
+      ]
+    },
+    "urine_output_min": {
+      "values": [
+        0.5,
+        0.3
+      ]
+    },
+    "hemoglobin_min": {
+      "values": [
+        7.0,
+        9.0
+      ]
+    }
+  }
+}
