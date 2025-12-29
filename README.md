@@ -14,7 +14,7 @@
 - **Unit-aware thresholds**: Explicit cut-points in physical units (mmHg, mmol/L, mg/dL)
 - **Hard/Soft gate variants**: Crisp decision boundaries or smooth transitions
 - **Parsimonious by design**: Automatic gate pruning when not warranted by data
-- **Clinical alignment**: ~71% of thresholds within 10% of guideline anchors
+- **Clinical alignment**: Analyzing thresholds from data and auditing them with guideline anchors
 - **Built on DEAP**: Extends proven genetic programming framework
 
 ## How It Works
