@@ -22,8 +22,13 @@ set -euo pipefail
 REPO_URL="https://github.com/oudeng/LGO.git"
 REPO_DIR="LGO"
 CONDA_ENV_NAME="py310_smoke"
-ENV_YML_PATH="env_setup/env_py310_smoke.yml"
-ENV_YML_FALLBACK="env_setup/env_py310_test.yml"
+
+# Environment file options (in order of preference)
+ENV_YML_OPTIONS=(
+    "env_setup/env_py310_smoke.yml"
+    "env_setup/env_py310_test.yml"
+    "env_setup/env_py310.yml"
+)
 
 # Default dataset
 DATASET="NHANES"
@@ -169,6 +174,18 @@ fi
 success "Repository root: ${ROOT_DIR}"
 cd "${ROOT_DIR}"
 
+# Detect config directory (check both possible names: config/ and configs/)
+CONFIG_DIR=""
+if [ -d "config" ]; then
+    CONFIG_DIR="config"
+elif [ -d "configs" ]; then
+    CONFIG_DIR="configs"
+else
+    warn "Neither config/ nor configs/ directory found"
+    CONFIG_DIR="config"  # Default assumption
+fi
+info "Using config directory: ${CONFIG_DIR}"
+
 # Create output directories
 RESULTS_DIR="${ROOT_DIR}/smoke_test/results"
 DATASET_OUTDIR="${RESULTS_DIR}/${DATASET}"
@@ -176,6 +193,8 @@ FIG_OUTDIR="${RESULTS_DIR}/figs"
 LOG_FILE="${RESULTS_DIR}/smoke_test.log"
 
 mkdir -p "${DATASET_OUTDIR}" "${FIG_OUTDIR}"
+
+# Start logging (append mode)
 exec > >(tee -a "${LOG_FILE}") 2>&1
 
 info "Logging to: ${LOG_FILE}"
@@ -204,17 +223,20 @@ source "${CONDA_BASE}/etc/profile.d/conda.sh"
 if conda env list | awk '{print $1}' | grep -qx "${CONDA_ENV_NAME}"; then
     info "Conda environment '${CONDA_ENV_NAME}' already exists."
 else
-    # Try primary yml, then fallback
-    if [ -f "${ENV_YML_PATH}" ]; then
-        YML_TO_USE="${ENV_YML_PATH}"
-    elif [ -f "${ENV_YML_FALLBACK}" ]; then
-        warn "Primary env file not found, using fallback: ${ENV_YML_FALLBACK}"
-        YML_TO_USE="${ENV_YML_FALLBACK}"
-    else
-        err "No environment file found. Tried: ${ENV_YML_PATH}, ${ENV_YML_FALLBACK}"
+    # Find available environment file
+    YML_TO_USE=""
+    for yml_path in "${ENV_YML_OPTIONS[@]}"; do
+        if [ -f "${yml_path}" ]; then
+            YML_TO_USE="${yml_path}"
+            break
+        fi
+    done
+    
+    if [ -z "${YML_TO_USE}" ]; then
+        err "No environment file found. Tried: ${ENV_YML_OPTIONS[*]}"
     fi
     
-    info "Creating conda environment '${CONDA_ENV_NAME}' (this may take 2-3 minutes)..."
+    info "Creating conda environment '${CONDA_ENV_NAME}' from ${YML_TO_USE} (this may take 2-3 minutes)..."
     conda env create -f "${YML_TO_USE}" -n "${CONDA_ENV_NAME}" || err "Failed to create conda environment"
 fi
 
@@ -262,7 +284,7 @@ success "LGO completed. Outputs in: ${DATASET_OUTDIR}"
 
 # Quick validation
 if [ -d "${DATASET_OUTDIR}/candidates" ]; then
-    N_CANDIDATES=$(find "${DATASET_OUTDIR}/candidates" -name "*.csv" | wc -l)
+    N_CANDIDATES=$(find "${DATASET_OUTDIR}/candidates" -name "*.csv" 2>/dev/null | wc -l)
     info "Found ${N_CANDIDATES} candidate files"
 else
     warn "No candidates directory found"
@@ -275,21 +297,26 @@ print_header "Step 3: Threshold Extraction"
 
 info "Extracting thresholds in physical units..."
 
-python utility_analysis/07_gen_thresholds_units.py \
-    --dataset_dir "${DATASET_OUTDIR}" \
-    --dataset "${DATASET_NAME}" \
-    --method lgo \
-    --topk 10 \
-    --experiments lgo_hard \
-    || warn "Threshold extraction had issues (may be OK if no lgo_hard gates)"
+# Check if utility_analysis scripts exist
+if [ -f "utility_analysis/07_gen_thresholds_units.py" ]; then
+    python utility_analysis/07_gen_thresholds_units.py \
+        --dataset_dir "${DATASET_OUTDIR}" \
+        --dataset "${DATASET_NAME}" \
+        --method lgo \
+        --topk 10 \
+        --experiments lgo_hard \
+        || warn "Threshold extraction had issues (may be OK if no lgo_hard gates)"
 
-if [ -f "${DATASET_OUTDIR}/aggregated/thresholds_units.csv" ]; then
-    success "Thresholds extracted: ${DATASET_OUTDIR}/aggregated/thresholds_units.csv"
-    echo ""
-    echo "Sample thresholds:"
-    head -5 "${DATASET_OUTDIR}/aggregated/thresholds_units.csv" || true
+    if [ -f "${DATASET_OUTDIR}/aggregated/thresholds_units.csv" ]; then
+        success "Thresholds extracted: ${DATASET_OUTDIR}/aggregated/thresholds_units.csv"
+        echo ""
+        echo "Sample thresholds:"
+        head -5 "${DATASET_OUTDIR}/aggregated/thresholds_units.csv" 2>/dev/null || true
+    else
+        warn "thresholds_units.csv not created (may be OK for base experiment)"
+    fi
 else
-    warn "thresholds_units.csv not created (may be OK for base experiment)"
+    warn "utility_analysis/07_gen_thresholds_units.py not found, skipping threshold extraction"
 fi
 
 # =============================================================================
@@ -297,27 +324,33 @@ fi
 # =============================================================================
 print_header "Step 4: Threshold Audit Against Clinical Guidelines"
 
-if [ -f "config/guidelines.yaml" ]; then
-    info "Auditing thresholds against clinical guidelines..."
-    
-    python utility_analysis/08_threshold_audit.py \
-        --dataset_dir "${DATASET_OUTDIR}" \
-        --dataset "${DATASET_NAME}" \
-        --guidelines config/guidelines.yaml \
-        || warn "Threshold audit had issues"
-    
-    if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
-        success "Audit complete: ${DATASET_OUTDIR}/aggregated/threshold_audit.csv"
+GUIDELINES_PATH="${CONFIG_DIR}/guidelines.yaml"
+
+if [ -f "${GUIDELINES_PATH}" ]; then
+    if [ -f "utility_analysis/08_threshold_audit.py" ]; then
+        info "Auditing thresholds against clinical guidelines..."
         
-        # Show summary
-        if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit_summary.csv" ]; then
-            echo ""
-            echo "Audit Summary:"
-            cat "${DATASET_OUTDIR}/aggregated/threshold_audit_summary.csv"
+        python utility_analysis/08_threshold_audit.py \
+            --dataset_dir "${DATASET_OUTDIR}" \
+            --dataset "${DATASET_NAME}" \
+            --guidelines "${GUIDELINES_PATH}" \
+            || warn "Threshold audit had issues"
+        
+        if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
+            success "Audit complete: ${DATASET_OUTDIR}/aggregated/threshold_audit.csv"
+            
+            # Show summary
+            if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit_summary.csv" ]; then
+                echo ""
+                echo "Audit Summary:"
+                cat "${DATASET_OUTDIR}/aggregated/threshold_audit_summary.csv"
+            fi
         fi
+    else
+        warn "utility_analysis/08_threshold_audit.py not found, skipping audit"
     fi
 else
-    warn "config/guidelines.yaml not found, skipping audit"
+    warn "${GUIDELINES_PATH} not found, skipping audit"
 fi
 
 # =============================================================================
@@ -331,22 +364,26 @@ else
     info "Generating visualizations..."
     
     # Try aggregation first
-    if python utility_plots/05_01_aggregate_thresholds.py \
-        --dataset_dirs "${DATASET_OUTDIR}" \
-        --outdir "${FIG_OUTDIR}" \
-        --only_anchored 2>/dev/null; then
-        
-        success "Threshold aggregation complete"
-        
-        # Generate heatmap if aggregation succeeded
-        if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ]; then
-            python utility_plots/05_02_agreement_heatmap.py \
-                --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
-                --outdir "${FIG_OUTDIR}" \
-                --annotate 2>/dev/null && success "Heatmap generated" || warn "Heatmap generation failed"
+    if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
+        if python utility_plots/05_01_aggregate_thresholds.py \
+            --dataset_dirs "${DATASET_OUTDIR}" \
+            --outdir "${FIG_OUTDIR}" \
+            --only_anchored 2>/dev/null; then
+            
+            success "Threshold aggregation complete"
+            
+            # Generate heatmap if aggregation succeeded
+            if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ] && [ -f "utility_plots/05_02_agreement_heatmap.py" ]; then
+                python utility_plots/05_02_agreement_heatmap.py \
+                    --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
+                    --outdir "${FIG_OUTDIR}" \
+                    --annotate 2>/dev/null && success "Heatmap generated" || warn "Heatmap generation failed"
+            fi
+        else
+            warn "Threshold aggregation failed or no data available"
         fi
     else
-        warn "Visualization scripts not available or failed"
+        warn "Visualization scripts not available"
     fi
 fi
 
