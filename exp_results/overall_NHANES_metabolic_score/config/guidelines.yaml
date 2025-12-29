@@ -1,0 +1,55 @@
+# Medical Guidelines Reference Values
+# Auto-generated and maintained by 08_convert_ground_truth_to_guidelines.py
+# Enhanced with comprehensive medical thresholds from clinical guidelines
+
+global:
+  age: 50.0
+  bicarbonate: 24.0
+  bmi: 25.0
+  bun: 15.0
+  chloride: 100.0
+  cholesterol: 200.0
+  creatinine: 1.0
+  diastolic_bp: 80.0
+  glucose: 100.0
+  hdl: 40.0
+  heart_rate: 70.0
+  hemoglobin: 12.0
+  lactate: 2.0
+  ldl: 100.0
+  platelet: 250.0
+  potassium: 4.0
+  respiratory_rate: 16.0
+  sodium: 140.0
+  spo2: 95.0
+  systolic_bp: 120.0
+  temperature: 37.0
+  triglycerides: 150.0
+  wbc: 7.5
+
+datasets:
+  NHANES_metabolic_score:
+    # From ground_truth.json
+    bmi: 25.0  # from ground_truth.json
+    diastolic_bp: 85.0  # from ground_truth.json
+    fasting_glucose: 100.0  # from ground_truth.json
+    hba1c: 5.7  # from ground_truth.json
+    hdl_cholesterol: 40.0  # from ground_truth.json
+    systolic_bp: 130.0  # from ground_truth.json
+    triglycerides: 150.0  # from ground_truth.json
+    waist_circumference: 88.0  # from ground_truth.json
+    # Additional medical guidelines
+    alt_max: 40.0  # additional medical guidelines
+    apolipoprotein_b: 90.0  # additional medical guidelines
+    ast_max: 40.0  # additional medical guidelines
+    bp_diastolic_stage1: 80.0  # additional medical guidelines
+    bp_diastolic_stage2: 90.0  # additional medical guidelines
+    bp_systolic_stage1: 130.0  # additional medical guidelines
+    bp_systolic_stage2: 140.0  # additional medical guidelines
+    egfr_min: 60.0  # additional medical guidelines
+    glucose_diabetes: 126.0  # additional medical guidelines
+    hba1c_diabetes: 6.5  # additional medical guidelines
+    ldl_cholesterol: 100.0  # additional medical guidelines
+    non_hdl_cholesterol: 130.0  # additional medical guidelines
+    total_cholesterol: 200.0  # additional medical guidelines
+    uacr_max: 30.0  # additional medical guidelines

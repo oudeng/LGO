@@ -1,0 +1,16 @@
+dataset,task,method,experiment,metric,mean,std
+NHANES_metabolic_score,regression,lgo,base,MAE,-0.004935348315657029,0.03398306875286608
+NHANES_metabolic_score,regression,lgo,base,R2,-0.0005249022840429274,0.018566924840265633
+NHANES_metabolic_score,regression,lgo,base,RMSE,-0.007634946196763348,0.03281766534924846
+NHANES_metabolic_score,regression,lgo,lgo_hard,MAE,-0.0025668611346297667,0.014730272301936999
+NHANES_metabolic_score,regression,lgo,lgo_hard,R2,-0.0015707112984036486,0.022895642726866103
+NHANES_metabolic_score,regression,lgo,lgo_hard,RMSE,-0.00486187636337716,0.019727021102751697
+NHANES_metabolic_score,regression,lgo,lgo_soft,MAE,-0.010692218860792402,0.041059916790389825
+NHANES_metabolic_score,regression,lgo,lgo_soft,R2,0.0007160448448822355,0.04771862256266401
+NHANES_metabolic_score,regression,lgo,lgo_soft,RMSE,-0.011706896678058043,0.04671578765618354
+NHANES_metabolic_score,regression,operon,base,MAE,-0.010607999430852754,0.02404598151075829
+NHANES_metabolic_score,regression,operon,base,R2,0.005805916228147778,0.018233137641284834
+NHANES_metabolic_score,regression,operon,base,RMSE,-0.01413080325810514,0.02278725110140599
+NHANES_metabolic_score,regression,pysr,base,MAE,-0.015643949293283266,0.03510294253495967
+NHANES_metabolic_score,regression,pysr,base,R2,0.010804913925533576,0.026689841788320977
+NHANES_metabolic_score,regression,pysr,base,RMSE,-0.020387955873834008,0.03814743496028116

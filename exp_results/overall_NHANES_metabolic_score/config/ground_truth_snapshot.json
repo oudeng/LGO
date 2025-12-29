@@ -1,0 +1,71 @@
+{
+  "_metadata": {
+    "description": "Snapshot of ground_truth.json used for threshold audit",
+    "source_file": "/home/dengou/LGO_1130/data/NHANES/ground_truth.json",
+    "snapshot_created": "2025-12-14T13:39:25.411917",
+    "note": "This file preserves the exact ground_truth used for guidelines generation"
+  },
+  "ground_truth": {
+    "waist_circumference": {
+      "values": [
+        102.0,
+        88.0
+      ],
+      "source": "NCEP ATP III",
+      "note": "Male ≥102 cm, Female ≥88 cm"
+    },
+    "triglycerides": {
+      "values": [
+        150.0
+      ],
+      "source": "NCEP ATP III / IDF",
+      "note": "≥150 mg/dL"
+    },
+    "hdl_cholesterol": {
+      "values": [
+        40.0,
+        50.0
+      ],
+      "source": "NCEP ATP III",
+      "note": "Male <40 mg/dL, Female <50 mg/dL"
+    },
+    "systolic_bp": {
+      "values": [
+        130.0
+      ],
+      "source": "NCEP ATP III / IDF",
+      "note": "≥130 mmHg"
+    },
+    "diastolic_bp": {
+      "values": [
+        85.0
+      ],
+      "source": "NCEP ATP III / IDF",
+      "note": "≥85 mmHg"
+    },
+    "fasting_glucose": {
+      "values": [
+        100.0,
+        126.0
+      ],
+      "source": "IDF / ADA",
+      "note": "≥100 mg/dL (prediabetes), ≥126 mg/dL (diabetes)"
+    },
+    "bmi": {
+      "values": [
+        25.0,
+        30.0
+      ],
+      "source": "WHO",
+      "note": "≥25 (overweight), ≥30 (obese)"
+    },
+    "hba1c": {
+      "values": [
+        5.7,
+        6.5
+      ],
+      "source": "ADA",
+      "note": "≥5.7% (prediabetes), ≥6.5% (diabetes)"
+    }
+  }
+}
