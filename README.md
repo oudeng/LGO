@@ -138,7 +138,7 @@ See [data/README_data.md](data/README_data.md) for preprocessing and clinical th
 ```bash
 conda activate py310
 
-python run_v3_8.py \
+python run_v3_8_2.py \
   --csv data/NHANES/NHANES_metabolic_score.csv \
   --target metabolic_score \
   --task regression \
