@@ -370,37 +370,30 @@ else
     
     VIZ_SUCCESS=0
     
-    # Method 1: Try 05_06 with all_thresholds_summary.csv (needs guideline column populated)
-    # First run 05_01 to create the summary
+    # Method 1: Run 05_01 to create aggregated summary CSV
     if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
         python utility_plots/05_01_aggregate_thresholds.py \
             --dataset_dirs "${DATASET_OUTDIR}" \
-            --outdir "${FIG_OUTDIR}" 2>&1
+            --outdir "${FIG_OUTDIR}" 2>&1 || true
         
         if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ]; then
             success "Created: ${FIG_OUTDIR}/all_thresholds_summary.csv"
         fi
     fi
     
-    # Method 2: Try 05_06_publication_figure.py with the summary
-    if [ -f "utility_plots/05_06_publication_figure.py" ] && [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ]; then
-        info "Trying 05_06_publication_figure.py..."
-        python utility_plots/05_06_publication_figure.py \
-            --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
-            --outdir "${FIG_OUTDIR}" 2>&1 && VIZ_SUCCESS=1 || true
-    fi
-    
-    # Method 3: Generate threshold comparison plot from threshold_audit.csv
-    # This file already has guideline data merged in
-    if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
-        info "Generating threshold comparison plot from audit data..."
+    # Method 2: Generate threshold heatmap from threshold_audit.csv + guidelines.yaml
+    # This method directly reads guidelines.yaml and matches by original feature name
+    if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ] && [ -f "${GUIDELINES_PATH}" ]; then
+        info "Generating threshold heatmap..."
         
         export DATASET_OUTDIR="${DATASET_OUTDIR}"
         export FIG_OUTDIR="${FIG_OUTDIR}"
         export DATASET_NAME="${DATASET_NAME}"
+        export GUIDELINES_PATH="${GUIDELINES_PATH}"
         
         python3 << 'PYEOF'
 import pandas as pd
+import yaml
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -409,69 +402,84 @@ import os
 
 dataset_outdir = os.environ.get('DATASET_OUTDIR')
 fig_outdir = os.environ.get('FIG_OUTDIR')
-dataset_name = os.environ.get('DATASET_NAME', 'Dataset')
+dataset_name = os.environ.get('DATASET_NAME')
+guidelines_path = os.environ.get('GUIDELINES_PATH')
 
+# Load threshold data
 audit_path = f"{dataset_outdir}/aggregated/threshold_audit.csv"
 df = pd.read_csv(audit_path)
 
-# Filter valid rows
-df = df[df['median'].notna()].copy()
-df = df[~df['feature'].isin(['unknown', 'zero', 'one', 'gender_std'])].copy()
+# Load guidelines
+with open(guidelines_path) as f:
+    guidelines = yaml.safe_load(f)
 
-if len(df) == 0:
-    print("No valid features with thresholds to plot")
+# Get dataset-specific guidelines, fallback to global
+ds_guidelines = guidelines.get('datasets', {}).get(dataset_name, {})
+global_guidelines = guidelines.get('global', {})
+
+# Merge: dataset-specific takes priority
+all_guidelines = {**global_guidelines, **ds_guidelines}
+
+print(f"Loaded {len(all_guidelines)} guidelines")
+
+# Match guidelines using original feature name (not feature_norm)
+df['guideline_matched'] = df['feature'].map(all_guidelines)
+
+# Calculate relative error
+df['rel_error_calc'] = (df['median'] - df['guideline_matched']) / df['guideline_matched']
+
+print("Matching results:")
+for _, row in df.iterrows():
+    g = row['guideline_matched']
+    m = row['median']
+    m_str = f"{m:.2f}" if pd.notna(m) else "N/A"
+    g_str = f"{g}" if pd.notna(g) else "N/A"
+    print(f"  {row['feature']}: median={m_str}, guideline={g_str}")
+
+# Filter valid rows
+df_plot = df[df['median'].notna()].copy()
+df_plot = df_plot[~df_plot['feature'].isin(['unknown', 'zero', 'one', 'gender_std'])].copy()
+
+if len(df_plot) == 0:
+    print("No valid features to plot")
     exit(0)
 
+print(f"Plotting {len(df_plot)} features...")
+
 # Create traffic-light style figure
-fig, ax = plt.subplots(figsize=(6, max(3, len(df) * 0.8)))
+fig, ax = plt.subplots(figsize=(6, max(3, len(df_plot) * 0.9)))
 
-# Determine colors based on relative error
 colors = []
-for _, row in df.iterrows():
-    if pd.isna(row.get('guideline')) or pd.isna(row.get('rel_error')):
-        colors.append('#808080')  # Gray - no guideline
-    elif abs(row['rel_error']) <= 0.1:
-        colors.append('#2ecc71')  # Green ≤10%
-    elif abs(row['rel_error']) <= 0.2:
-        colors.append('#f39c12')  # Orange ≤20%
+for _, row in df_plot.iterrows():
+    if pd.isna(row['guideline_matched']) or pd.isna(row['rel_error_calc']):
+        colors.append('#808080')
+    elif abs(row['rel_error_calc']) <= 0.1:
+        colors.append('#2ecc71')
+    elif abs(row['rel_error_calc']) <= 0.2:
+        colors.append('#f39c12')
     else:
-        colors.append('#e74c3c')  # Red >20%
+        colors.append('#e74c3c')
 
-y_pos = np.arange(len(df))
+y_pos = np.arange(len(df_plot))
+bars = ax.barh(y_pos, [1]*len(df_plot), color=colors, edgecolor='white', height=0.7)
 
-# Create horizontal bars
-bars = ax.barh(y_pos, [1]*len(df), color=colors, edgecolor='white', height=0.7)
-
-# Add text annotations inside bars
-for i, (_, row) in enumerate(df.iterrows()):
-    # Value and delta
+# Add text annotations
+for i, (_, row) in enumerate(df_plot.iterrows()):
     val_text = f"{row['median']:.1f}"
-    if pd.notna(row.get('rel_error')):
-        val_text += f"\nΔ{abs(row['rel_error'])*100:.0f}%"
-    
+    if pd.notna(row['rel_error_calc']):
+        val_text += f"\nΔ{abs(row['rel_error_calc'])*100:.0f}%"
     ax.text(0.5, i, val_text, ha='center', va='center', fontsize=11, fontweight='bold', color='white')
 
-# Y-axis labels (feature names)
-labels = []
-for _, row in df.iterrows():
-    label = row['feature'].replace('_', ' ').title()
-    if pd.notna(row.get('unit')) and row['unit'] != 'nan':
-        label = f"{label}"
-    labels.append(label)
-
+labels = [row['feature'].replace('_', ' ').title() for _, row in df_plot.iterrows()]
 ax.set_yticks(y_pos)
 ax.set_yticklabels(labels, fontsize=10)
 ax.set_xlim(0, 1)
 ax.set_xticks([])
-
-# Title
 ax.set_title(f"{dataset_name.replace('_', ' ')}", fontsize=12, fontweight='bold')
 
-# Remove spines
 for spine in ax.spines.values():
     spine.set_visible(False)
 
-# Legend
 from matplotlib.patches import Patch
 legend_elements = [
     Patch(facecolor='#2ecc71', label='≤10%'),
@@ -486,49 +494,6 @@ os.makedirs(fig_outdir, exist_ok=True)
 out_path = f"{fig_outdir}/threshold_heatmap_{dataset_name}.png"
 plt.savefig(out_path, dpi=150, bbox_inches='tight', facecolor='white')
 print(f"[OK] Saved: {out_path}")
-
-# Also save a simple summary table as PNG
-fig2, ax2 = plt.subplots(figsize=(10, max(2, len(df) * 0.5)))
-ax2.axis('off')
-
-# Create table data
-table_data = []
-for _, row in df.iterrows():
-    feature = row['feature'].replace('_', ' ').title()
-    unit = row.get('unit', '') if pd.notna(row.get('unit')) else ''
-    median = f"{row['median']:.1f}" if pd.notna(row['median']) else '-'
-    guideline = f"{row['guideline']:.1f}" if pd.notna(row.get('guideline')) else '-'
-    rel_err = f"{abs(row['rel_error'])*100:.1f}%" if pd.notna(row.get('rel_error')) else '-'
-    table_data.append([feature, unit, median, guideline, rel_err])
-
-table = ax2.table(
-    cellText=table_data,
-    colLabels=['Feature', 'Unit', 'LGO Threshold', 'Guideline', 'Rel. Error'],
-    loc='center',
-    cellLoc='center'
-)
-table.auto_set_font_size(False)
-table.set_fontsize(10)
-table.scale(1.2, 1.5)
-
-# Color cells based on error
-for i, (_, row) in enumerate(df.iterrows()):
-    if pd.isna(row.get('rel_error')):
-        color = '#f0f0f0'
-    elif abs(row['rel_error']) <= 0.1:
-        color = '#d5f5e3'
-    elif abs(row['rel_error']) <= 0.2:
-        color = '#fdebd0'
-    else:
-        color = '#fadbd8'
-    for j in range(5):
-        table[(i+1, j)].set_facecolor(color)
-
-plt.title(f'LGO Threshold Audit: {dataset_name}', fontsize=12, fontweight='bold', pad=20)
-plt.tight_layout()
-out_path2 = f"{fig_outdir}/threshold_table_{dataset_name}.png"
-plt.savefig(out_path2, dpi=150, bbox_inches='tight', facecolor='white')
-print(f"[OK] Saved: {out_path2}")
 PYEOF
         
         if [ -f "${FIG_OUTDIR}/threshold_heatmap_${DATASET_NAME}.png" ]; then
