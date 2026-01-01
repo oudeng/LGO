@@ -24,12 +24,12 @@ This smoke test provides a **minimal end-to-end verification** of the LGO framew
 
 | Component | What's Tested | Time |
 |-----------|---------------|------|
-| Environment | Conda setup, dependencies | ~3 min |
-| LGO Engine | Symbolic regression with soft/hard gating | ~5 min |
+| Environment | Conda setup, dependencies | ~1 min |
+| LGO Engine | Symbolic regression with soft/hard gating | ~18 min |
 | Threshold Analysis | Clinical threshold extraction & audit | ~1 min |
 | Visualization | Publication-quality figures | ~1 min |
 
-**Total time: ~10 minutes** on a standard laptop (no GPU required).
+**Total time: ~20 minutes** on a standard laptop (no GPU required).
 
 ---
 
