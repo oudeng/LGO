@@ -24,12 +24,12 @@ This smoke test provides a **minimal end-to-end verification** of the LGO framew
 
 | Component | What's Tested | Time |
 |-----------|---------------|------|
-| Environment | Conda setup, dependencies | ~3 min |
-| LGO Engine | Symbolic regression with soft/hard gating | ~5 min |
+| Environment | Conda setup, dependencies | ~2 min |
+| LGO Engine | Symbolic regression with soft/hard gating | ~10 min |
 | Threshold Analysis | Clinical threshold extraction & audit | ~1 min |
 | Visualization | Publication-quality figures | ~1 min |
 
-**Total time: ~10 minutes** on a standard laptop (no GPU required).
+**Total time: ~15 minutes** on a standard laptop (no GPU required).
 
 ---
 
@@ -367,12 +367,3 @@ No GPU required.
 
 ---
 
-## Contact
-
-If the smoke test fails after following troubleshooting steps, please open an issue at:
-https://github.com/oudeng/LGO/issues
-
-Include:
-1. Full error message
-2. Output of `conda list`
-3. Operating system and version
