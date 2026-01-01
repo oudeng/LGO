@@ -2,21 +2,61 @@
 # -*- coding: utf-8 -*-
 """
 run_v3_8_2.py
-
-LGO_v2_1 + run_v3_8_2 + PySR_v2 + Operon_v2
-
-on Dec 12, 2025
+on Dec 31, 2025
 
 """
 
-import argparse, json, time, inspect, re, math
+import sys, argparse, json, time, inspect, re, math
 from pathlib import Path
 import numpy as np, pandas as pd
 from sklearn.model_selection import train_test_split, StratifiedKFold, KFold
 
-# project helpers
-from lgo_v3.instrumentation import save_scaler, save_units, save_splits, save_hparams, append_runtime_profile
-from lgo_v3.metrics import classification_metrics
+# =============================================================================
+# 将 exp_engins 子文件夹添加到 Python 路径
+# 所有引擎模块（LGO_v2_1, PySR_v2, Operon_v2, lgo_v3 等）都在 exp_engins 目录中
+# =============================================================================
+_SCRIPT_DIR = Path(__file__).resolve().parent
+_EXP_ENGINES_DIR = _SCRIPT_DIR / "exp_engins"
+
+# 确保 exp_engins 在 sys.path 最前面
+if str(_EXP_ENGINES_DIR) not in sys.path:
+    sys.path.insert(0, str(_EXP_ENGINES_DIR))
+
+# 诊断输出（可通过环境变量关闭）
+import os
+if os.environ.get("LGO_DEBUG", "0") == "1":
+    print(f"[DEBUG] Script dir: {_SCRIPT_DIR}")
+    print(f"[DEBUG] Engines dir: {_EXP_ENGINES_DIR}")
+    print(f"[DEBUG] Engines dir exists: {_EXP_ENGINES_DIR.exists()}")
+    if _EXP_ENGINES_DIR.exists():
+        print(f"[DEBUG] Contents: {list(_EXP_ENGINES_DIR.iterdir())[:10]}")
+    print(f"[DEBUG] sys.path[0]: {sys.path[0]}")
+
+# project helpers - 从 exp_engins/lgo_v3 导入
+try:
+    from lgo_v3.instrumentation import save_scaler, save_units, save_splits, save_hparams, append_runtime_profile
+    from lgo_v3.metrics import classification_metrics
+except ImportError as e:
+    print(f"[WARN] Failed to import lgo_v3 helpers: {e}")
+    print(f"[WARN] Expected location: {_EXP_ENGINES_DIR / 'lgo_v3'}")
+    # 定义占位函数，防止脚本完全崩溃
+    def save_scaler(*args, **kwargs): pass
+    def save_units(*args, **kwargs): pass
+    def save_splits(*args, **kwargs): pass
+    def save_hparams(*args, **kwargs): pass
+    def append_runtime_profile(*args, **kwargs): pass
+    def classification_metrics(y_true, y_prob):
+        from sklearn.metrics import roc_auc_score, average_precision_score, brier_score_loss
+        try:
+            auroc = roc_auc_score(y_true, y_prob)
+        except: auroc = 0.5
+        try:
+            auprc = average_precision_score(y_true, y_prob)
+        except: auprc = float(np.mean(y_true))
+        try:
+            brier = brier_score_loss(y_true, y_prob)
+        except: brier = 0.25
+        return {"AUROC": auroc, "AUPRC": auprc, "Brier": brier}
 
 # ====================== Global constants ======================
 EPS = 1e-12
@@ -225,27 +265,35 @@ def _parse_predictions_from_engine(raw_data):
     return None
 
 # ------------------------ Engines ------------------------
-# LGO 主引擎：仍然用 v2_1（你验证过稳定）
+# 所有引擎模块都在 exp_engins 目录中
+# LGO 主引擎：仍然用 v2_1（验证过稳定）
 try:
     from LGO_v2_1 import run_lgo_sr_v2 as run_lgo_sr
-except Exception:
+except Exception as e:
     run_lgo_sr = None
+    if os.environ.get("LGO_DEBUG", "0") == "1":
+        print(f"[DEBUG] LGO_v2_1 import failed: {e}")
+        print(f"[DEBUG] Expected at: {_EXP_ENGINES_DIR / 'LGO_v2_1.py'}")
 
 # 使用 SRBench 对齐的 v2 版本（约 500k evaluations）
 try:
     from PySR_v2 import run_pysr_sr_v2 as run_pysr_sr
-except Exception:
+except Exception as e:
     run_pysr_sr = None
+    if os.environ.get("LGO_DEBUG", "0") == "1":
+        print(f"[DEBUG] PySR_v2 import failed: {e}")
 
 try:
     from Operon_v2 import run_operon_sr_v2 as run_operon_sr
-except Exception:
+except Exception as e:
     run_operon_sr = None
+    if os.environ.get("LGO_DEBUG", "0") == "1":
+        print(f"[DEBUG] Operon_v2 import failed: {e}")
 
 # 可选：PSTree / RILS-ROLS（保留原来的 try/except，这样即使没装也只是打印 warning）
 try:
-    from archive.PSTree_v2_2 import run_pstree_once as _pst_run
-    from archive.PSTree_v2_2 import PSTreeConfig as _PSTCfg
+    from PSTree_v2_2 import run_pstree_once as _pst_run
+    from PSTree_v2_2 import PSTreeConfig as _PSTCfg
 except Exception:
     _pst_run, _PSTCfg = None, None
 
@@ -266,7 +314,9 @@ ENGINES = {
 # ---------------------- Engine wrappers ----------------------
 def _call_lgo(X, y, feature_names, experiment, hparams):
     if run_lgo_sr is None:
-        print("[ERROR] lgo engine not importable in this env.")
+        print(f"[ERROR] lgo engine not importable in this env.")
+        print(f"[ERROR] Expected LGO_v2_1.py at: {_EXP_ENGINES_DIR / 'LGO_v2_1.py'}")
+        print(f"[ERROR] To debug, run with: LGO_DEBUG=1 python run_v3_8_2.py ...")
         return pd.DataFrame()
     candidate_kwargs = {
         "X": X, "y": y, "feature_names": feature_names, "experiment": experiment,
@@ -822,11 +872,6 @@ def main():
     for seed in args.seeds_list:
         for tok in exp_tokens:
             method, experiment = mapping[tok]
-            # v3.7
-            #run_once(args, method, experiment, seed)
-
-            # v3.8 替换为（带错误日志与继续执行）
-            # 作用：就算某个引擎/实验偶发崩掉，整批实验仍能完成，且有清晰的错误轨迹。
             try:
                 run_once(args, method, experiment, seed)
             except Exception as e:
@@ -836,13 +881,6 @@ def main():
                 ag.mkdir(parents=True, exist_ok=True)
                 err_path = ag / "errors_log.csv"
 
-                # v3.7
-                #with open(err_path, "a", encoding="utf-8") as f:
-                #    f.write(
-                #        f'{int(time.time())},"{args.dataset}",{method},{experiment},{seed},"{str(e).replace("\"","\'")}","{traceback.format_exc().replace("\n"," | ")}"\n'
-                #    )
-
-                # v3.8. 用 csv.writer（更健壮，自动处理引号/逗号/换行,以后不容易再踩到转义坑。）
                 import csv
                 with open(err_path, "a", encoding="utf-8", newline="") as f:
                     w = csv.writer(f)
