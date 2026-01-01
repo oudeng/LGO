@@ -26,6 +26,7 @@ CONDA_ENV_NAME="py310_smoke"
 # Environment file options (in order of preference)
 ENV_YML_OPTIONS=(
     "env_setup/env_py310_smoke.yml"
+    "smoke_test/env_py310_smoke.yml"
     "env_setup/env_py310_test.yml"
     "env_setup/env_py310.yml"
 )
