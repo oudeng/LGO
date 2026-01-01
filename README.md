@@ -65,28 +65,29 @@ LGO/
 │   └── README_data.md
 ├── env_setup/                     # Conda environments
 │   └── README_env.md
-├── config/                        # Clinical guidelines
-│   └── guidelines.yaml
 │
 ├── exp_engins/                    # Experiment engines
-│   ├── LGO_v2_1.py               # LGO (proposed method)
-│   ├── PySR_v2.py                # PySR baseline
-│   ├── Operon_v2.py              # Operon baseline
-│   ├── PSTree_v3.py              # PS-Tree baseline
-│   ├── RILS_ROLS_v2_1.py         # RILS-ROLS baseline
-│   ├── AutoScore_v2.py           # Clinical baseline
-│   ├── InterpretML_v1.py         # EBM baseline
+│   ├── LGO_v2_1.py                # LGO (proposed method)
+│   ├── PySR_v2.py                 # PySR baseline
+│   ├── Operon_v2.py               # Operon baseline
+│   ├── PSTree_v3.py               # PS-Tree baseline
+│   ├── RILS_ROLS_v2_1.py          # RILS-ROLS baseline
+│   ├── AutoScore_v2.py            # Clinical baseline
+│   ├── InterpretML_v1.py          # EBM baseline
 │   └── README_engins.md
 │
-├── run_v3_8.py                    # Main experiment runner
-├── run_command_lines/             # Reproduction commands
+├── run_v3_8_2.py                  # Main experiment runner
+├── exp_CLs/                       # Reproduction command lines
+│
+├── exp_results
+│   ├── overall_*/                 # Experiment results (6 datasets)
+│   ├── LGO_AutoScore_v3_8         # LGO vs AutoScore baseline
+│   └── LGO_Interpret_v1_4         # LGO vs EBM baseline
 │
 ├── utility_analysis/              # Result aggregation & analysis
 │   └── README_utility_analysis.md
 ├── utility_plots/                 # Visualization scripts
 │   └── README_utility_plots.md
-│
-├── overall_*/                     # Experiment results (6 datasets)
 │
 ├── smoke_test/                    # Quick verification
 │   ├── run_smoke_test.sh
