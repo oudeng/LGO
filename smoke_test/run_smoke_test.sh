@@ -242,31 +242,40 @@ python -c "import lgo_v3; print('[OK] lgo_v3 module imported')" || err "lgo_v3 m
 # =============================================================================
 # Step 2: Run LGO Symbolic Regression
 # =============================================================================
-print_header "Step 2: LGO Symbolic Regression (${DATASET})"
-
-if [ ! -f "${CSV_PATH}" ]; then
-    err "Dataset not found: ${CSV_PATH}"
+if [ "${SKIP_LGO:-0}" = "1" ]; then
+    print_header "Step 2: LGO Symbolic Regression (SKIPPED)"
+    info "SKIP_LGO=1, using existing results in ${DATASET_OUTDIR}"
+    
+    if [ ! -d "${DATASET_OUTDIR}/candidates" ]; then
+        err "No existing results found. Run without SKIP_LGO first."
+    fi
+else
+    print_header "Step 2: LGO Symbolic Regression (${DATASET})"
+    
+    if [ ! -f "${CSV_PATH}" ]; then
+        err "Dataset not found: ${CSV_PATH}"
+    fi
+    
+    info "Running LGO with experiments: ${EXPERIMENTS}"
+    info "Seeds: ${SEEDS}"
+    info "This will take approximately 5-10 minutes..."
+    
+    python run_v3_8_2.py \
+        --csv "${CSV_PATH}" \
+        --target "${TARGET}" \
+        --task regression \
+        --experiments "${EXPERIMENTS}" \
+        --seeds "${SEEDS}" \
+        --test_size 0.2 \
+        --outdir "${DATASET_OUTDIR}" \
+        --dataset "${DATASET_NAME}" \
+        --save_predictions \
+        --hparams_json "${HPARAMS}" \
+        --unit_map_json "${UNIT_MAP}" \
+        || err "run_v3_8_2.py failed"
+    
+    success "LGO completed. Outputs in: ${DATASET_OUTDIR}"
 fi
-
-info "Running LGO with experiments: ${EXPERIMENTS}"
-info "Seeds: ${SEEDS}"
-info "This will take approximately 5-10 minutes..."
-
-python run_v3_8_2.py \
-    --csv "${CSV_PATH}" \
-    --target "${TARGET}" \
-    --task regression \
-    --experiments "${EXPERIMENTS}" \
-    --seeds "${SEEDS}" \
-    --test_size 0.2 \
-    --outdir "${DATASET_OUTDIR}" \
-    --dataset "${DATASET_NAME}" \
-    --save_predictions \
-    --hparams_json "${HPARAMS}" \
-    --unit_map_json "${UNIT_MAP}" \
-    || err "run_v3_8_2.py failed"
-
-success "LGO completed. Outputs in: ${DATASET_OUTDIR}"
 
 # Quick validation
 if [ -d "${DATASET_OUTDIR}/candidates" ]; then
@@ -361,160 +370,182 @@ else
     
     VIZ_SUCCESS=0
     
-    # Method 1: Try 05_06_publication_figure.py (generates the traffic-light heatmap like Figure 3)
-    if [ -f "utility_plots/05_06_publication_figure.py" ]; then
-        info "Trying 05_06_publication_figure.py..."
-        if python utility_plots/05_06_publication_figure.py \
-            --threshold_csv "${DATASET_OUTDIR}/aggregated/thresholds_units.csv" \
-            --guidelines "${GUIDELINES_PATH}" \
-            --outdir "${FIG_OUTDIR}" \
-            --dataset "${DATASET_NAME}" 2>&1; then
-            success "Publication figure generated"
-            VIZ_SUCCESS=1
-        else
-            info "05_06 with thresholds_units.csv failed, trying threshold_audit.csv..."
-            # Try with threshold_audit.csv instead
-            if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
-                python utility_plots/05_06_publication_figure.py \
-                    --audit_csv "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" \
-                    --outdir "${FIG_OUTDIR}" \
-                    --dataset "${DATASET_NAME}" 2>&1 && VIZ_SUCCESS=1 || true
-            fi
-        fi
-    fi
-    
-    # Method 2: Try 05_01 + 05_02 pipeline  
-    if [ "$VIZ_SUCCESS" = "0" ] && [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
-        info "Trying 05_01 + 05_02 pipeline..."
-        
-        # Run aggregation
+    # Method 1: Try 05_06 with all_thresholds_summary.csv (needs guideline column populated)
+    # First run 05_01 to create the summary
+    if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
         python utility_plots/05_01_aggregate_thresholds.py \
             --dataset_dirs "${DATASET_OUTDIR}" \
             --outdir "${FIG_OUTDIR}" 2>&1
         
         if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ]; then
-            success "Threshold aggregation complete: ${FIG_OUTDIR}/all_thresholds_summary.csv"
-            
-            # Check rows
-            N_ROWS=$(wc -l < "${FIG_OUTDIR}/all_thresholds_summary.csv")
-            info "all_thresholds_summary.csv has ${N_ROWS} rows"
-            
-            # Try heatmap with guidelines if available
-            if [ -f "utility_plots/05_02_agreement_heatmap.py" ] && [ "$N_ROWS" -gt 1 ]; then
-                info "Attempting heatmap generation..."
-                
-                # Check if 05_02 supports --guidelines
-                if python utility_plots/05_02_agreement_heatmap.py --help 2>&1 | grep -q "guidelines"; then
-                    python utility_plots/05_02_agreement_heatmap.py \
-                        --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
-                        --guidelines "${GUIDELINES_PATH}" \
-                        --outdir "${FIG_OUTDIR}" \
-                        --annotate 2>&1 && VIZ_SUCCESS=1 || true
-                else
-                    python utility_plots/05_02_agreement_heatmap.py \
-                        --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
-                        --outdir "${FIG_OUTDIR}" \
-                        --annotate 2>&1 && VIZ_SUCCESS=1 || true
-                fi
-            fi
+            success "Created: ${FIG_OUTDIR}/all_thresholds_summary.csv"
         fi
     fi
     
-    # Method 3: Try generating simple threshold bar plot
-    if [ "$VIZ_SUCCESS" = "0" ] && [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
-        info "Generating simple threshold summary plot..."
+    # Method 2: Try 05_06_publication_figure.py with the summary
+    if [ -f "utility_plots/05_06_publication_figure.py" ] && [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ]; then
+        info "Trying 05_06_publication_figure.py..."
+        python utility_plots/05_06_publication_figure.py \
+            --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
+            --outdir "${FIG_OUTDIR}" 2>&1 && VIZ_SUCCESS=1 || true
+    fi
+    
+    # Method 3: Generate threshold comparison plot from threshold_audit.csv
+    # This file already has guideline data merged in
+    if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
+        info "Generating threshold comparison plot from audit data..."
         
-        # Export variables for Python script
         export DATASET_OUTDIR="${DATASET_OUTDIR}"
         export FIG_OUTDIR="${FIG_OUTDIR}"
+        export DATASET_NAME="${DATASET_NAME}"
         
-        # Create a simple Python script to generate basic visualization
         python3 << 'PYEOF'
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import sys
+import numpy as np
 import os
 
-# Read paths from environment or use defaults
-dataset_outdir = os.environ.get('DATASET_OUTDIR', 'smoke_test/results/NHANES_metabolic_score')
-fig_outdir = os.environ.get('FIG_OUTDIR', 'smoke_test/results/figs')
+dataset_outdir = os.environ.get('DATASET_OUTDIR')
+fig_outdir = os.environ.get('FIG_OUTDIR')
+dataset_name = os.environ.get('DATASET_NAME', 'Dataset')
 
 audit_path = f"{dataset_outdir}/aggregated/threshold_audit.csv"
-if not os.path.exists(audit_path):
-    print(f"No audit file found at {audit_path}")
-    sys.exit(1)
-
 df = pd.read_csv(audit_path)
-df = df[df['median'].notna() & (df['feature'] != 'unknown')]
+
+# Filter valid rows
+df = df[df['median'].notna()].copy()
+df = df[~df['feature'].isin(['unknown', 'zero', 'one', 'gender_std'])].copy()
 
 if len(df) == 0:
-    print("No valid data for plotting")
-    sys.exit(1)
+    print("No valid features with thresholds to plot")
+    exit(0)
 
-# Create figure
-fig, ax = plt.subplots(figsize=(10, max(4, len(df) * 0.5)))
+# Create traffic-light style figure
+fig, ax = plt.subplots(figsize=(6, max(3, len(df) * 0.8)))
 
-# Color by relative error
+# Determine colors based on relative error
 colors = []
 for _, row in df.iterrows():
-    if pd.isna(row.get('rel_error')) or pd.isna(row.get('guideline')):
-        colors.append('gray')
+    if pd.isna(row.get('guideline')) or pd.isna(row.get('rel_error')):
+        colors.append('#808080')  # Gray - no guideline
     elif abs(row['rel_error']) <= 0.1:
-        colors.append('green')
+        colors.append('#2ecc71')  # Green ≤10%
     elif abs(row['rel_error']) <= 0.2:
-        colors.append('orange')
+        colors.append('#f39c12')  # Orange ≤20%
     else:
-        colors.append('red')
+        colors.append('#e74c3c')  # Red >20%
 
-y_pos = range(len(df))
-bars = ax.barh(y_pos, df['median'], color=colors, edgecolor='black', alpha=0.8)
+y_pos = np.arange(len(df))
 
-# Add guideline markers
+# Create horizontal bars
+bars = ax.barh(y_pos, [1]*len(df), color=colors, edgecolor='white', height=0.7)
+
+# Add text annotations inside bars
 for i, (_, row) in enumerate(df.iterrows()):
-    if pd.notna(row.get('guideline')):
-        ax.axvline(x=row['guideline'], color='blue', linestyle='--', alpha=0.5)
-        ax.plot(row['guideline'], i, 'b|', markersize=20, markeredgewidth=2)
-
-# Add value labels
-for i, (_, row) in enumerate(df.iterrows()):
-    label = f"{row['median']:.1f}"
+    # Value and delta
+    val_text = f"{row['median']:.1f}"
     if pd.notna(row.get('rel_error')):
-        label += f" (Δ{abs(row['rel_error'])*100:.0f}%)"
-    ax.text(row['median'] + 1, i, label, va='center', fontsize=9)
+        val_text += f"\nΔ{abs(row['rel_error'])*100:.0f}%"
+    
+    ax.text(0.5, i, val_text, ha='center', va='center', fontsize=11, fontweight='bold', color='white')
+
+# Y-axis labels (feature names)
+labels = []
+for _, row in df.iterrows():
+    label = row['feature'].replace('_', ' ').title()
+    if pd.notna(row.get('unit')) and row['unit'] != 'nan':
+        label = f"{label}"
+    labels.append(label)
 
 ax.set_yticks(y_pos)
-ax.set_yticklabels([f"{row['feature']} ({row['unit']})" if pd.notna(row.get('unit')) else row['feature'] 
-                   for _, row in df.iterrows()])
-ax.set_xlabel('Threshold Value')
-ax.set_title('LGO Discovered Thresholds vs Clinical Guidelines\n(Green: ≤10%, Orange: ≤20%, Red: >20%, Gray: No guideline)')
+ax.set_yticklabels(labels, fontsize=10)
+ax.set_xlim(0, 1)
+ax.set_xticks([])
+
+# Title
+ax.set_title(f"{dataset_name.replace('_', ' ')}", fontsize=12, fontweight='bold')
+
+# Remove spines
+for spine in ax.spines.values():
+    spine.set_visible(False)
+
+# Legend
+from matplotlib.patches import Patch
+legend_elements = [
+    Patch(facecolor='#2ecc71', label='≤10%'),
+    Patch(facecolor='#f39c12', label='≤20%'),
+    Patch(facecolor='#e74c3c', label='>20%'),
+    Patch(facecolor='#808080', label='No guideline')
+]
+ax.legend(handles=legend_elements, loc='lower right', title='Relative Error', fontsize=8)
 
 plt.tight_layout()
 os.makedirs(fig_outdir, exist_ok=True)
-out_path = f"{fig_outdir}/threshold_summary.png"
-plt.savefig(out_path, dpi=150, bbox_inches='tight')
-print(f"Saved: {out_path}")
+out_path = f"{fig_outdir}/threshold_heatmap_{dataset_name}.png"
+plt.savefig(out_path, dpi=150, bbox_inches='tight', facecolor='white')
+print(f"[OK] Saved: {out_path}")
+
+# Also save a simple summary table as PNG
+fig2, ax2 = plt.subplots(figsize=(10, max(2, len(df) * 0.5)))
+ax2.axis('off')
+
+# Create table data
+table_data = []
+for _, row in df.iterrows():
+    feature = row['feature'].replace('_', ' ').title()
+    unit = row.get('unit', '') if pd.notna(row.get('unit')) else ''
+    median = f"{row['median']:.1f}" if pd.notna(row['median']) else '-'
+    guideline = f"{row['guideline']:.1f}" if pd.notna(row.get('guideline')) else '-'
+    rel_err = f"{abs(row['rel_error'])*100:.1f}%" if pd.notna(row.get('rel_error')) else '-'
+    table_data.append([feature, unit, median, guideline, rel_err])
+
+table = ax2.table(
+    cellText=table_data,
+    colLabels=['Feature', 'Unit', 'LGO Threshold', 'Guideline', 'Rel. Error'],
+    loc='center',
+    cellLoc='center'
+)
+table.auto_set_font_size(False)
+table.set_fontsize(10)
+table.scale(1.2, 1.5)
+
+# Color cells based on error
+for i, (_, row) in enumerate(df.iterrows()):
+    if pd.isna(row.get('rel_error')):
+        color = '#f0f0f0'
+    elif abs(row['rel_error']) <= 0.1:
+        color = '#d5f5e3'
+    elif abs(row['rel_error']) <= 0.2:
+        color = '#fdebd0'
+    else:
+        color = '#fadbd8'
+    for j in range(5):
+        table[(i+1, j)].set_facecolor(color)
+
+plt.title(f'LGO Threshold Audit: {dataset_name}', fontsize=12, fontweight='bold', pad=20)
+plt.tight_layout()
+out_path2 = f"{fig_outdir}/threshold_table_{dataset_name}.png"
+plt.savefig(out_path2, dpi=150, bbox_inches='tight', facecolor='white')
+print(f"[OK] Saved: {out_path2}")
 PYEOF
         
-        if [ -f "${FIG_OUTDIR}/threshold_summary.png" ]; then
+        if [ -f "${FIG_OUTDIR}/threshold_heatmap_${DATASET_NAME}.png" ]; then
             VIZ_SUCCESS=1
-            success "Basic threshold plot generated"
         fi
     fi
     
     # Report results
-    if [ "$VIZ_SUCCESS" = "1" ]; then
+    echo ""
+    if [ "$VIZ_SUCCESS" = "1" ] || ls "${FIG_OUTDIR}"/*.png 1>/dev/null 2>&1; then
         success "Visualization complete"
-        info "Generated files in ${FIG_OUTDIR}:"
-        ls -la "${FIG_OUTDIR}"/*.png "${FIG_OUTDIR}"/*.csv 2>/dev/null || true
+        info "Generated files:"
+        ls -la "${FIG_OUTDIR}"/*.png "${FIG_OUTDIR}"/*.csv 2>/dev/null | head -10
     else
-        warn "No PNG visualizations generated (CSV data available for manual plotting)"
-        info "Available data files:"
+        warn "No PNG visualizations generated"
+        info "CSV data available for manual plotting:"
         ls -la "${DATASET_OUTDIR}/aggregated/"*.csv 2>/dev/null || true
-        info ""
-        info "You can manually generate plots using:"
-        info "  python utility_plots/05_06_publication_figure.py --help"
     fi
 fi
 
