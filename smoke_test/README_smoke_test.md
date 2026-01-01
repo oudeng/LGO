@@ -180,8 +180,7 @@ python run_v3_8_2.py \
     "waist_circumference": "cm",
     "fasting_glucose": "mg/dL",
     "hdl_cholesterol": "mg/dL",
-    "age": "years",
-    "bmi": "kg/m²"
+    "age": "years"
   }'
 ```
 
