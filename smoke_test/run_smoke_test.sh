@@ -357,37 +357,164 @@ else
     print_header "Step 5: Visualization"
     
     info "Generating visualizations..."
+    mkdir -p "${FIG_OUTDIR}"
     
-    # Try aggregation (note: 05_01 doesn't support --guidelines, it reads from thresholds_units.csv)
-    if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
+    VIZ_SUCCESS=0
+    
+    # Method 1: Try 05_06_publication_figure.py (generates the traffic-light heatmap like Figure 3)
+    if [ -f "utility_plots/05_06_publication_figure.py" ]; then
+        info "Trying 05_06_publication_figure.py..."
+        if python utility_plots/05_06_publication_figure.py \
+            --threshold_csv "${DATASET_OUTDIR}/aggregated/thresholds_units.csv" \
+            --guidelines "${GUIDELINES_PATH}" \
+            --outdir "${FIG_OUTDIR}" \
+            --dataset "${DATASET_NAME}" 2>&1; then
+            success "Publication figure generated"
+            VIZ_SUCCESS=1
+        else
+            info "05_06 with thresholds_units.csv failed, trying threshold_audit.csv..."
+            # Try with threshold_audit.csv instead
+            if [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
+                python utility_plots/05_06_publication_figure.py \
+                    --audit_csv "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" \
+                    --outdir "${FIG_OUTDIR}" \
+                    --dataset "${DATASET_NAME}" 2>&1 && VIZ_SUCCESS=1 || true
+            fi
+        fi
+    fi
+    
+    # Method 2: Try 05_01 + 05_02 pipeline  
+    if [ "$VIZ_SUCCESS" = "0" ] && [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
+        info "Trying 05_01 + 05_02 pipeline..."
+        
+        # Run aggregation
         python utility_plots/05_01_aggregate_thresholds.py \
             --dataset_dirs "${DATASET_OUTDIR}" \
-            --outdir "${FIG_OUTDIR}" && AGG_OK=1 || AGG_OK=0
+            --outdir "${FIG_OUTDIR}" 2>&1
         
-        if [ "$AGG_OK" = "1" ]; then
-            success "Threshold aggregation complete"
+        if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ]; then
+            success "Threshold aggregation complete: ${FIG_OUTDIR}/all_thresholds_summary.csv"
             
-            # Generate heatmap if aggregation succeeded
-            if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ] && [ -f "utility_plots/05_02_agreement_heatmap.py" ]; then
-                # Check if summary has data
-                N_ROWS=$(wc -l < "${FIG_OUTDIR}/all_thresholds_summary.csv")
-                info "all_thresholds_summary.csv has ${N_ROWS} rows"
-                if [ "$N_ROWS" -gt 1 ]; then
+            # Check rows
+            N_ROWS=$(wc -l < "${FIG_OUTDIR}/all_thresholds_summary.csv")
+            info "all_thresholds_summary.csv has ${N_ROWS} rows"
+            
+            # Try heatmap with guidelines if available
+            if [ -f "utility_plots/05_02_agreement_heatmap.py" ] && [ "$N_ROWS" -gt 1 ]; then
+                info "Attempting heatmap generation..."
+                
+                # Check if 05_02 supports --guidelines
+                if python utility_plots/05_02_agreement_heatmap.py --help 2>&1 | grep -q "guidelines"; then
+                    python utility_plots/05_02_agreement_heatmap.py \
+                        --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
+                        --guidelines "${GUIDELINES_PATH}" \
+                        --outdir "${FIG_OUTDIR}" \
+                        --annotate 2>&1 && VIZ_SUCCESS=1 || true
+                else
                     python utility_plots/05_02_agreement_heatmap.py \
                         --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
                         --outdir "${FIG_OUTDIR}" \
-                        --annotate && success "Heatmap generated" || warn "Heatmap generation failed (may need more data with guidelines)"
-                else
-                    warn "all_thresholds_summary.csv is empty, skipping heatmap"
+                        --annotate 2>&1 && VIZ_SUCCESS=1 || true
                 fi
-            else
-                warn "all_thresholds_summary.csv not created or heatmap script not found"
             fi
-        else
-            warn "Threshold aggregation failed - check utility_plots/05_01_aggregate_thresholds.py"
         fi
+    fi
+    
+    # Method 3: Try generating simple threshold bar plot
+    if [ "$VIZ_SUCCESS" = "0" ] && [ -f "${DATASET_OUTDIR}/aggregated/threshold_audit.csv" ]; then
+        info "Generating simple threshold summary plot..."
+        
+        # Export variables for Python script
+        export DATASET_OUTDIR="${DATASET_OUTDIR}"
+        export FIG_OUTDIR="${FIG_OUTDIR}"
+        
+        # Create a simple Python script to generate basic visualization
+        python3 << 'PYEOF'
+import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import sys
+import os
+
+# Read paths from environment or use defaults
+dataset_outdir = os.environ.get('DATASET_OUTDIR', 'smoke_test/results/NHANES_metabolic_score')
+fig_outdir = os.environ.get('FIG_OUTDIR', 'smoke_test/results/figs')
+
+audit_path = f"{dataset_outdir}/aggregated/threshold_audit.csv"
+if not os.path.exists(audit_path):
+    print(f"No audit file found at {audit_path}")
+    sys.exit(1)
+
+df = pd.read_csv(audit_path)
+df = df[df['median'].notna() & (df['feature'] != 'unknown')]
+
+if len(df) == 0:
+    print("No valid data for plotting")
+    sys.exit(1)
+
+# Create figure
+fig, ax = plt.subplots(figsize=(10, max(4, len(df) * 0.5)))
+
+# Color by relative error
+colors = []
+for _, row in df.iterrows():
+    if pd.isna(row.get('rel_error')) or pd.isna(row.get('guideline')):
+        colors.append('gray')
+    elif abs(row['rel_error']) <= 0.1:
+        colors.append('green')
+    elif abs(row['rel_error']) <= 0.2:
+        colors.append('orange')
+    else:
+        colors.append('red')
+
+y_pos = range(len(df))
+bars = ax.barh(y_pos, df['median'], color=colors, edgecolor='black', alpha=0.8)
+
+# Add guideline markers
+for i, (_, row) in enumerate(df.iterrows()):
+    if pd.notna(row.get('guideline')):
+        ax.axvline(x=row['guideline'], color='blue', linestyle='--', alpha=0.5)
+        ax.plot(row['guideline'], i, 'b|', markersize=20, markeredgewidth=2)
+
+# Add value labels
+for i, (_, row) in enumerate(df.iterrows()):
+    label = f"{row['median']:.1f}"
+    if pd.notna(row.get('rel_error')):
+        label += f" (Δ{abs(row['rel_error'])*100:.0f}%)"
+    ax.text(row['median'] + 1, i, label, va='center', fontsize=9)
+
+ax.set_yticks(y_pos)
+ax.set_yticklabels([f"{row['feature']} ({row['unit']})" if pd.notna(row.get('unit')) else row['feature'] 
+                   for _, row in df.iterrows()])
+ax.set_xlabel('Threshold Value')
+ax.set_title('LGO Discovered Thresholds vs Clinical Guidelines\n(Green: ≤10%, Orange: ≤20%, Red: >20%, Gray: No guideline)')
+
+plt.tight_layout()
+os.makedirs(fig_outdir, exist_ok=True)
+out_path = f"{fig_outdir}/threshold_summary.png"
+plt.savefig(out_path, dpi=150, bbox_inches='tight')
+print(f"Saved: {out_path}")
+PYEOF
+        
+        if [ -f "${FIG_OUTDIR}/threshold_summary.png" ]; then
+            VIZ_SUCCESS=1
+            success "Basic threshold plot generated"
+        fi
+    fi
+    
+    # Report results
+    if [ "$VIZ_SUCCESS" = "1" ]; then
+        success "Visualization complete"
+        info "Generated files in ${FIG_OUTDIR}:"
+        ls -la "${FIG_OUTDIR}"/*.png "${FIG_OUTDIR}"/*.csv 2>/dev/null || true
     else
-        warn "Visualization scripts not available"
+        warn "No PNG visualizations generated (CSV data available for manual plotting)"
+        info "Available data files:"
+        ls -la "${DATASET_OUTDIR}/aggregated/"*.csv 2>/dev/null || true
+        info ""
+        info "You can manually generate plots using:"
+        info "  python utility_plots/05_06_publication_figure.py --help"
     fi
 fi
 
