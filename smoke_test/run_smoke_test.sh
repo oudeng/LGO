@@ -154,8 +154,8 @@ fi
 ROOT_DIR="$(pwd)"
 success "Repository root: ${ROOT_DIR}"
 
-# Set PYTHONPATH to include repository root (for lgo_v3 module)
-export PYTHONPATH="${ROOT_DIR}:${PYTHONPATH:-}"
+# Set PYTHONPATH to include exp_engins directory (for lgo_v3 and other engine modules)
+export PYTHONPATH="${ROOT_DIR}/exp_engins:${ROOT_DIR}:${PYTHONPATH:-}"
 
 # Create output directories
 RESULTS_DIR="${ROOT_DIR}/smoke_test/results"
@@ -231,9 +231,9 @@ python -c "from deap import gp; print('[OK] DEAP imported')" || err "DEAP not av
 python -c "import pandas; print(f'[OK] Pandas {pandas.__version__}')" || err "Pandas not available"
 python -c "import numpy; print(f'[OK] NumPy {numpy.__version__}')" || err "NumPy not available"
 
-# Verify lgo_v3 is importable
+# Verify lgo_v3 is importable (should be in exp_engins/lgo_v3/)
 info "Verifying lgo_v3 module..."
-python -c "import lgo_v3; print('[OK] lgo_v3 module imported')" || err "lgo_v3 module not importable. Check PYTHONPATH."
+python -c "import lgo_v3; print('[OK] lgo_v3 module imported')" || err "lgo_v3 module not importable. Expected at: exp_engins/lgo_v3/"
 
 # =============================================================================
 # Step 2: Run LGO Symbolic Regression
