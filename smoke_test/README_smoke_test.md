@@ -2,7 +2,7 @@
 
 Quick reproducibility verification for reviewers and readers.
 
-Version 1.1 — December 2025
+Version 1.2 — January 2026
 
 ---
 
@@ -13,7 +13,7 @@ Version 1.1 — December 2025
 - [What Gets Tested](#what-gets-tested)
 - [Expected Results](#expected-results)
 - [Detailed Steps](#detailed-steps)
-- [Alternative: ICU Dataset](#alternative-icu-dataset)
+- [Alternative: NHANES Dataset](#alternative-nhanes-dataset)
 - [Troubleshooting](#troubleshooting)
 
 ---
@@ -56,8 +56,8 @@ That's it! Results will appear in `smoke_test/results/`.
 
 ### 1. LGO Symbolic Regression
 
-Runs `run_v3_8.py` on NHANES metabolic syndrome dataset:
-- **Task**: Regression (predicting metabolic_score)
+Runs `run_v3_8_2.py` on eICU composite risk score dataset:
+- **Task**: Regression (predicting composite_risk_score)
 - **Experiments**: `base`, `lgo_soft`, `lgo_hard`
 - **Seeds**: 1, 2, 3 (for reproducibility check)
 - **Output**: Candidate expressions, predictions, metrics
@@ -71,11 +71,11 @@ Extracts clinical thresholds from LGO-discovered expressions:
 ### 3. Threshold Audit
 
 Validates discovered thresholds against medical literature:
-- **Fasting glucose**: 100 mg/dL (ADA prediabetes cutoff)
-- **Triglycerides**: 150 mg/dL (ATP-III criteria)
-- **Waist circumference**: 88 cm (F) / 102 cm (M)
-- **HDL cholesterol**: 40/50 mg/dL (M/F)
-- **Systolic BP**: 130 mmHg (hypertension stage 1)
+- **Lactate**: 2.0 mmol/L (sepsis marker)
+- **SpO₂**: 94% (hypoxemia threshold)
+- **MAP**: 65 mmHg (shock threshold)
+- **Creatinine**: 1.2 mg/dL (AKI Stage 1)
+- **Hemoglobin**: 7-8 g/dL (transfusion threshold)
 
 ### 4. Visualization
 
@@ -92,7 +92,7 @@ After successful completion, check `smoke_test/results/`:
 
 ```
 smoke_test/results/
-├── NHANES/
+├── eICU_composite_risk_score/
 │   ├── aggregated/
 │   │   ├── overall_metrics.csv      # R², RMSE per experiment
 │   │   ├── thresholds_units.csv     # Thresholds in physical units
@@ -121,9 +121,9 @@ From `threshold_audit.csv` (example):
 
 | Feature | LGO Threshold | Guideline | Rel. Error | Hit 20% |
 |---------|---------------|-----------|------------|---------|
-| fasting_glucose | 98.5 | 100.0 | 1.5% | ✓ |
-| triglycerides | 142.3 | 150.0 | 5.1% | ✓ |
-| systolic_bp | 128.7 | 130.0 | 1.0% | ✓ |
+| lactate_mmol_l | 2.1 | 2.0 | 5.0% | ✓ |
+| spo2_min | 93.5 | 94.0 | 0.5% | ✓ |
+| map_mmhg | 64.2 | 65.0 | 1.2% | ✓ |
 
 ---
 
@@ -135,37 +135,59 @@ If you prefer to run steps manually:
 
 ```bash
 # Create conda environment
-conda env create -f env_setup/env_py310_smoke.yml
+conda env create -f smoke_test/env_py310_smoke.yml
 
 # Activate environment
 conda activate py310_smoke
+
+# Set PYTHONPATH (important!)
+export PYTHONPATH="$(pwd):$PYTHONPATH"
 ```
 
 ### Step 2: Run LGO
 
 ```bash
-python run_v3_8.py \
-  --csv data/NHANES/NHANES_metabolic_score.csv \
-  --target metabolic_score \
+python run_v3_8_2.py \
+  --csv data/eICU/eICU_composite_risk_score.csv \
+  --target composite_risk_score \
   --task regression \
   --experiments base,lgo_soft,lgo_hard \
   --seeds 1,2,3 \
   --test_size 0.2 \
-  --outdir smoke_test/results/NHANES \
-  --dataset NHANES_metabolic_score \
+  --outdir smoke_test/results/eICU_composite_risk_score \
+  --dataset eICU_composite_risk_score \
   --save_predictions \
   --hparams_json '{
-    "pop_size": 400,
-    "ngen": 50,
+    "gate_expr_enable": true,
+    "pop_size": 1000,
+    "ngen": 100,
+    "local_opt_steps": 150,
+    "micro_mutation_prob": 0.2,
+    "cv_proxy_weight": 0.15,
+    "cv_proxy_weight_final": 0.3,
+    "cv_proxy_warmup_frac": 0.7,
+    "cv_proxy_subsample": 0.3,
+    "cv_proxy_folds": 2,
+    "typed_mode": "light",
+    "typed_grouping": "none",
     "include_lgo_multi": true,
-    "include_lgo_and3": true
+    "include_lgo_and3": true,
+    "include_lgo_pair": false
   }' \
   --unit_map_json '{
-    "systolic_bp": "mmHg",
-    "triglycerides": "mg/dL",
-    "waist_circumference": "cm",
-    "fasting_glucose": "mg/dL",
-    "hdl_cholesterol": "mg/dL"
+    "map_mmhg": "mmHg",
+    "sbp_min": "mmHg",
+    "dbp_min": "mmHg",
+    "lactate_mmol_l": "mmol/L",
+    "creatinine_mg_dl": "mg/dL",
+    "hemoglobin_min": "g/dL",
+    "sodium_min": "mmol/L",
+    "age_years": "years",
+    "hr_max": "bpm",
+    "resprate_max": "/min",
+    "spo2_min": "%",
+    "gcs": "",
+    "urine_output_min": "mL"
   }'
 ```
 
@@ -173,8 +195,8 @@ python run_v3_8.py \
 
 ```bash
 python utility_analysis/07_gen_thresholds_units.py \
-  --dataset_dir smoke_test/results/NHANES \
-  --dataset NHANES_metabolic_score \
+  --dataset_dir smoke_test/results/eICU_composite_risk_score \
+  --dataset eICU_composite_risk_score \
   --method lgo \
   --topk 10 \
   --experiments lgo_hard
@@ -184,8 +206,8 @@ python utility_analysis/07_gen_thresholds_units.py \
 
 ```bash
 python utility_analysis/08_threshold_audit.py \
-  --dataset_dir smoke_test/results/NHANES \
-  --dataset NHANES_metabolic_score \
+  --dataset_dir smoke_test/results/eICU_composite_risk_score \
+  --dataset eICU_composite_risk_score \
   --guidelines config/guidelines.yaml
 ```
 
@@ -194,7 +216,7 @@ python utility_analysis/08_threshold_audit.py \
 ```bash
 # Aggregate thresholds
 python utility_plots/05_01_aggregate_thresholds.py \
-  --dataset_dirs smoke_test/results/NHANES \
+  --dataset_dirs smoke_test/results/eICU_composite_risk_score \
   --outdir smoke_test/results/figs \
   --only_anchored
 
@@ -207,51 +229,63 @@ python utility_plots/05_02_agreement_heatmap.py \
 
 ---
 
-## Alternative: ICU Dataset
+## Alternative: NHANES Dataset
 
-For clinical ICU mortality prediction:
+For metabolic syndrome prediction:
 
 ```bash
-bash smoke_test/run_smoke_test.sh --dataset ICU
+bash smoke_test/run_smoke_test.sh --dataset NHANES
 ```
 
 Or manually:
 
 ```bash
-python run_v3_8.py \
-  --csv data/ICU/ICU_composite_risk_score.csv \
-  --target composite_risk_score \
+python run_v3_8_2.py \
+  --csv data/NHANES/NHANES_metabolic_score.csv \
+  --target metabolic_score \
   --task regression \
   --experiments base,lgo_soft,lgo_hard \
   --seeds 1,2,3 \
   --test_size 0.2 \
-  --outdir smoke_test/results/ICU \
-  --dataset ICU_composite_risk_score \
+  --outdir smoke_test/results/NHANES_metabolic_score \
+  --dataset NHANES_metabolic_score \
   --save_predictions \
   --hparams_json '{
-    "pop_size": 400,
-    "ngen": 50,
+    "gate_expr_enable": true,
+    "pop_size": 1000,
+    "ngen": 100,
+    "local_opt_steps": 150,
+    "micro_mutation_prob": 0.2,
+    "cv_proxy_weight": 0.15,
+    "cv_proxy_weight_final": 0.3,
+    "cv_proxy_warmup_frac": 0.7,
+    "cv_proxy_subsample": 0.3,
+    "cv_proxy_folds": 2,
+    "typed_mode": "light",
+    "typed_grouping": "none",
     "include_lgo_multi": true,
-    "include_lgo_and3": true
+    "include_lgo_and3": true,
+    "include_lgo_pair": false
   }' \
   --unit_map_json '{
-    "map_mmhg": "mmHg",
-    "sbp_min": "mmHg",
-    "lactate_mmol_l": "mmol/L",
-    "creatinine_mg_dl": "mg/dL",
-    "spo2_min": "%",
-    "hr_max": "bpm"
+    "systolic_bp": "mmHg",
+    "triglycerides": "mg/dL",
+    "waist_circumference": "cm",
+    "fasting_glucose": "mg/dL",
+    "hdl_cholesterol": "mg/dL",
+    "age": "years",
+    "bmi": "kg/m²"
   }'
 ```
 
-**ICU Expected Thresholds:**
+**NHANES Expected Thresholds:**
 
 | Feature | LGO (expected) | Clinical Guideline |
 |---------|----------------|-------------------|
-| Lactate | 2.0 - 4.0 mmol/L | 2.0 mmol/L (sepsis) |
-| SpO₂ | 92 - 95% | 94% (hypoxemia) |
-| MAP | 60 - 70 mmHg | 65 mmHg (shock) |
-| Creatinine | 1.2 - 2.0 mg/dL | 1.2 mg/dL (AKI) |
+| Fasting glucose | ~100 mg/dL | 100 mg/dL (ADA prediabetes) |
+| Triglycerides | ~150 mg/dL | 150 mg/dL (ATP-III) |
+| Systolic BP | ~130 mmHg | 130 mmHg (hypertension stage 1) |
+| HDL cholesterol | ~40-50 mg/dL | 40/50 mg/dL (M/F) |
 
 ---
 
@@ -263,8 +297,9 @@ python run_v3_8.py \
 |-------|----------|
 | `conda not found` | Install Miniconda: https://docs.conda.io/en/latest/miniconda.html |
 | `DEAP import error` | Run: `pip install deap>=1.3.1` |
-| `Julia not found` (PySR only) | PySR not needed for smoke test; skip if error |
-| `Out of memory` | Reduce `pop_size` to 200 in hparams_json |
+| `lgo_v3 not importable` | Set `PYTHONPATH`: `export PYTHONPATH="$(pwd):$PYTHONPATH"` |
+| `run_v3_8_2.py not found` | Run script from repository root: `cd LGO` |
+| `Out of memory` | Use `--quick` flag or reduce `pop_size` |
 | `Permission denied` | Run: `chmod +x smoke_test/run_smoke_test.sh` |
 
 ### Verify Environment
@@ -275,6 +310,10 @@ python --version
 
 # Check DEAP installation
 python -c "from deap import gp; print('DEAP OK')"
+
+# Check lgo_v3 module (from repository root)
+export PYTHONPATH="$(pwd):$PYTHONPATH"
+python -c "import lgo_v3; print('lgo_v3 OK')"
 
 # Check pandas
 python -c "import pandas; print(f'Pandas {pandas.__version__}')"
@@ -291,6 +330,14 @@ rm -rf smoke_test/results/
 
 # Re-run
 bash smoke_test/run_smoke_test.sh
+```
+
+### Quick Test Mode
+
+For faster testing (~3 minutes):
+
+```bash
+bash smoke_test/run_smoke_test.sh --quick
 ```
 
 ### Minimal Test (No Visualization)
