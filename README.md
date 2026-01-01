@@ -80,7 +80,7 @@ LGO/
 ├── exp_CLs/                       # Reproduction command lines
 │
 ├── exp_results
-│   ├── overall_*/                 # Experiment results (6 datasets)
+│   ├── overall_*/                 # Experiment results (6 datasets + SRBench strictly aligned on ICU)
 │   ├── LGO_AutoScore_v3_8         # LGO vs AutoScore baseline
 │   └── LGO_Interpret_v1_4         # LGO vs EBM baseline
 │
