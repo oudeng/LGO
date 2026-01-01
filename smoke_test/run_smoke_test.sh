@@ -20,8 +20,8 @@ set -euo pipefail
 # =============================================================================
 CONDA_ENV_NAME="py310_smoke"
 
-# Default dataset
-DATASET="eICU"
+# Default dataset (NHANES is smaller and faster for smoke test)
+DATASET="NHANES"
 QUICK_MODE=0
 
 # Parse arguments
@@ -39,7 +39,7 @@ while [[ $# -gt 0 ]]; do
             echo "Usage: bash smoke_test/run_smoke_test.sh [OPTIONS]"
             echo ""
             echo "Options:"
-            echo "  --dataset eICU|NHANES  Dataset to test (default: eICU)"
+            echo "  --dataset NHANES|eICU  Dataset to test (default: NHANES)"
             echo "  --quick                Use reduced parameters for faster testing"
             echo "  --help                 Show this help message"
             echo ""
@@ -56,20 +56,24 @@ done
 
 # Dataset-specific configuration
 case "$DATASET" in
-    eICU)
-        CSV_PATH="data/eICU/eICU_composite_risk_score.csv"
-        TARGET="composite_risk_score"
-        DATASET_NAME="eICU_composite_risk_score"
-        UNIT_MAP='{"map_mmhg": "mmHg","sbp_min": "mmHg","dbp_min": "mmHg","lactate_mmol_l": "mmol/L","creatinine_mg_dl": "mg/dL","hemoglobin_min": "g/dL","sodium_min": "mmol/L","age_years": "years","hr_max": "bpm","resprate_max": "/min","spo2_min": "%","gcs": "","urine_output_min": "mL"}'
-        ;;
     NHANES)
         CSV_PATH="data/NHANES/NHANES_metabolic_score.csv"
         TARGET="metabolic_score"
         DATASET_NAME="NHANES_metabolic_score"
-        UNIT_MAP='{"systolic_bp": "mmHg","triglycerides": "mg/dL","waist_circumference": "cm","fasting_glucose": "mg/dL","hdl_cholesterol": "mg/dL","age": "years","bmi": "kg/m²"}'
+        # Use existing guidelines from exp_results
+        GUIDELINES_SOURCE="exp_results/overall_NHANES_metabolic_score/config/guidelines.yaml"
+        UNIT_MAP='{"systolic_bp":"mmHg","triglycerides":"mg/dL","waist_circumference":"cm","fasting_glucose":"mg/dL","hdl_cholesterol":"mg/dL","age":"years"}'
+        ;;
+    eICU)
+        CSV_PATH="data/eICU/eICU_composite_risk_score.csv"
+        TARGET="composite_risk_score"
+        DATASET_NAME="eICU_composite_risk_score"
+        # Use existing guidelines from exp_results
+        GUIDELINES_SOURCE="exp_results/overall_eICU_composite_risk_score/config/guidelines.yaml"
+        UNIT_MAP='{"map_mmhg": "mmHg","sbp_min": "mmHg","dbp_min": "mmHg","lactate_mmol_l": "mmol/L","creatinine_mg_dl": "mg/dL","hemoglobin_min": "g/dL","sodium_min": "mmol/L","age_years": "years","hr_max": "bpm","resprate_max": "/min","spo2_min": "%","gcs": "","urine_output_min": "mL"}'
         ;;
     *)
-        echo "ERROR: Unknown dataset '$DATASET'. Use eICU or NHANES."
+        echo "ERROR: Unknown dataset '$DATASET'. Use NHANES or eICU."
         exit 1
         ;;
 esac
@@ -306,9 +310,10 @@ fi
 # =============================================================================
 print_header "Step 4: Threshold Audit Against Clinical Guidelines"
 
-# Check multiple possible config paths
+# Use dataset-specific guidelines from exp_results (set in dataset config above)
+# Fall back to config/guidelines.yaml if not found
 GUIDELINES_PATH=""
-for cfg_path in "config/guidelines.yaml" "configs/guidelines.yaml"; do
+for cfg_path in "${GUIDELINES_SOURCE}" "config/guidelines.yaml" "configs/guidelines.yaml"; do
     if [ -f "${cfg_path}" ]; then
         GUIDELINES_PATH="${cfg_path}"
         break
@@ -316,6 +321,7 @@ for cfg_path in "config/guidelines.yaml" "configs/guidelines.yaml"; do
 done
 
 if [ -n "${GUIDELINES_PATH}" ]; then
+    info "Using guidelines: ${GUIDELINES_PATH}"
     if [ -f "utility_analysis/08_threshold_audit.py" ]; then
         info "Auditing thresholds against clinical guidelines..."
         
@@ -339,7 +345,7 @@ if [ -n "${GUIDELINES_PATH}" ]; then
         warn "utility_analysis/08_threshold_audit.py not found, skipping audit"
     fi
 else
-    warn "guidelines.yaml not found in config/ or configs/, skipping audit"
+    warn "guidelines.yaml not found (tried: ${GUIDELINES_SOURCE}, config/guidelines.yaml), skipping audit"
 fi
 
 # =============================================================================
@@ -352,12 +358,11 @@ else
     
     info "Generating visualizations..."
     
-    # Try aggregation first
+    # Try aggregation first (without --only_anchored to show all discovered thresholds)
     if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
         if python utility_plots/05_01_aggregate_thresholds.py \
             --dataset_dirs "${DATASET_OUTDIR}" \
-            --outdir "${FIG_OUTDIR}" \
-            --only_anchored 2>/dev/null; then
+            --outdir "${FIG_OUTDIR}" 2>/dev/null; then
             
             success "Threshold aggregation complete"
             
