@@ -263,6 +263,9 @@ if [ ! -f "${CSV_PATH}" ]; then
     err "Dataset not found: ${CSV_PATH}"
 fi
 
+# Ensure lgo_v3 module is importable
+export PYTHONPATH="${ROOT_DIR}:${PYTHONPATH:-}"
+
 info "Running LGO with experiments: ${EXPERIMENTS}"
 info "Seeds: ${SEEDS}"
 info "This will take approximately 5-8 minutes..."
