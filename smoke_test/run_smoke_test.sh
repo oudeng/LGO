@@ -5,11 +5,10 @@
 # Quick reproducibility verification for reviewers and readers
 # 
 # Usage:
-#   bash smoke_test/run_smoke_test.sh              # Default: NHANES dataset
-#   bash smoke_test/run_smoke_test.sh --dataset ICU    # ICU dataset
+#   bash smoke_test/run_smoke_test.sh              # Default: eICU dataset
+#   bash smoke_test/run_smoke_test.sh --dataset NHANES    # NHANES dataset
 #   bash smoke_test/run_smoke_test.sh --quick          # Reduced parameters
 #   SKIP_VIZ=1 bash smoke_test/run_smoke_test.sh       # Skip visualization
-#   NO_CLONE=1 bash smoke_test/run_smoke_test.sh       # No network operations
 #
 # Expected runtime: ~10 minutes on standard laptop
 # =============================================================================
@@ -19,20 +18,10 @@ set -euo pipefail
 # =============================================================================
 # Configuration
 # =============================================================================
-REPO_URL="https://github.com/oudeng/LGO.git"
-REPO_DIR="LGO"
 CONDA_ENV_NAME="py310_smoke"
 
-# Environment file options (in order of preference)
-ENV_YML_OPTIONS=(
-    "env_setup/env_py310_smoke.yml"
-    "smoke_test/env_py310_smoke.yml"
-    "env_setup/env_py310_test.yml"
-    "env_setup/env_py310.yml"
-)
-
 # Default dataset
-DATASET="NHANES"
+DATASET="eICU"
 QUICK_MODE=0
 
 # Parse arguments
@@ -47,15 +36,14 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --help|-h)
-            echo "Usage: bash run_smoke_test.sh [OPTIONS]"
+            echo "Usage: bash smoke_test/run_smoke_test.sh [OPTIONS]"
             echo ""
             echo "Options:"
-            echo "  --dataset NHANES|ICU   Dataset to test (default: NHANES)"
+            echo "  --dataset eICU|NHANES  Dataset to test (default: eICU)"
             echo "  --quick                Use reduced parameters for faster testing"
             echo "  --help                 Show this help message"
             echo ""
             echo "Environment variables:"
-            echo "  NO_CLONE=1            Skip repository cloning"
             echo "  SKIP_VIZ=1            Skip visualization step"
             exit 0
             ;;
@@ -68,64 +56,62 @@ done
 
 # Dataset-specific configuration
 case "$DATASET" in
+    eICU)
+        CSV_PATH="data/eICU/eICU_composite_risk_score.csv"
+        TARGET="composite_risk_score"
+        DATASET_NAME="eICU_composite_risk_score"
+        UNIT_MAP='{"map_mmhg": "mmHg","sbp_min": "mmHg","dbp_min": "mmHg","lactate_mmol_l": "mmol/L","creatinine_mg_dl": "mg/dL","hemoglobin_min": "g/dL","sodium_min": "mmol/L","age_years": "years","hr_max": "bpm","resprate_max": "/min","spo2_min": "%","gcs": "","urine_output_min": "mL"}'
+        ;;
     NHANES)
         CSV_PATH="data/NHANES/NHANES_metabolic_score.csv"
         TARGET="metabolic_score"
         DATASET_NAME="NHANES_metabolic_score"
-        UNIT_MAP='{
-            "systolic_bp": "mmHg",
-            "triglycerides": "mg/dL",
-            "waist_circumference": "cm",
-            "fasting_glucose": "mg/dL",
-            "hdl_cholesterol": "mg/dL",
-            "age": "years",
-            "bmi": "kg/m²"
-        }'
-        ;;
-    ICU)
-        CSV_PATH="data/ICU/ICU_composite_risk_score.csv"
-        TARGET="composite_risk_score"
-        DATASET_NAME="ICU_composite_risk_score"
-        UNIT_MAP='{
-            "map_mmhg": "mmHg",
-            "sbp_min": "mmHg",
-            "dbp_min": "mmHg",
-            "lactate_mmol_l": "mmol/L",
-            "creatinine_mg_dl": "mg/dL",
-            "hemoglobin_min": "g/dL",
-            "sodium_min": "mmol/L",
-            "age_years": "years",
-            "hr_max": "bpm",
-            "resprate_max": "/min",
-            "spo2_min": "%"
-        }'
+        UNIT_MAP='{"systolic_bp": "mmHg","triglycerides": "mg/dL","waist_circumference": "cm","fasting_glucose": "mg/dL","hdl_cholesterol": "mg/dL","age": "years","bmi": "kg/m²"}'
         ;;
     *)
-        echo "ERROR: Unknown dataset '$DATASET'. Use NHANES or ICU."
+        echo "ERROR: Unknown dataset '$DATASET'. Use eICU or NHANES."
         exit 1
         ;;
 esac
 
-# Hyperparameters (reduced for smoke test)
+# Hyperparameters
 if [ "$QUICK_MODE" = "1" ]; then
     HPARAMS='{
+        "gate_expr_enable": true,
         "pop_size": 200,
         "ngen": 30,
+        "local_opt_steps": 50,
+        "micro_mutation_prob": 0.2,
+        "cv_proxy_weight": 0.15,
+        "cv_proxy_weight_final": 0.3,
+        "cv_proxy_warmup_frac": 0.7,
+        "cv_proxy_subsample": 0.3,
+        "cv_proxy_folds": 2,
+        "typed_mode": "light",
+        "typed_grouping": "none",
         "include_lgo_multi": true,
         "include_lgo_and3": false,
-        "hof_size": 10,
-        "topk_cv": 6
+        "include_lgo_pair": false
     }'
     SEEDS="1,2"
     EXPERIMENTS="lgo_hard"
 else
     HPARAMS='{
-        "pop_size": 400,
-        "ngen": 50,
+        "gate_expr_enable": true,
+        "pop_size": 1000,
+        "ngen": 100,
+        "local_opt_steps": 150,
+        "micro_mutation_prob": 0.2,
+        "cv_proxy_weight": 0.15,
+        "cv_proxy_weight_final": 0.3,
+        "cv_proxy_warmup_frac": 0.7,
+        "cv_proxy_subsample": 0.3,
+        "cv_proxy_folds": 2,
+        "typed_mode": "light",
+        "typed_grouping": "none",
         "include_lgo_multi": true,
         "include_lgo_and3": true,
-        "hof_size": 15,
-        "topk_cv": 8
+        "include_lgo_pair": false
     }'
     SEEDS="1,2,3"
     EXPERIMENTS="base,lgo_soft,lgo_hard"
@@ -153,43 +139,27 @@ print_header() {
 }
 
 # =============================================================================
-# Step 0: Repository Detection / Clone
+# Step 0: Repository Detection
 # =============================================================================
 print_header "Step 0: Repository Setup"
 
-if [ -f "run_v3_8_2.py" ]; then
-    info "Detected run_v3_8_2.py in current directory."
-    ROOT_DIR="$(pwd)"
-elif [ -d "${REPO_DIR}" ] && [ -f "${REPO_DIR}/run_v3_8_2.py" ]; then
-    info "Found existing ${REPO_DIR} repository."
-    ROOT_DIR="$(cd "${REPO_DIR}" && pwd)"
-else
-    if [ "${NO_CLONE:-0}" = "1" ]; then
-        err "Repository not found and NO_CLONE=1 is set. Please clone manually or unset NO_CLONE."
-    fi
-    info "Cloning repository ${REPO_URL}..."
-    git clone --depth 1 "${REPO_URL}" "${REPO_DIR}" || err "git clone failed"
-    ROOT_DIR="$(cd "${REPO_DIR}" && pwd)"
+# Must be run from repository root (where run_v3_8_2.py exists)
+if [ ! -f "run_v3_8_2.py" ]; then
+    err "run_v3_8_2.py not found. Please run this script from the LGO repository root:
+    
+    git clone https://github.com/oudeng/LGO.git && cd LGO
+    bash smoke_test/run_smoke_test.sh"
 fi
 
+ROOT_DIR="$(pwd)"
 success "Repository root: ${ROOT_DIR}"
-cd "${ROOT_DIR}"
 
-# Detect config directory (check both possible names: config/ and configs/)
-CONFIG_DIR=""
-if [ -d "config" ]; then
-    CONFIG_DIR="config"
-elif [ -d "configs" ]; then
-    CONFIG_DIR="configs"
-else
-    warn "Neither config/ nor configs/ directory found"
-    CONFIG_DIR="config"  # Default assumption
-fi
-info "Using config directory: ${CONFIG_DIR}"
+# Set PYTHONPATH to include repository root (for lgo_v3 module)
+export PYTHONPATH="${ROOT_DIR}:${PYTHONPATH:-}"
 
 # Create output directories
 RESULTS_DIR="${ROOT_DIR}/smoke_test/results"
-DATASET_OUTDIR="${RESULTS_DIR}/${DATASET}"
+DATASET_OUTDIR="${RESULTS_DIR}/${DATASET_NAME}"
 FIG_OUTDIR="${RESULTS_DIR}/figs"
 LOG_FILE="${RESULTS_DIR}/smoke_test.log"
 
@@ -219,6 +189,13 @@ fi
 
 # shellcheck source=/dev/null
 source "${CONDA_BASE}/etc/profile.d/conda.sh"
+
+# Environment file options (in order of preference)
+ENV_YML_OPTIONS=(
+    "smoke_test/env_py310_smoke.yml"
+    "env_setup/env_py310_smoke.yml"
+    "env_setup/env_py310.yml"
+)
 
 # Check if environment exists
 if conda env list | awk '{print $1}' | grep -qx "${CONDA_ENV_NAME}"; then
@@ -254,6 +231,10 @@ python -c "from deap import gp; print('[OK] DEAP imported')" || err "DEAP not av
 python -c "import pandas; print(f'[OK] Pandas {pandas.__version__}')" || err "Pandas not available"
 python -c "import numpy; print(f'[OK] NumPy {numpy.__version__}')" || err "NumPy not available"
 
+# Verify lgo_v3 is importable
+info "Verifying lgo_v3 module..."
+python -c "import lgo_v3; print('[OK] lgo_v3 module imported')" || err "lgo_v3 module not importable. Check PYTHONPATH."
+
 # =============================================================================
 # Step 2: Run LGO Symbolic Regression
 # =============================================================================
@@ -263,12 +244,9 @@ if [ ! -f "${CSV_PATH}" ]; then
     err "Dataset not found: ${CSV_PATH}"
 fi
 
-# Ensure lgo_v3 module is importable
-export PYTHONPATH="${ROOT_DIR}:${PYTHONPATH:-}"
-
 info "Running LGO with experiments: ${EXPERIMENTS}"
 info "Seeds: ${SEEDS}"
-info "This will take approximately 5-8 minutes..."
+info "This will take approximately 5-10 minutes..."
 
 python run_v3_8_2.py \
     --csv "${CSV_PATH}" \
@@ -328,9 +306,16 @@ fi
 # =============================================================================
 print_header "Step 4: Threshold Audit Against Clinical Guidelines"
 
-GUIDELINES_PATH="${CONFIG_DIR}/guidelines.yaml"
+# Check multiple possible config paths
+GUIDELINES_PATH=""
+for cfg_path in "config/guidelines.yaml" "configs/guidelines.yaml"; do
+    if [ -f "${cfg_path}" ]; then
+        GUIDELINES_PATH="${cfg_path}"
+        break
+    fi
+done
 
-if [ -f "${GUIDELINES_PATH}" ]; then
+if [ -n "${GUIDELINES_PATH}" ]; then
     if [ -f "utility_analysis/08_threshold_audit.py" ]; then
         info "Auditing thresholds against clinical guidelines..."
         
@@ -354,7 +339,7 @@ if [ -f "${GUIDELINES_PATH}" ]; then
         warn "utility_analysis/08_threshold_audit.py not found, skipping audit"
     fi
 else
-    warn "${GUIDELINES_PATH} not found, skipping audit"
+    warn "guidelines.yaml not found in config/ or configs/, skipping audit"
 fi
 
 # =============================================================================
