@@ -374,22 +374,13 @@ SKIP_VIZ=1 bash smoke_test/run_smoke_test.sh
 
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
-| RAM | 4 GB | 8 GB |
-| Disk | 2 GB | 5 GB |
+| RAM | 16 GB | 32 GB |
+| Disk | 2 GB | 2 GB |
 | CPU | 2 cores | 4+ cores |
 | OS | Linux, macOS, Windows (WSL2) | Linux/macOS |
-| Time | 10 min | 5-10 min |
+| Time | 20 min | 15-20 min |
 
 No GPU required.
 
 ---
 
-## Contact
-
-If the smoke test fails after following troubleshooting steps, please open an issue at:
-https://github.com/oudeng/LGO/issues
-
-Include:
-1. Full error message
-2. Output of `conda list`
-3. Operating system and version
