@@ -52,6 +52,19 @@ That's it! Results will appear in `smoke_test/results/`.
 
 > **Smoke Test vs Full Experiment**: This smoke test uses 3 seeds for quick validation (~15 min). The full experiment in the paper uses 10 seeds and discovers more features (BMI, waist_circumference). For complete reproducibility, run with `--seeds 1,2,3,5,8,13,21,34,55,89`.
 
+### Re-run Options
+
+```bash
+# Skip LGO computation, only re-run Steps 3-5 (threshold extraction, audit, visualization)
+SKIP_LGO=1 bash smoke_test/run_smoke_test.sh
+
+# Skip visualization only
+SKIP_VIZ=1 bash smoke_test/run_smoke_test.sh
+
+# Quick mode (reduced parameters for ~2 min test)
+bash smoke_test/run_smoke_test.sh --quick
+```
+
 ---
 
 ## What Gets Tested
@@ -370,3 +383,13 @@ SKIP_VIZ=1 bash smoke_test/run_smoke_test.sh
 No GPU required.
 
 ---
+
+## Contact
+
+If the smoke test fails after following troubleshooting steps, please open an issue at:
+https://github.com/oudeng/LGO/issues
+
+Include:
+1. Full error message
+2. Output of `conda list`
+3. Operating system and version
