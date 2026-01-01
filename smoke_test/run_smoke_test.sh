@@ -157,10 +157,10 @@ print_header() {
 # =============================================================================
 print_header "Step 0: Repository Setup"
 
-if [ -f "run_v3_8.py" ]; then
-    info "Detected run_v3_8.py in current directory."
+if [ -f "run_v3_8_2.py" ]; then
+    info "Detected run_v3_8_2.py in current directory."
     ROOT_DIR="$(pwd)"
-elif [ -d "${REPO_DIR}" ] && [ -f "${REPO_DIR}/run_v3_8.py" ]; then
+elif [ -d "${REPO_DIR}" ] && [ -f "${REPO_DIR}/run_v3_8_2.py" ]; then
     info "Found existing ${REPO_DIR} repository."
     ROOT_DIR="$(cd "${REPO_DIR}" && pwd)"
 else
@@ -267,7 +267,7 @@ info "Running LGO with experiments: ${EXPERIMENTS}"
 info "Seeds: ${SEEDS}"
 info "This will take approximately 5-8 minutes..."
 
-python run_v3_8.py \
+python run_v3_8_2.py \
     --csv "${CSV_PATH}" \
     --target "${TARGET}" \
     --task regression \
@@ -279,7 +279,7 @@ python run_v3_8.py \
     --save_predictions \
     --hparams_json "${HPARAMS}" \
     --unit_map_json "${UNIT_MAP}" \
-    || err "run_v3_8.py failed"
+    || err "run_v3_8_2.py failed"
 
 success "LGO completed. Outputs in: ${DATASET_OUTDIR}"
 
