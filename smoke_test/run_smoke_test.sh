@@ -358,20 +358,11 @@ else
     
     info "Generating visualizations..."
     
-    # Try aggregation first - pass guidelines for proper matching
+    # Try aggregation (note: 05_01 doesn't support --guidelines, it reads from thresholds_units.csv)
     if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
-        # Run aggregation with or without guidelines
-        if [ -n "${GUIDELINES_PATH}" ] && [ -f "${GUIDELINES_PATH}" ]; then
-            info "Using guidelines: ${GUIDELINES_PATH}"
-            python utility_plots/05_01_aggregate_thresholds.py \
-                --dataset_dirs "${DATASET_OUTDIR}" \
-                --outdir "${FIG_OUTDIR}" \
-                --guidelines "${GUIDELINES_PATH}" && AGG_OK=1 || AGG_OK=0
-        else
-            python utility_plots/05_01_aggregate_thresholds.py \
-                --dataset_dirs "${DATASET_OUTDIR}" \
-                --outdir "${FIG_OUTDIR}" && AGG_OK=1 || AGG_OK=0
-        fi
+        python utility_plots/05_01_aggregate_thresholds.py \
+            --dataset_dirs "${DATASET_OUTDIR}" \
+            --outdir "${FIG_OUTDIR}" && AGG_OK=1 || AGG_OK=0
         
         if [ "$AGG_OK" = "1" ]; then
             success "Threshold aggregation complete"
@@ -380,14 +371,17 @@ else
             if [ -f "${FIG_OUTDIR}/all_thresholds_summary.csv" ] && [ -f "utility_plots/05_02_agreement_heatmap.py" ]; then
                 # Check if summary has data
                 N_ROWS=$(wc -l < "${FIG_OUTDIR}/all_thresholds_summary.csv")
+                info "all_thresholds_summary.csv has ${N_ROWS} rows"
                 if [ "$N_ROWS" -gt 1 ]; then
                     python utility_plots/05_02_agreement_heatmap.py \
                         --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
                         --outdir "${FIG_OUTDIR}" \
-                        --annotate && success "Heatmap generated" || warn "Heatmap generation failed (may need more data)"
+                        --annotate && success "Heatmap generated" || warn "Heatmap generation failed (may need more data with guidelines)"
                 else
                     warn "all_thresholds_summary.csv is empty, skipping heatmap"
                 fi
+            else
+                warn "all_thresholds_summary.csv not created or heatmap script not found"
             fi
         else
             warn "Threshold aggregation failed - check utility_plots/05_01_aggregate_thresholds.py"
