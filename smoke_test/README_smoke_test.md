@@ -24,12 +24,12 @@ This smoke test provides a **minimal end-to-end verification** of the LGO framew
 
 | Component | What's Tested | Time |
 |-----------|---------------|------|
-| Environment | Conda setup, dependencies | ~1 min |
-| LGO Engine | Symbolic regression with soft/hard gating | ~18 min |
+| Environment | Conda setup, dependencies | ~3 min |
+| LGO Engine | Symbolic regression with soft/hard gating | ~5 min |
 | Threshold Analysis | Clinical threshold extraction & audit | ~1 min |
 | Visualization | Publication-quality figures | ~1 min |
 
-**Total time: ~20 minutes** on a standard laptop (no GPU required).
+**Total time: ~10 minutes** on a standard laptop (no GPU required).
 
 ---
 
@@ -56,8 +56,8 @@ That's it! Results will appear in `smoke_test/results/`.
 
 ### 1. LGO Symbolic Regression
 
-Runs `run_v3_8_2.py` on eICU composite risk score dataset:
-- **Task**: Regression (predicting composite_risk_score)
+Runs `run_v3_8_2.py` on NHANES metabolic syndrome dataset:
+- **Task**: Regression (predicting metabolic_score)
 - **Experiments**: `base`, `lgo_soft`, `lgo_hard`
 - **Seeds**: 1, 2, 3 (for reproducibility check)
 - **Output**: Candidate expressions, predictions, metrics
@@ -70,12 +70,12 @@ Extracts clinical thresholds from LGO-discovered expressions:
 
 ### 3. Threshold Audit
 
-Validates discovered thresholds against medical literature:
-- **Lactate**: 2.0 mmol/L (sepsis marker)
-- **SpO₂**: 94% (hypoxemia threshold)
-- **MAP**: 65 mmHg (shock threshold)
-- **Creatinine**: 1.2 mg/dL (AKI Stage 1)
-- **Hemoglobin**: 7-8 g/dL (transfusion threshold)
+Validates discovered thresholds against medical literature (uses existing `exp_results/.../config/guidelines.yaml`):
+- **Fasting glucose**: 100 mg/dL (ADA prediabetes cutoff)
+- **Triglycerides**: 150 mg/dL (ATP-III metabolic syndrome criterion)
+- **Systolic BP**: 130 mmHg (hypertension stage 1)
+- **HDL cholesterol**: 40/50 mg/dL (M/F, metabolic syndrome criterion)
+- **Waist circumference**: 102/88 cm (M/F, central obesity)
 
 ### 4. Visualization
 
@@ -92,7 +92,7 @@ After successful completion, check `smoke_test/results/`:
 
 ```
 smoke_test/results/
-├── eICU_composite_risk_score/
+├── NHANES_metabolic_score/
 │   ├── aggregated/
 │   │   ├── overall_metrics.csv      # R², RMSE per experiment
 │   │   ├── thresholds_units.csv     # Thresholds in physical units
@@ -111,7 +111,7 @@ smoke_test/results/
 
 | Metric | Expected Range | File |
 |--------|---------------|------|
-| R² (lgo_hard) | 0.45 - 0.65 | `overall_metrics.csv` |
+| R² (lgo_hard) | 0.50 - 0.75 | `overall_metrics.csv` |
 | Threshold hit rate (±20%) | ≥ 60% | `threshold_audit.csv` |
 | Expressions discovered | ≥ 10 per seed | `candidates/` |
 
@@ -121,9 +121,9 @@ From `threshold_audit.csv` (example):
 
 | Feature | LGO Threshold | Guideline | Rel. Error | Hit 20% |
 |---------|---------------|-----------|------------|---------|
-| lactate_mmol_l | 2.1 | 2.0 | 5.0% | ✓ |
-| spo2_min | 93.5 | 94.0 | 0.5% | ✓ |
-| map_mmhg | 64.2 | 65.0 | 1.2% | ✓ |
+| fasting_glucose | 98.5 | 100.0 | 1.5% | ✓ |
+| triglycerides | 142.3 | 150.0 | 5.1% | ✓ |
+| systolic_bp | 128.7 | 130.0 | 1.0% | ✓ |
 
 ---
 
@@ -145,6 +145,92 @@ export PYTHONPATH="$(pwd)/exp_engins:$(pwd):$PYTHONPATH"
 ```
 
 ### Step 2: Run LGO
+
+```bash
+python run_v3_8_2.py \
+  --csv data/NHANES/NHANES_metabolic_score.csv \
+  --target metabolic_score \
+  --task regression \
+  --experiments base,lgo_soft,lgo_hard \
+  --seeds 1,2,3 \
+  --test_size 0.2 \
+  --outdir smoke_test/results/NHANES_metabolic_score \
+  --dataset NHANES_metabolic_score \
+  --save_predictions \
+  --hparams_json '{
+    "gate_expr_enable": true,
+    "pop_size": 1000,
+    "ngen": 100,
+    "local_opt_steps": 150,
+    "micro_mutation_prob": 0.2,
+    "cv_proxy_weight": 0.15,
+    "cv_proxy_weight_final": 0.3,
+    "cv_proxy_warmup_frac": 0.7,
+    "cv_proxy_subsample": 0.3,
+    "cv_proxy_folds": 2,
+    "typed_mode": "light",
+    "typed_grouping": "none",
+    "include_lgo_multi": true,
+    "include_lgo_and3": true,
+    "include_lgo_pair": false
+  }' \
+  --unit_map_json '{
+    "systolic_bp": "mmHg",
+    "triglycerides": "mg/dL",
+    "waist_circumference": "cm",
+    "fasting_glucose": "mg/dL",
+    "hdl_cholesterol": "mg/dL",
+    "age": "years",
+    "bmi": "kg/m²"
+  }'
+```
+
+### Step 3: Extract Thresholds
+
+```bash
+python utility_analysis/07_gen_thresholds_units.py \
+  --dataset_dir smoke_test/results/NHANES_metabolic_score \
+  --dataset NHANES_metabolic_score \
+  --method lgo \
+  --topk 10 \
+  --experiments lgo_hard
+```
+
+### Step 4: Audit Against Guidelines
+
+```bash
+python utility_analysis/08_threshold_audit.py \
+  --dataset_dir smoke_test/results/NHANES_metabolic_score \
+  --dataset NHANES_metabolic_score \
+  --guidelines exp_results/overall_NHANES_metabolic_score/config/guidelines.yaml
+```
+
+### Step 5: Generate Visualizations
+
+```bash
+# Aggregate thresholds
+python utility_plots/05_01_aggregate_thresholds.py \
+  --dataset_dirs smoke_test/results/NHANES_metabolic_score \
+  --outdir smoke_test/results/figs
+
+# Generate heatmap
+python utility_plots/05_02_agreement_heatmap.py \
+  --csv smoke_test/results/figs/all_thresholds_summary.csv \
+  --outdir smoke_test/results/figs \
+  --annotate
+```
+
+---
+
+## Alternative: eICU Dataset
+
+For ICU mortality risk prediction (larger dataset, ~20 min runtime):
+
+```bash
+bash smoke_test/run_smoke_test.sh --dataset eICU
+```
+
+Or manually:
 
 ```bash
 python run_v3_8_2.py \
@@ -191,101 +277,14 @@ python run_v3_8_2.py \
   }'
 ```
 
-### Step 3: Extract Thresholds
-
-```bash
-python utility_analysis/07_gen_thresholds_units.py \
-  --dataset_dir smoke_test/results/eICU_composite_risk_score \
-  --dataset eICU_composite_risk_score \
-  --method lgo \
-  --topk 10 \
-  --experiments lgo_hard
-```
-
-### Step 4: Audit Against Guidelines
-
-```bash
-python utility_analysis/08_threshold_audit.py \
-  --dataset_dir smoke_test/results/eICU_composite_risk_score \
-  --dataset eICU_composite_risk_score \
-  --guidelines config/guidelines.yaml
-```
-
-### Step 5: Generate Visualizations
-
-```bash
-# Aggregate thresholds
-python utility_plots/05_01_aggregate_thresholds.py \
-  --dataset_dirs smoke_test/results/eICU_composite_risk_score \
-  --outdir smoke_test/results/figs \
-  --only_anchored
-
-# Generate heatmap
-python utility_plots/05_02_agreement_heatmap.py \
-  --csv smoke_test/results/figs/all_thresholds_summary.csv \
-  --outdir smoke_test/results/figs \
-  --annotate
-```
-
----
-
-## Alternative: NHANES Dataset
-
-For metabolic syndrome prediction:
-
-```bash
-bash smoke_test/run_smoke_test.sh --dataset NHANES
-```
-
-Or manually:
-
-```bash
-python run_v3_8_2.py \
-  --csv data/NHANES/NHANES_metabolic_score.csv \
-  --target metabolic_score \
-  --task regression \
-  --experiments base,lgo_soft,lgo_hard \
-  --seeds 1,2,3 \
-  --test_size 0.2 \
-  --outdir smoke_test/results/NHANES_metabolic_score \
-  --dataset NHANES_metabolic_score \
-  --save_predictions \
-  --hparams_json '{
-    "gate_expr_enable": true,
-    "pop_size": 1000,
-    "ngen": 100,
-    "local_opt_steps": 150,
-    "micro_mutation_prob": 0.2,
-    "cv_proxy_weight": 0.15,
-    "cv_proxy_weight_final": 0.3,
-    "cv_proxy_warmup_frac": 0.7,
-    "cv_proxy_subsample": 0.3,
-    "cv_proxy_folds": 2,
-    "typed_mode": "light",
-    "typed_grouping": "none",
-    "include_lgo_multi": true,
-    "include_lgo_and3": true,
-    "include_lgo_pair": false
-  }' \
-  --unit_map_json '{
-    "systolic_bp": "mmHg",
-    "triglycerides": "mg/dL",
-    "waist_circumference": "cm",
-    "fasting_glucose": "mg/dL",
-    "hdl_cholesterol": "mg/dL",
-    "age": "years",
-    "bmi": "kg/m²"
-  }'
-```
-
-**NHANES Expected Thresholds:**
+**eICU Expected Thresholds:**
 
 | Feature | LGO (expected) | Clinical Guideline |
 |---------|----------------|-------------------|
-| Fasting glucose | ~100 mg/dL | 100 mg/dL (ADA prediabetes) |
-| Triglycerides | ~150 mg/dL | 150 mg/dL (ATP-III) |
-| Systolic BP | ~130 mmHg | 130 mmHg (hypertension stage 1) |
-| HDL cholesterol | ~40-50 mg/dL | 40/50 mg/dL (M/F) |
+| Lactate | 1.0 - 2.5 mmol/L | 2.0 mmol/L (sepsis) |
+| SpO₂ | 92 - 95% | 94% (hypoxemia) |
+| GCS | 7 - 9 | 8 (intubation threshold) |
+| Creatinine | 0.8 - 1.5 mg/dL | 1.2 mg/dL (AKI) |
 
 ---
 
