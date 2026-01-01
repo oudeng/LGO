@@ -189,13 +189,13 @@ See [utility_analysis/README_utility_analysis.md](utility_analysis/README_utilit
 ---
 
 ## Citation
-Due to major revision, the following preprint will be updated soon!
+
 ```bibtex
-@article{deng2025lgo,
-  title={Logistic-Gated Operators Enable Auditable Unit-Aware Thresholds in Symbolic Regression},
+@article{deng2026lgo,
+  title={Auditable Unit‑Aware Thresholds in Symbolic Regression via Logistic‑Gated Operators}},
   author={Deng, Ou and Cong, Ruichen and Xu, Jianting and Nishimura, Shoji and Ogihara, Atsushi and Jin, Qun},
   journal={arXiv preprint arXiv:2510.05178},
-  year={2025}
+  year={2026}
 }
 ```
 
