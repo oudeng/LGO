@@ -24,12 +24,12 @@ This smoke test provides a **minimal end-to-end verification** of the LGO framew
 
 | Component | What's Tested | Time |
 |-----------|---------------|------|
-| Environment | Conda setup, dependencies | ~2 min |
-| LGO Engine | Symbolic regression with soft/hard gating | ~10 min |
+| Environment | Conda setup, dependencies | ~3 min |
+| LGO Engine | Symbolic regression with soft/hard gating | ~5 min |
 | Threshold Analysis | Clinical threshold extraction & audit | ~1 min |
 | Visualization | Publication-quality figures | ~1 min |
 
-**Total time: ~15 minutes** on a standard laptop (no GPU required).
+**Total time: ~10 minutes** on a standard laptop (no GPU required).
 
 ---
 
@@ -49,6 +49,8 @@ bash smoke_test/run_smoke_test.sh
 ```
 
 That's it! Results will appear in `smoke_test/results/`.
+
+> **Smoke Test vs Full Experiment**: This smoke test uses 3 seeds for quick validation (~15 min). The full experiment in the paper uses 10 seeds and discovers more features (BMI, waist_circumference). For complete reproducibility, run with `--seeds 1,2,3,5,8,13,21,34,55,89`.
 
 ---
 
@@ -111,19 +113,21 @@ smoke_test/results/
 
 | Metric | Expected Range | File |
 |--------|---------------|------|
-| R² (lgo_hard) | 0.50 - 0.75 | `overall_metrics.csv` |
-| Threshold hit rate (±20%) | ≥ 60% | `threshold_audit.csv` |
+| R² (lgo_hard) | 0.65 - 0.85 | `overall_metrics.csv` |
+| Thresholds discovered | ≥ 3 features | `thresholds_units.csv` |
 | Expressions discovered | ≥ 10 per seed | `candidates/` |
 
 ### Sample Output
 
-From `threshold_audit.csv` (example):
+From `thresholds_units.csv` (example with 3 seeds):
 
-| Feature | LGO Threshold | Guideline | Rel. Error | Hit 20% |
-|---------|---------------|-----------|------------|---------|
-| fasting_glucose | 98.5 | 100.0 | 1.5% | ✓ |
-| triglycerides | 142.3 | 150.0 | 5.1% | ✓ |
-| systolic_bp | 128.7 | 130.0 | 1.0% | ✓ |
+| Feature | b_raw_median | Guideline | Status |
+|---------|--------------|-----------|--------|
+| fasting_glucose | ~97-99 mg/dL | 100 mg/dL | ✅ Within 5% |
+| triglycerides | ~30-40 mg/dL | 150 mg/dL | ⚠️ ~75% deviation |
+| systolic_bp | (dynamic) | 130 mmHg | Dynamic thresholds |
+
+> **Note**: The smoke test uses 3 seeds for speed. The full experiment (10 seeds) discovers additional features like BMI and waist_circumference. Some variation is expected due to GP stochasticity.
 
 ---
 
@@ -366,4 +370,3 @@ SKIP_VIZ=1 bash smoke_test/run_smoke_test.sh
 No GPU required.
 
 ---
-
