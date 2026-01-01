@@ -140,8 +140,8 @@ conda env create -f smoke_test/env_py310_smoke.yml
 # Activate environment
 conda activate py310_smoke
 
-# Set PYTHONPATH (important!)
-export PYTHONPATH="$(pwd):$PYTHONPATH"
+# Set PYTHONPATH (important! - engines are in exp_engins/)
+export PYTHONPATH="$(pwd)/exp_engins:$(pwd):$PYTHONPATH"
 ```
 
 ### Step 2: Run LGO
@@ -297,7 +297,8 @@ python run_v3_8_2.py \
 |-------|----------|
 | `conda not found` | Install Miniconda: https://docs.conda.io/en/latest/miniconda.html |
 | `DEAP import error` | Run: `pip install deap>=1.3.1` |
-| `lgo_v3 not importable` | Set `PYTHONPATH`: `export PYTHONPATH="$(pwd):$PYTHONPATH"` |
+| `lgo_v3 not importable` | Set `PYTHONPATH`: `export PYTHONPATH="$(pwd)/exp_engins:$PYTHONPATH"` |
+| `lgo engine not importable` | Ensure `exp_engins/LGO_v2_1.py` exists; run with `LGO_DEBUG=1` for details |
 | `run_v3_8_2.py not found` | Run script from repository root: `cd LGO` |
 | `Out of memory` | Use `--quick` flag or reduce `pop_size` |
 | `Permission denied` | Run: `chmod +x smoke_test/run_smoke_test.sh` |
@@ -312,8 +313,11 @@ python --version
 python -c "from deap import gp; print('DEAP OK')"
 
 # Check lgo_v3 module (from repository root)
-export PYTHONPATH="$(pwd):$PYTHONPATH"
+export PYTHONPATH="$(pwd)/exp_engins:$PYTHONPATH"
 python -c "import lgo_v3; print('lgo_v3 OK')"
+
+# Check LGO engine with debug output
+LGO_DEBUG=1 python -c "from LGO_v2_1 import run_lgo_sr_v2; print('LGO engine OK')"
 
 # Check pandas
 python -c "import pandas; print(f'Pandas {pandas.__version__}')"
