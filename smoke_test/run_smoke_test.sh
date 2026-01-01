@@ -360,16 +360,20 @@ else
     
     # Try aggregation first - pass guidelines for proper matching
     if [ -f "utility_plots/05_01_aggregate_thresholds.py" ]; then
-        # Build aggregation command with optional guidelines
-        AGG_CMD="python utility_plots/05_01_aggregate_thresholds.py --dataset_dirs ${DATASET_OUTDIR} --outdir ${FIG_OUTDIR}"
-        
-        # Add guidelines if available
+        # Run aggregation with or without guidelines
         if [ -n "${GUIDELINES_PATH}" ] && [ -f "${GUIDELINES_PATH}" ]; then
-            AGG_CMD="${AGG_CMD} --guidelines ${GUIDELINES_PATH}"
             info "Using guidelines: ${GUIDELINES_PATH}"
+            python utility_plots/05_01_aggregate_thresholds.py \
+                --dataset_dirs "${DATASET_OUTDIR}" \
+                --outdir "${FIG_OUTDIR}" \
+                --guidelines "${GUIDELINES_PATH}" && AGG_OK=1 || AGG_OK=0
+        else
+            python utility_plots/05_01_aggregate_thresholds.py \
+                --dataset_dirs "${DATASET_OUTDIR}" \
+                --outdir "${FIG_OUTDIR}" && AGG_OK=1 || AGG_OK=0
         fi
         
-        if eval "${AGG_CMD}" 2>/dev/null; then
+        if [ "$AGG_OK" = "1" ]; then
             success "Threshold aggregation complete"
             
             # Generate heatmap if aggregation succeeded
@@ -380,13 +384,13 @@ else
                     python utility_plots/05_02_agreement_heatmap.py \
                         --csv "${FIG_OUTDIR}/all_thresholds_summary.csv" \
                         --outdir "${FIG_OUTDIR}" \
-                        --annotate 2>/dev/null && success "Heatmap generated" || warn "Heatmap generation failed (may need more data)"
+                        --annotate && success "Heatmap generated" || warn "Heatmap generation failed (may need more data)"
                 else
                     warn "all_thresholds_summary.csv is empty, skipping heatmap"
                 fi
             fi
         else
-            warn "Threshold aggregation failed or no data available"
+            warn "Threshold aggregation failed - check utility_plots/05_01_aggregate_thresholds.py"
         fi
     else
         warn "Visualization scripts not available"
