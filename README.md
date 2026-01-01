@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/python-3.10-blue.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Paper](https://img.shields.io/badge/paper-arXiv-b31b1b.svg)](https://arxiv.org/abs/2510.05178) 
-[![ZENODO](https://zenodo.org/badge/DOI/10.5281/zenodo.17299423.svg)](https://zenodo.org/records/17299423)
+[![ZENODO](https://zenodo.org/badge/DOI/10.5281/zenodo.18117379.svg)](https://zenodo.org/records/18117379)
 
 **Logistic-Gated Operators (LGO)** enable unit-aware, auditable thresholds in symbolic regression by treating cut-points as first-class parameters inside equations. LGO maps thresholds back to physical units for direct comparison with domain guidelines, turning interpretability from a post-hoc narrative into a modeling constraint.
 
